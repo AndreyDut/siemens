@@ -1,11 +1,9 @@
 <div ng-class="subPanelContext.dataObject.uid === data.emptyUid? 'siswru-ii-change-card-old': 'siswru-ii-change-card'">
     <div class="siswru-ii-add-remove">
-        <div>
+            <aw-icon-button command="data.openCardCommand"></aw-icon-button>
             <aw-icon-button command="data.addCardCommand"></aw-icon-button>
-        </div>
-        <div>
             <aw-icon-button command="data.removeCardCommand"></aw-icon-button>
-        </div>
+            <aw-icon-button command="data.copyCardCommand"></aw-icon-button>
     </div>     
 <div class="siswru-ii-main">
     <div class="sisru-ii-main-head">
@@ -17,7 +15,6 @@
         </div>
         <div class="siswru-ii-main-text-area">
         <siswru-property-rich-text-area-val 
-        enable-when="subPanelContext.dataObject && subPanelContext.dataObject.uid !== data.emptyUid && false"
          prop="data.description"></siswru-property-rich-text-area-val>
         <div class="siswru-ii-save-icon">
             <aw-image visible-when="data.unsavedStatus.dbValue" source="'assets/image/indicatorUnsaved16.svg'"></aw-image>

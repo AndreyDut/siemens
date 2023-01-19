@@ -77,6 +77,14 @@ export async function updateZadelRequest(subCtx, selection, unsavedStatus){
     }
 }
 
+export  function copyCard(data){
+    console.log(data)
+}
+
+export  function openCard(data){
+    console.log(data)
+}
+
 export  function handlerCheckbox(data){
     console.log(data)
 }

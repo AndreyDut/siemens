@@ -19,6 +19,10 @@
 .siswru-ii-add-remove {
   display: flex;
   flex-direction: column;
+  gap: 5px;
+  button {
+    margin: 0;
+  }
 }
 .siswru-ii-main {
   width: 100%;
@@ -32,12 +36,13 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    width: 15%;
+    width: 20%;
   }
   .siswru-ii-main-text-area {
     position: relative;
     flex: 1;
     height: 160px;
+    padding-bottom: 20px;
     .aw-widgets-propertyRichTextEditValue {
       min-height: 160px;
       max-height: 160px;

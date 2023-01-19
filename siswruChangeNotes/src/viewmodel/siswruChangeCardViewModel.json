@@ -57,6 +57,16 @@
             "iconName":"Remove",
             "tooltip":"Удалить блок"
         },
+        "copyCardCommand":{
+            "action":"copyCard",
+            "iconName":"Copy",
+            "tooltip":"Копировать"
+        },
+        "openCardCommand":{
+            "action":"openCard",
+            "iconName":"Open",
+            "tooltip":"Открыть документ"
+        },
         "addCommand":{
             "action":"addDoc",
             "iconName":"Add"
@@ -173,6 +183,22 @@
             "actionType":"JSFunctionAsync",
             "deps": "js/siswruChangesService",
             "method": "removeCard",
+            "inputData": {
+                "cardData":"{{subPanelContext}}"
+            }
+        },
+        "copyCard":{
+            "actionType":"JSFunctionAsync",
+            "deps": "js/siswruChangesService",
+            "method": "copyCard",
+            "inputData": {
+                "cardData":"{{subPanelContext}}"
+            }
+        },
+        "openCard":{
+            "actionType":"JSFunctionAsync",
+            "deps": "js/siswruChangesService",
+            "method": "openCard",
             "inputData": {
                 "cardData":"{{subPanelContext}}"
             }
