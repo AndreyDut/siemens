@@ -9,10 +9,29 @@
         "js/aw-image.directive",
         "js/visible-when.directive",
         "js/siswru-property-rich-text-area-val.directive",
-        "js/siswru-icon-wrap.directive"
+        "js/siswru-icon-wrap.directive",
+        "js/aw-checkbox.directive"
     ],
     "data": {
         "emptyUid": "AAAAAAAAAAAAAA",
+        "haveMarkUp": {
+            "displayName": "Есть MarkUp",
+            "type": "BOOLEAN",
+            "isRequired": "false",
+            "isEditable": "true",
+            "dbValue": "",
+            "dispValue": "Есть MarkUp",
+            "labelPosition": "PROPERTY_LABEL_AT_SIDE"
+        },
+        "eliminated": {
+            "displayName": "Устранено",
+            "type": "BOOLEAN",
+            "isRequired": "false",
+            "isEditable": "true",
+            "dbValue": "",
+            "dispValue": "Устранено",
+            "labelPosition": "PROPERTY_LABEL_AT_SIDE"
+        },
         "actionType": {
             "displayName": "Действие",
             "type": "STRING",
@@ -63,6 +82,22 @@
         "reveal":{
             "actionType":"dataProvider",
             "method": "docsDataProvider"
+        },
+        "handlerCheckbox": {
+            "actionType": "JSFunction",
+            "method": "handlerCheckbox",
+            "inputData": {
+                "data": "{{data.haveMarkUp}}"
+            },
+            "deps": "js/siswruChangesService"
+        },
+        "handlerEliminated": {
+            "actionType": "JSFunction",
+            "method": "handlerCheckbox",
+            "inputData": {
+                "data": "{{data.eliminated}}"
+            },
+            "deps": "js/siswruChangesService"
         },
         "getDocs":{
             "actionType":"JSFunctionAsync",

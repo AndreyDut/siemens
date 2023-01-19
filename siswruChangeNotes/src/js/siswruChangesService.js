@@ -77,6 +77,11 @@ export async function updateZadelRequest(subCtx, selection, unsavedStatus){
     }
 }
 
+export  function handlerCheckbox(data){
+    console.log(data)
+}
+
+
 async function updatePropertyBySoa(mo, propName, propValue, unsavedStatus, timeoutList){
     if(timeoutList){
         timeoutList = timeoutList.filter(i => i.uid !== mo.uid)
