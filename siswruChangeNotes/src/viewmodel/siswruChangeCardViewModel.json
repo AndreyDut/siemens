@@ -2,14 +2,12 @@
     "schemaVersion": "1.0.0",
     "imports": [
         "js/aw-property-rich-text-area-val.directive",
-        "js/aw-splm-table.directive",
         "js/aw-widget.directive",
         "js/aw-icon-button.directive",
         "js/enable-when.directive",
         "js/aw-image.directive",
         "js/visible-when.directive",
         "js/siswru-property-rich-text-area-val.directive",
-        "js/siswru-icon-wrap.directive",
         "js/aw-checkbox.directive"
     ],
     "data": {
