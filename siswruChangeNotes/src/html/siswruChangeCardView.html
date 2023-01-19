@@ -1,0 +1,44 @@
+<div ng-class="subPanelContext.dataObject.uid === data.emptyUid? 'siswru-ii-change-card-old': 'siswru-ii-change-card'">
+    <div class="siswru-ii-add-remove">
+        <div>
+            <aw-icon-button command="data.addCardCommand"></aw-icon-button>
+        </div>
+        <div>
+            <aw-icon-button command="data.removeCardCommand"></aw-icon-button>
+        </div>
+    </div>     
+<div class="siswru-ii-main">
+    <div class="sisru-ii-main-head">
+        <div style="width: 15%;">
+            <aw-widget enable-when="subPanelContext.dataObject.uid !== data.emptyUid" prop="data.actionType"></aw-widget>
+        </div>
+		        <div style="width: 15%;">
+            <aw-widget enable-when="subPanelContext.dataObject.uid !== data.emptyUid" prop="data.actionType"></aw-widget>
+        </div>
+		<h2>dfdfd</h2>
+        <div style="width: 50%;">
+            <aw-splm-table gridid="generalGrid"></aw-splm-table>
+        </div>
+        <div>
+            <div siswru-icon-wrap ng-class="{'siswru-ii-button-title': subPanelContext.dataObject.uid !== data.emptyUid}">
+                <aw-icon-button enable-when="subPanelContext.dataObject.uid !== data.emptyUid" command="data.addCommand"></aw-icon-button>
+                <span style="vertical-align: super;">Добавить</span>
+            </div>
+            <div siswru-icon-wrap ng-class="{'siswru-ii-button-title': ctx.awClipBoardProvider && ctx.awClipBoardProvider.length && subPanelContext.dataObject.uid !== data.emptyUid}">
+                <aw-icon-button enable-when="ctx.awClipBoardProvider && ctx.awClipBoardProvider.length && subPanelContext.dataObject.uid !== data.emptyUid" command="data.pasteCommand"></aw-icon-button>
+                <span style="vertical-align: super;">Вставить</span>
+            </div>
+            <div siswru-icon-wrap ng-class="{'siswru-ii-button-title': data.dataProviders.docsDataProvider.selectedObjects.length}">
+                <aw-icon-button enable-when="data.dataProviders.docsDataProvider.selectedObjects.length" command="data.cutCommand"></aw-icon-button>
+                <span style="vertical-align: super;">Вырезать</span>
+            </div>
+        </div>
+    </div>
+    <div style="position: relative;">
+        <siswru-property-rich-text-area-val enable-when="subPanelContext.dataObject && subPanelContext.dataObject.uid !== data.emptyUid" prop="data.description"></siswru-property-rich-text-area-val>
+        <div class="siswru-ii-save-icon">
+            <aw-image visible-when="data.unsavedStatus.dbValue" source="'assets/image/indicatorUnsaved16.svg'"></aw-image>
+        </div>
+    </div>
+</div>
+</div>

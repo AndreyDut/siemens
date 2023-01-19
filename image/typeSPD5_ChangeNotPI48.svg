@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<svg width="48" height="48" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:se="http://svg-edit.googlecode.com" xmlns:xlink="http://www.w3.org/1999/xlink" data-name="Layer 1">
+ <linearGradient data-name="paper gradient" id="paper_gradient" x1="0.158221" x2="0.841699" y1="0.394154" y2="1.182616">
+  <stop offset="0" stop-color="#fff"/>
+  <stop offset="0.221" stop-color="#f8f8f8"/>
+  <stop offset="0.541" stop-color="#e5e5e5"/>
+  <stop offset="0.92" stop-color="#c6c6c6"/>
+  <stop offset="1" stop-color="#bebebe"/>
+ </linearGradient>
+ <linearGradient id="paper_gradient-2" x1="26.161" x2="43.839" xlink:href="#paper_gradient" y1="26.161" y2="43.839"/>
+ <g class="layer">
+  <title>Layer 1</title>
+  <polygon fill="url(#paper_gradient)" id="svg_1" points="1.133 34.5 12.602 14.686 15.499 19.717 9.865 29.5 30.138 29.5 17.147 6.828 19.996 1.792 38.865 34.5 1.133 34.5"/>
+  <path d="m20,2.8l18,31.2l-36,0l10.6,-18.314l2.321,4.031l-5.921,10.283l22,0l-13.277,-23.173l2.277,-4.027m-0.009,-2.016l-0.861,1.524l-2.278,4.026l-0.28,0.5l0.283,0.494l12.42,21.672l-18.545,0l5.058,-8.784l0.287,-0.5l-0.287,-0.5l-2.321,-4.031l-0.864,-1.5l-0.868,1.5l-10.6,18.315l-0.869,1.5l39.465,0l-0.865,-1.5l-18,-31.2l-0.875,-1.516l0,0z" fill="#464646" id="svg_2"/>
+  <circle cx="35" cy="35" fill="url(#paper_gradient-2)" id="svg_3" r="12.5" stroke="#464646" stroke-miterlimit="10"/>
+  <polygon fill="#fff" id="svg_4" points="26.445 36.485 28.756 34.571 32.486 39.053 41.688 27.677 44.022 29.561 32.519 43.789 26.445 36.485"/>
+  <path d="m41.763,28.38l1.557,1.256l-10.807,13.364l-5.362,-6.449l1.54,-1.276l3.8,4.566l9.27,-11.461m-0.149,-1.405l-0.628,0.777l-8.5,10.514l-3.022,-3.63l-0.638,-0.767l-0.768,0.637l-1.54,1.276l-0.771,0.639l0.64,0.77l5.362,6.449l0.78,0.938l0.767,-0.948l10.806,-13.366l0.629,-0.778l-0.779,-0.629l-1.559,-1.257l-0.777,-0.627l0,0l-0.002,0.002z" fill="#6e6e6e" id="svg_5"/>
+  <text fill="#007f3f" font-family="Tahoma" font-size="27" font-weight="600" id="e1_texte" stroke="teal" stroke-width="0px" x="6.21251" y="20.257593">ПИ</text>
+ </g>
+</svg>

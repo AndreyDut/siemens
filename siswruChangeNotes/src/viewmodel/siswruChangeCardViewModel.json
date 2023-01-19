@@ -1,0 +1,328 @@
+{
+    "schemaVersion": "1.0.0",
+    "imports": [
+        "js/aw-property-rich-text-area-val.directive",
+        "js/aw-splm-table.directive",
+        "js/aw-widget.directive",
+        "js/aw-icon-button.directive",
+        "js/enable-when.directive",
+        "js/aw-image.directive",
+        "js/visible-when.directive",
+        "js/siswru-property-rich-text-area-val.directive",
+        "js/siswru-icon-wrap.directive"
+    ],
+    "data": {
+        "emptyUid": "AAAAAAAAAAAAAA",
+        "actionType": {
+            "displayName": "Действие",
+            "type": "STRING",
+            "isRequired": "true",
+            "isEditable": "true",
+            "dataProvider": "actionTypeDP",
+            "dbValue": "{{subPanelContext.relationInfo.actionTypeName}}",
+            "uiValue":"{{subPanelContext.relationInfo.actionTypeDisplayName}}"
+        },
+        "description": { 
+            "displayName": "Описание",
+            "type": "STRING",
+            "isRequired": "true",
+            "isEditable": "true",
+            "dbValue": "{{subPanelContext.description}}",
+            "isRichText": true
+        },
+        "addCardCommand":{
+            "action":"addCard",
+            "iconName":"Add",
+            "tooltip":"Добавить блок"
+        },
+        "removeCardCommand":{
+            "action":"removeCard",
+            "iconName":"Remove",
+            "tooltip":"Удалить блок"
+        },
+        "addCommand":{
+            "action":"addDoc",
+            "iconName":"Add"
+        },
+        "cutCommand":{
+            "action":"cutDoc",
+            "iconName":"Cut"
+        },
+        "pasteCommand":{
+            "action":"pasteDoc",
+            "iconName":"Paste"
+        },
+        "docs":[],
+        "totalFound":0,
+        "objectTypes":["SPB5_AssyRevision", "SPB5_DetRevision", "SPB5_DocRevision", "SPB5_ComplectRevision", "SPB5_ComplexRevision"],
+        "unsavedStatus":{
+            "dbValue": false
+        }
+    },
+    "actions": {
+        "reveal":{
+            "actionType":"dataProvider",
+            "method": "docsDataProvider"
+        },
+        "getDocs":{
+            "actionType":"JSFunctionAsync",
+            "deps": "js/siswruChangesService",
+            "method": "getDocsForCard",
+            "inputData": {
+                "subCtx":"{{subPanelContext}}",
+                "data":"{{data}}"
+            },
+            "outputData": {
+                "docs":"docs",
+                "totalFound":"totalFound"
+            },
+            "events": {
+                "success":[
+                    {
+                        "condition": "data.totalFound",
+                        "name": "siswruCN.gridUpdate",
+                        "excludeLocalDataCtx": true
+                    }
+                ]
+            }
+        },
+        "log":{
+            "actionType":"JSFunction",
+            "deps": "js/siswruChangesService",
+            "method": "log",
+            "inputData": {
+                "data":"{{data}}",
+                "subCtx":{
+                    "cardData":"{{subPanelContext}}",
+                    "objectTypes":["ItemRevision"]
+                }
+            }
+        },
+        "addCard":{
+            "actionType":"Event",
+            "method": "Event",
+            "events": {
+                "success":[
+                    {
+                        "name": "siswru.addCard"
+                    }
+                ]
+            }
+        },
+        "updateValues":{
+            "actionType":"JSFunction",
+            "deps": "js/siswruChangesService",
+            "method": "updateValues",
+            "inputData": {
+                "cardData":"{{subPanelContext}}",
+                "actionType":"{{data.actionType.dbValue}}",
+                "description":"{{data.description.dbValue}}"
+            }
+        },
+        "updateDocsDP":{
+            "actionType":"dataProvider",
+            "method": "docsDataProvider"
+        },
+        "addDoc":{
+            "actionType": "JSFunction",
+            "method": "activateCommandPanel",
+            "deps": "js/commandPanel.service",
+            "inputData": {
+                "commandId": "siswruChangeAddPanel",
+                "location":"aw_toolsAndInfo",
+                "context":{
+                    "cardData":"{{subPanelContext}}",
+                    "objectTypes":"{{data.objectTypes}}"
+                }
+            }
+        },
+        "removeCard":{
+            "actionType":"JSFunctionAsync",
+            "deps": "js/siswruChangesService",
+            "method": "removeCard",
+            "inputData": {
+                "cardData":"{{subPanelContext}}"
+            }
+        },
+        "cutDoc":{
+            "actionType":"Copy",
+            "method": "copyUrlToClipboard",
+            "inputData": {
+                "objectToCopy":"{{data.dataProviders.docsDataProvider.selectedObjects}}",
+                "copyType":"Object"
+            },
+            "events": {
+                "success":[
+                    {
+                        "name": "siswru.cutDoc",
+                        "excludeLocalDataCtx": true
+                    }
+                ]
+            }
+        },
+        "cutDocContinue":{
+            "actionType":"JSFunctionAsync",
+            "deps": "js/siswruChangesService",
+            "method": "cutDocContinue",
+            "inputData": {
+                "cardData":"{{subPanelContext}}",
+                "docs":"{{ctx.awClipBoardProvider}}"
+            },
+            "events": {
+                "success":[
+                    {
+                        "name": "siswru.updateCNBlocks",
+                        "excludeLocalDataCtx": true
+                    }
+                ]
+            }
+        },
+        "pasteDoc":{
+            "actionType":"JSFunctionAsync",
+            "deps": "js/siswruChangesService",
+            "method": "addRelation",
+            "inputData": {
+                "cardData":"{{subPanelContext}}",
+                "docs":"{{ctx.awClipBoardProvider}}",
+                "parentUid":"{{ctx.xrtSummaryContextObject.uid}}",
+                "objectTypes":"{{data.objectTypes}}"
+            },
+            "events": {
+                "success":[
+                    {
+                        "name": "siswru.updateCNBlocks",
+                        "excludeLocalDataCtx": true
+                    }
+                ]
+            }
+        },
+        "updateDescriptionRequst2":{
+            "actionType":"JSFunction",
+            "deps": "js/siswruChangesService",
+            "method": "updateDescriptionRequst2",
+            "inputData": {
+                "cardData":"{{subPanelContext}}",
+                "desc":"{{data.description.dbValue}}",
+                "unsavedStatus":"{{data.unsavedStatus}}"
+            }
+        },
+        "updateActionTypeRequst":{
+            "actionType":"JSFunctionAsync",
+            "deps": "js/siswruChangesService",
+            "method": "updateActionTypeRequst",
+            "inputData": {
+                "cardData":"{{subPanelContext}}",
+                "actionType":"{{data.actionType.dbValue}}",
+                "ctx":"{{ctx}}"
+            }
+        },
+        "updateZadelRequest":{
+            "actionType":"JSFunctionAsync",
+            "deps": "js/siswruChangesService",
+            "method": "updateZadelRequest",
+            "inputData": {
+                "subCtx":"{{subPanelContext}}",
+                "selection":"{{data.dataProviders.docsDataProvider.selectedObjects[0]}}",
+                "unsavedStatus":"{{data.unsavedStatus}}"
+            }
+        },
+        "loadColumns": {
+            "actionType": "JSFunctionAsync",
+            "method": "loadColumns",
+            "inputData": {
+                "dataProvider": "{{data.dataProviders.docsDataProvider}}",
+                "relation":"{{subPanelContext.relationInfo}}"
+            },
+            "deps": "js/siswruChangesService"
+        }
+    },
+    "dataProviders": {
+        "docsDataProvider":{
+            "action":"getDocs",
+            "response": "{{data.docs}}",
+            "totalFound": "{{data.totalFound}}",
+            "selectionModelMode": "multiple",
+            "commandsAnchor":"siswru-notes-table",
+            "editContext": "TABLE_CONTEXT"
+        },
+        "actionTypeDP":{
+            "response":"{{ctx.generalActionTypeDP}}"
+        }
+    },
+    "grids": {
+        "generalGrid":{            
+            "dataProvider": "docsDataProvider",
+            "columnProvider": "generalCP",
+            "addIconColumn": true,
+            "gridOptions": {
+                "enablePinning": true,
+                "enableSorting": false
+            }
+        }
+    },
+    "columnProviders": {
+        "generalCP":{
+            "frozenColumnIndex": 1,
+            "loadColumnAction": "loadColumns",
+            "columns": "{{data.columns}}"
+        }
+    },
+    "onEvent": [
+        {
+            "eventId": "siswruUpdateValues",
+            "action": "updateValues"
+        },
+        {
+            "eventId": "siswru.updateDocsDP",
+            "action": "updateDocsDP"
+        },
+        {
+            "eventId": "siswru.updateCardDocs",
+            "action": "getDocs"
+        },
+        {
+            "eventId": "siswru.cutDoc",
+            "action": "cutDocContinue",
+            "eventSource": "current"
+        },
+        {
+            "eventId": "condition.expressionValueChanged",
+            "action": "updateDescriptionRequst2",
+            "criteria": {
+                "condition": "conditions.descUpdate"
+            },
+            "cacheEventData": true,
+            "eventSource": "current"
+        },
+        {
+            "eventId": "condition.expressionValueChanged",
+            "action": "updateActionTypeRequst",
+            "criteria": {
+                "condition": "conditions.actionTypeUpdate"
+            },
+            "cacheEventData": true
+        },
+        {
+            "eventId": "condition.expressionValueChanged",
+            "action": "updateZadelRequest",
+            "criteria": {
+                "condition": "conditions.updateZadelRequest"
+            },
+            "cacheEventData": true
+        }
+    ],
+    "conditions": {
+        "descUpdate":{
+            "expression":"data.description.dbValue",
+            "trackValues": true
+        },
+        "actionTypeUpdate":{
+            "expression":"data.actionType.dbValue",
+            "trackValues": true
+        },
+        "updateZadelRequest":{
+            "expression":"data.dataProviders.docsDataProvider.selectedObjects[0].props.spd5_Zadel.dbValue",
+            "trackValues": true
+        }
+    }
+}

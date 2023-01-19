@@ -1,0 +1,9 @@
+{
+  "name": "siswru_xrt_engine",
+  "description": "siswru_xrt_engine",
+  "modules": [
+    "siswru_xrt_engine"
+  ],
+  "version": "5.0.0",
+  "OOTB": true
+}

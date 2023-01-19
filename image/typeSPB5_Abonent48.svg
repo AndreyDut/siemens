@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<svg width="48" height="48" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:se="http://svg-edit.googlecode.com" xmlns:xlink="http://www.w3.org/1999/xlink" data-name="Layer 1">
+ <linearGradient data-name="Dark Blue Grad" id="Dark_Blue_Grad" x1="0.09227" x2="0.90773" y1="0.09596" y2="1.11533">
+  <stop offset="0" stop-color="#73b4c8"/>
+  <stop offset="0.175" stop-color="#6aaec3"/>
+  <stop offset="0.457" stop-color="#529eb5"/>
+  <stop offset="0.809" stop-color="#2c839f"/>
+  <stop offset="1" stop-color="#147391"/>
+ </linearGradient>
+ <defs>
+  <linearGradient id="svg_9" x1="0.11174" x2="0.88826" y1="0.15648" y2="0.79622">
+   <stop offset="0" stop-color="#fff"/>
+   <stop offset="1" stop-color="#bebebe"/>
+  </linearGradient>
+ </defs>
+ <linearGradient id="linear-gradient" x1="0.11174" x2="0.88826" y1="0.15648" y2="0.79622">
+  <stop offset="0" stop-color="#fff"/>
+  <stop offset="1" stop-color="#bebebe"/>
+ </linearGradient>
+ <linearGradient id="linear-gradient-2" x1="27.062" x2="37.938" xlink:href="#linear-gradient" y1="3.162" y2="14.037"/>
+ <linearGradient id="Dark_Blue_Grad-2" x1="3.268" x2="27.732" xlink:href="#Dark_Blue_Grad" y1="25.803" y2="50.268"/>
+ <g class="layer">
+  <title>Layer 1</title>
+  <g id="svg_10">
+   <path d="m17.88849,21.70878c0,3.09203 -2.4266,7.19792 -5.41999,7.19792s-5.41998,-4.10589 -5.41998,-7.19717a5.5973,5.44116 0 0 1 5.41998,-5.59771a5.5973,5.44116 0 0 1 5.41999,5.59696z" fill="url(#linear-gradient)" id="svg_3" stroke="#464646" stroke-miterlimit="10"/>
+   <path d="m21.92119,47.5l0,-11.4192c0,-2.82837 -1.55056,-5.26618 -3.82358,-6.57205a9.90744,11.66807 0 0 1 -5.72423,2.24891a9.90744,11.66807 0 0 1 -5.72422,-2.24891c-2.27302,1.30512 -3.82358,3.74368 -3.82358,6.57205l0,11.4192l19.09561,0z" fill="url(#Dark_Blue_Grad-2)" id="svg_5" stroke="#464646" stroke-miterlimit="10"/>
+   <line fill="none" id="svg_6" stroke="#147391" stroke-linejoin="round" x1="7.222565" x2="7.222565" y1="47.052991" y2="36.324774"/>
+   <line fill="none" id="svg_7" stroke="#147391" stroke-linejoin="round" x1="18.047372" x2="18.047372" y1="47.052991" y2="36.324774"/>
+  </g>
+  <g id="svg_11">
+   <polygon fill="url(#svg_9)" id="svg_1" points="45.86642272770405,47.55503652244806 25.866407468914986,47.55503652244806 25.866407468914986,13.555038429796696 45.86642272770405,0.5550393238663673 " stroke="#464646" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"/>
+   <line fill="none" id="svg_2" stroke="#5A5A5A" stroke-linejoin="round" stroke-miterlimit="10" x1="30.366408" x2="41.366408" y1="25.555039" y2="25.555039"/>
+   <line fill="none" id="svg_3" stroke="#5A5A5A" stroke-linejoin="round" stroke-miterlimit="10" x1="30.366408" x2="41.366408" y1="21.606718" y2="21.606718"/>
+   <line fill="none" id="svg_4" stroke="#5A5A5A" stroke-linejoin="round" stroke-miterlimit="10" x1="30.366408" x2="41.366408" y1="17.45168" y2="17.45168"/>
+   <line fill="none" id="svg_5" stroke="#5A5A5A" stroke-linejoin="round" stroke-miterlimit="10" x1="30.366408" x2="41.366408" y1="37.555039" y2="37.555039"/>
+   <line fill="none" id="svg_6" stroke="#5A5A5A" stroke-linejoin="round" stroke-miterlimit="10" x1="30.366408" x2="41.366408" y1="33.555039" y2="33.555039"/>
+   <line fill="none" id="svg_7" stroke="#5A5A5A" stroke-linejoin="round" stroke-miterlimit="10" x1="30.366408" x2="41.366408" y1="29.503359" y2="29.503359"/>
+   <polyline fill="none" id="svg_8" points="33.86642272770405,47.05504033714533 33.86642272770405,43.55503652244806 37.86642272770405,43.55503652244806 37.86642272770405,47.05504033714533 " stroke="#5A5A5A" stroke-miterlimit="10"/>
+  </g>
+ </g>
+</svg>

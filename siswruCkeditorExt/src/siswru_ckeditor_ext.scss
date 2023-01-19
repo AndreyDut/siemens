@@ -1,0 +1,16 @@
+.siswru-serf-wrap-col{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    min-width: 15px;
+}
+.siswru-serf-text-up{
+    border-bottom: 0.8px solid black !important;
+}
+.siswru-serf-text-down{
+    border-top: 0.8px solid black !important;
+}
+.siswru-serf-wrap-main{
+    display: inline-flex;
+    align-items: flex-end;
+}

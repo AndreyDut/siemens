@@ -1,0 +1,33 @@
+.siswru-rem-card {
+    width: 100%;
+    border: solid;
+    border-color: #dcdcdc;
+    padding: 10px;
+    border-width: 1px;
+    display: flex;
+    gap:15px; 
+}
+.siswru-rem-add-remove{
+    display: flex;
+    flex-direction: column;
+}
+.siswru-rem-main{
+    width: 100%;
+}
+.siswru-rem-options{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 20%;
+}
+.siswru-rem-text{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 40%;
+}
+.siswru-rem-text-footer{
+    display: flex;
+    flex-direction: column;
+    gap:10px 
+}

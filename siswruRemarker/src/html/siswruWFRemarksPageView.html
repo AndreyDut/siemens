@@ -1,0 +1,10 @@
+<aw-panel visible-when="data.showUtility.dbValue">
+    <aw-panel-body>
+        <aw-command-bar anchor="siswru_remarker" alignment="HORIZONTAL"></aw-command-bar>
+        <aw-break></aw-break>
+        <aw-button action="updateProperiesHandler" size="auto">Сохранить</aw-button>
+        <div aw-repeat="remark : data.filteredRows">
+            <aw-include name="siswruRemarkCard" sub-panel-context="remark"></aw-include>
+        </div>
+    </aw-panel-body>
+</aw-panel> 

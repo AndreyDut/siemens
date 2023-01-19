@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<svg width="48" height="48" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:se="http://svg-edit.googlecode.com" xmlns:xlink="http://www.w3.org/1999/xlink" data-name="Layer 1">
+ <linearGradient data-name="Dark Blue Grad" gradientUnits="userSpaceOnUse" id="Dark_Blue_Grad" x1="9.5" x2="27.5" y1="9.5" y2="27.5">
+  <stop offset="0" stop-color="#73b4c8"/>
+  <stop offset="0.1747" stop-color="#6aaec3"/>
+  <stop offset="0.4567" stop-color="#529eb5"/>
+  <stop offset="0.8089" stop-color="#2c839f"/>
+  <stop offset="1" stop-color="#147391"/>
+ </linearGradient>
+
+ <linearGradient gradientTransform="translate(21.8721 81.6279) rotate(-120)" id="Dark_Blue_Grad-2" x1="47.3564" x2="65.3564" xlink:href="#Dark_Blue_Grad" y1="19.6436" y2="37.6436"/>
+ <linearGradient data-name="paper gradient" id="paper_gradient" x1="2.33197" x2="3.33197" y1="0.063438" y2="1.063438">
+  <stop offset="0" stop-color="#fff"/>
+  <stop offset="0.2214" stop-color="#f8f8f8"/>
+  <stop offset="0.5415" stop-color="#e5e5e5"/>
+  <stop offset="0.92" stop-color="#c6c6c6"/>
+  <stop offset="1" stop-color="#bebebe"/>
+ </linearGradient>
+ <linearGradient id="paper_gradient-2" x1="30.5" x2="38.5" xlink:href="#paper_gradient" y1="28.5" y2="36.5"/>
+ <linearGradient id="paper_gradient-3" x1="21.5" x2="29.5" xlink:href="#paper_gradient" y1="17.5" y2="25.5"/>
+ <linearGradient gradientUnits="userSpaceOnUse" id="SVGID_1_" x1="7.1028" x2="32.8918" y1="14.6843" y2="40.4734">
+  <stop offset="0" stop-color="#FFFFFF"/>
+  <stop offset="0.2214" stop-color="#F8F8F8"/>
+  <stop offset="0.5415" stop-color="#E5E5E5"/>
+  <stop offset="0.92" stop-color="#C6C6C6"/>
+  <stop offset="1" stop-color="#BEBEBE"/>
+ </linearGradient>
+ <linearGradient id="SVGID_2_" x1="1.492351" x2="3.133851" y1="-0.068011" y2="1.573488">
+  <stop offset="0" stop-color="#73B4C8"/>
+  <stop offset="0.1747" stop-color="#6AAEC3"/>
+  <stop offset="0.4567" stop-color="#529EB5"/>
+  <stop offset="0.8089" stop-color="#2C839F"/>
+  <stop offset="1" stop-color="#147391"/>
+ </linearGradient>
+ <g class="layer">
+  <title>Layer 1</title>
+  <rect fill="none" height="48" id="svgEditorBackground" transform="matrix(1 0 0 1 0 0)" width="48" x="0" y="0"/>
+  <polyline fill="none" id="svg_1" points="20.8442 42.9925 15.8442 42.9925 15.8442 35.9925" stroke="#464646" stroke-miterlimit="10" stroke-width="3"/>
+  <polyline fill="none" id="svg_2" points="21.3442 42.9925 15.8442 42.9925 15.8442 35.4925" stroke="#fff" stroke-miterlimit="10"/>
+  <polyline fill="none" id="svg_3" points="11.8442 31.9924 6.84423 31.9924 6.91674 14.7687" stroke="#464646" stroke-miterlimit="10" stroke-width="3"/>
+  <polyline fill="none" id="svg_4" points="12.3442 31.9924 6.84423 31.9924 6.91674 14.2687" stroke="#fff" stroke-miterlimit="10"/>
+  <rect fill="url(#SVGID_2_)" height="8" id="svg_5" stroke="#464646" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="0.9615" width="8" x="20.844242" y="38.992496"/>
+  <rect fill="url(#SVGID_2_)" height="8" id="svg_6" stroke="#464646" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="0.9615" width="8" x="2.844228" y="6.261174"/>
+  <line fill="none" id="e1_line" stroke="white" stroke-width="2px" x1="13.215343" x2="18.039143" y1="30.097807" y2="34.447151"/>
+  <line fill="none" id="e2_line" stroke="white" stroke-width="2px" x1="13.531657" x2="17.643738" y1="34.605339" y2="30.018206"/>
+  <rect fill="url(#SVGID_2_)" height="8" id="e1_rect" stroke="#464646" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="0.9615" width="8" x="11.9982" y="16.949894"/>
+  <polyline fill="none" id="e1_polyline" points="11.9256 21.1674 7.51229 21.0752" stroke="#464646" stroke-miterlimit="10" stroke-width="3"/>
+  <polyline fill="none" id="e2_polyline" points="11.483 21.1674 6.92565 21.0949" stroke="#fff" stroke-miterlimit="10"/>
+  <rect fill="url(#SVGID_2_)" height="8" id="svg_8" stroke="#464646" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="0.9615" width="8" x="11.885672" y="27.876402"/>
+ </g>
+ <g class="layer">
+  <title>Layer 2</title>
+  <path d="m37.925906,19.849872l2.3388,-0.8305l0,-1.747l-2.3388,-0.83a0.2777,0.2777 0 0 1 -0.1638,-0.3839l1.0634,-2.2369l-1.2357,-1.2354l-2.2371,1.0643a0.28,0.28 0 0 1 -0.3842,-0.1539l-0.83,-2.3272l-1.7476,0l-0.83,2.3271a0.2837,0.2837 0 0 1 -0.3843,0.1523l-2.2374,-1.0636l-1.236,1.2358l1.0629,2.2373a0.2806,0.2806 0 0 1 -0.1627,0.3839l-2.3388,0.83l0,1.7472l2.3388,0.83a0.278,0.278 0 0 1 0.1638,0.3843l-1.0634,2.2378l1.2357,1.2366l2.2371,-1.0613a0.2813,0.2813 0 0 1 0.3842,0.1713l0.83,2.3506l1.7476,0l0.83,-2.35a0.2734,0.2734 0 0 1 0.3843,-0.1756l2.2374,1.0634l1.236,-1.2357l-1.0629,-2.2374a0.28,0.28 0 0 1 0.1627,-0.3835z" fill="#fff" id="svg_6" stroke="#464646" stroke-linejoin="round"/>
+  <circle cx="33.264706" cy="18.169372" fill="url(#New_Gradient_Swatch_4-2)" id="svg_7" r="2" stroke="#464646" stroke-miterlimit="10"/>
+  <path d="m29.045306,25.520472l1.2194,-1.0986l-0.4424,-1.0672l-1.64,0.0847a0.1836,0.1836 0 0 1 -0.1973,-0.193l0.0836,-1.6351l-1.0679,-0.4419l-1.0979,1.216a0.1852,0.1852 0 0 1 -0.2738,0.0032l-1.0966,-1.2113l-1.0677,0.4421l0.0819,1.6312a0.1877,0.1877 0 0 1 -0.1964,0.19l-1.6369,-0.0835l-0.4426,1.0674l1.2162,1.0974a0.1855,0.1855 0 0 1 -0.0023,0.2757l-1.2199,1.0987l0.4424,1.0672l1.64,-0.0846a0.1839,0.1839 0 0 1 0.1975,0.1932l-0.0834,1.6357l1.0684,0.4427l1.0987,-1.2141a0.1862,0.1862 0 0 1 0.2782,0.0074l1.1023,1.2256l1.0682,-0.4421l-0.0878,-1.6454a0.1808,0.1808 0 0 1 0.1905,-0.2044l1.6368,0.0834l0.4427,-1.0673l-1.2162,-1.0975a0.1851,0.1851 0 0 1 0.0023,-0.2756z" fill="#fff" id="svg_8" stroke="#464646" stroke-linejoin="round" stroke-width="0.9996"/>
+  <circle cx="25.764706" cy="25.669372" fill="url(#New_Gradient_Swatch_4-3)" id="svg_9" r="1.25" stroke="#464646" stroke-miterlimit="10"/>
+ </g>
+</svg>

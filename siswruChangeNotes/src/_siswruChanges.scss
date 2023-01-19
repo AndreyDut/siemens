@@ -1,0 +1,51 @@
+.siswru-ii-change-card {
+    width: 100%;
+    border: solid;
+    border-color: #dcdcdc;
+    padding: 10px;
+    border-width: 1px;
+    display: flex;
+    gap:15px; 
+}
+.siswru-ii-change-card-old{
+    width: 100%;
+    border: solid;
+    border-color: red;
+    padding: 10px;
+    border-width: 1px;
+    display: flex;
+    gap:15px;
+}
+.siswru-ii-add-remove{
+    display: flex;
+    flex-direction: column;
+}
+.siswru-ii-main{
+    width: 100%;
+}
+.sisru-ii-main-head{
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+.siswru-ii-side-panel{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.siswru-ii-save-icon{
+    position: absolute;
+    left: -30px;
+    top: 0px;
+    width: 16px;
+    padding-bottom: 50px;
+    padding-left: 10px;
+}
+.siswru-ii-button-title{
+	cursor: pointer;
+    padding-right: 10px;
+}
+.siswru-ii-button-title:hover {
+    background-color: #cde6eb;
+}

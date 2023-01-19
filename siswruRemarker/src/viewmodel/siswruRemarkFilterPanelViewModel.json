@@ -1,0 +1,173 @@
+{
+    
+    "schemaVersion": "1.0.0",
+    "imports": [
+        "js/aw-command-panel.directive",
+        "js/aw-panel-body.directive",
+        "js/aw-widget.directive",
+        "js/aw-command-panel-section.directive",
+        "js/aw-break.directive"
+    ],
+    "data": {
+        "KDName":{
+            "displayName": "Обозначение",
+            "type": "STRINGARRAY",
+            "isArray": true,
+            "isEditable": "true",
+            "dataProvider": "KDName"
+        },
+        "Code":{
+            "displayName": "Код",
+            "type": "STRINGARRAY",
+            "isArray": true,
+            "isEditable": "true",
+            "dataProvider": "Code"
+        },
+        "User":{
+            "displayName": "ФИО создателя",
+            "type": "STRINGARRAY",
+            "isArray": true,
+            "isEditable": "true",
+            "dataProvider": "User"
+        },
+        "UserRole":{
+            "displayName": "Роль создателя",
+            "type": "STRINGARRAY",
+            "isArray": true,
+            "isEditable": "true",
+            "dataProvider": "UserRole"
+        },
+        "Approve":{
+            "displayName": "Замечание снято",
+            "type": "STRINGARRAY",
+            "isArray": true,
+            "isEditable": "true",
+            "dataProvider": "Approve"
+        },
+        "Create_DateFrom":{
+            "type": "DATE",
+            "isEditable": "true"
+        },
+        "Create_DateTo":{
+            "type": "DATE",
+            "isEditable": "true"
+        }  
+    },
+    "actions": {
+        "getFiltrationInfo":{
+            "actionType":"JSFunction",
+            "deps": "js/siswruRemarkerFilterService",
+            "method": "getFiltrationInfo",
+            "inputData": {
+                "ctx":"{{ctx}}",
+                "data":"{{data}}"
+            }
+        },
+        "ApplyFilter":{
+            "actionType":"Event",
+            "method": "Event",
+            "inputData": {
+                "events":[
+                    {
+                        "name":"siswruApplyFilter",
+                        "excludeLocalDataCtx": true
+                    }
+                ]
+            }
+        },
+        "cleanFilter":{
+            "actionType":"JSFunction",
+            "deps": "js/siswruRemarkerFilterService",
+            "method": "cleanFilter",
+            "inputData": {
+                "ctx":"{{ctx}}",
+                "data":"{{data}}"
+            },
+            "events": {
+                "success":[
+                    {
+                        "name":"siswruApplyFilter",
+                        "excludeLocalDataCtx": true
+                    }
+                ]
+            }
+        },
+        "Create_DateFromUpdate":{
+            "actionType":"JSFunction",
+            "deps": "js/siswruRemarkerFilterService",
+            "method": "dateUpdate",
+            "inputData": {
+                "ctx":"{{ctx}}",
+                "prop":"Create_DateFrom",
+                "value":"{{data.Create_DateFrom.dbValue}}"
+            }
+        },
+        "Create_DateToUpdate":{
+            "actionType":"JSFunction",
+            "deps": "js/siswruRemarkerFilterService",
+            "method": "dateUpdate",
+            "inputData": {
+                "ctx":"{{ctx}}",
+                "prop":"Create_DateTo",
+                "value":"{{data.Create_DateTo.dbValue}}"
+            }
+        }
+    },
+    "dataProviders": {
+        "KDName":{
+            "response": "{{ctx.siswruRemarksFiltation.filterDPs.KDName}}"
+        },
+        "Code":{
+            "response": "{{ctx.siswruRemarksFiltation.filterDPs.Code}}"
+        },
+        "User":{
+            "response": "{{ctx.siswruRemarksFiltation.filterDPs.User}}"
+        },
+        "UserRole":{
+            "response": "{{ctx.siswruRemarksFiltation.filterDPs.UserRole}}"
+        },
+        "Approve":{
+            "response":[
+                {
+                    "propInternalValue": "1",
+                    "propDisplayValue": "Да"
+                },
+                {
+                    "propInternalValue": "0",
+                    "propDisplayValue": "Нет"
+                }
+            ]
+        }
+    },
+    "lifecycleHooks": {
+        "onMount":"getFiltrationInfo"
+    },
+    "onEvent": [
+        {
+            "eventId": "condition.expressionValueChanged",
+            "action": "Create_DateFromUpdate",
+            "criteria": {
+                "condition": "conditions.Create_DateFrom"
+            },
+            "cacheEventData": true
+        },
+        {
+            "eventId": "condition.expressionValueChanged",
+            "action": "Create_DateToUpdate",
+            "criteria": {
+                "condition": "conditions.Create_DateTo"
+            },
+            "cacheEventData": true
+        }
+    ],
+    "conditions": {
+        "Create_DateFrom":{
+            "expression":"data.Create_DateFrom.dbValue",
+            "trackValues": true
+        },
+        "Create_DateTo":{
+            "expression":"data.Create_DateTo.dbValue",
+            "trackValues": true
+        }
+    }   
+}

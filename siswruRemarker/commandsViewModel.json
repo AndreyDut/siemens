@@ -1,0 +1,152 @@
+{
+    "commands": {
+        "siswruRemarkerGroup":{
+            "iconId": "cmdEdit",
+            "title": "{{i18n.siswruRemarkerEditTitle}}",
+            "description": "{{i18n.siswruRemarkerEditDescription}}",
+            "isGroup":true
+        },
+        "siswruRemarkerSave": {
+            "iconId": "cmdSave",
+            "title": "{{i18n.siswruRemarkerSaveTitle}}",
+            "description": "{{i18n.siswruRemarkerSaveDescription}}"
+        },
+        "siswruRemarkerCancel": {
+            "iconId": "cmdCancel",
+            "title": "{{i18n.siswruRemarkerCancelTitle}}",
+            "description": "{{i18n.siswruRemarkerCancelDescription}}"
+        },
+        "siswruRemarkerFilter": {
+            "iconId": "cmdFilterActive",
+            "title": "{{i18n.siswruRemarkerFilterTitle}}",
+            "description": "{{i18n.siswruRemarkerFilterDescription}}"
+        }
+    },
+    "commandHandlers": {
+        "siswruRemarkerGroupHandler":{
+            "id": "siswruRemarkerGroup",
+            "activeWhen":true,
+            "visibleWhen": {
+                "condition": "conditions.siswruRemarker"
+            }
+        },
+        "siswruRemarkerSaveHandler": {
+            "id": "siswruRemarkerSave",
+            "action": "activatesiswruRemarkerSave",
+            "activeWhen": true,
+            "visibleWhen": {
+                "condition": "conditions.siswruRemarker"
+            }
+        },
+        "siswruRemarkerCancelHandler": {
+            "id": "siswruRemarkerCancel",
+            "action": "activatesiswruRemarkerCancel",
+            "activeWhen": true,
+            "visibleWhen": {
+                "condition": "conditions.siswruRemarker"
+            }
+        },
+        "siswruRemarkerFilterHandler": {
+            "id": "siswruRemarkerFilter",
+            "action": "activatesiswruRemarkerFilter",
+            "activeWhen": true,
+            "visibleWhen": true,
+            "enableWhen":{
+                "condition": "conditions.siswruRemarkNotAdded"
+            }
+        }
+    },
+    "commandPlacements": {
+        "siswruRemarkerGroup":{
+            "id":"siswruRemarkerGroup",
+            "uiAnchor": "aw_rightWall",
+            "priority": 100
+        },
+        "siswruRemarkerSaveaw-rightWall": {
+            "id": "siswruRemarkerSave",
+            "uiAnchor": "aw_rightWall",
+            "priority": 10,
+            "parentGroupId":"siswruRemarkerGroup"
+        },
+        "siswruRemarkerCancelaw_rightWall": {
+            "id": "siswruRemarkerCancel",
+            "uiAnchor": "aw_rightWall",
+            "priority": 100,
+            "parentGroupId":"siswruRemarkerGroup"
+        },
+        "siswruRemarkerFilter": {
+            "id": "siswruRemarkerFilter",
+            "uiAnchor": "siswru_remarker",
+            "priority": 100
+        }       
+    },
+    "actions": {
+        "activatesiswruRemarkerSave": {
+            "actionType": "Event",
+            "method": "Event",
+            "inputData": {
+                "events": [
+                    {
+                        "name": "siswruRemarkerSave",
+                        "excludeLocalDataCtx": true
+                    }
+                ]
+            }
+        },
+        "activatesiswruRemarkerCancel": {
+            "actionType": "Event",
+            "method": "Event",
+            "inputData": {
+                "events": [
+                    {
+                        "name": "siswruRemarkerReload",
+                        "excludeLocalDataCtx": true
+                    }
+                ]
+            }
+        },
+        "activatesiswruRemarkerFilter":{
+            "actionType":"JSFunction",
+            "method": "activateCommandPanel",
+            "deps": "js/commandPanel.service",
+            "inputData": {
+                "commandId": "siswruRemarkFilterPanel",
+                "location": "aw_navigation"
+            }
+        }
+    },
+    "conditions": {
+        "siswruRemarker": {
+            "expression": "ctx.xrtSummaryContextObject.type == 'EPMDoTask' && ctx.xrtPageContext.primaryXrtPageID == 'test'"
+        },
+        "siswruRemarkNotAdded":{
+            "expression":"ctx.siswruRemarksFiltation && ctx.siswruRemarksFiltation.enable"
+        }
+    },
+    "i18n": {
+        "siswruRemarkerEditTitle": [
+            "siswruRemarkerMessages"
+        ],
+        "siswruRemarkerEditDescription": [
+            "siswruRemarkerMessages"
+        ],
+        "siswruRemarkerSaveTitle": [
+            "siswruRemarkerMessages"
+        ],
+        "siswruRemarkerSaveDescription": [
+            "siswruRemarkerMessages"
+        ],
+        "siswruRemarkerCancelTitle": [
+            "siswruRemarkerMessages"
+        ],
+        "siswruRemarkerCancelDescription": [
+            "siswruRemarkerMessages"
+        ],
+        "siswruRemarkerFilterTitle": [
+            "siswruRemarkerMessages"
+        ],
+        "siswruRemarkerFilterDescription": [
+            "siswruRemarkerMessages"
+        ]
+    }
+}

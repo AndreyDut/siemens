@@ -1,0 +1,17 @@
+{
+    "header": "Header",
+    "body": "Body",
+    "footer": "Footer",
+    "checkBoxName": "Enable the OK button in footer",
+    "save": "Ok",
+    "textValue": "Contents here",
+    "siswru_NavToArchiveTitle": "Архив",
+    "siswru_NavToArchiveDescription": "Раздел карточек, книг и абонентов",
+    "siswruArchiveLocationHeaderTitle": "Архив",
+    "siswruArchiveLocationBrowserTitle": "Архив",
+    "siswruArchive1": "Инвентарная книга",
+    "siswruArchive2": "Книга регистраций",
+    "siswruArchive3":"Карточка учета документов",
+    "siswruArchive4":"Абоненты"
+
+}

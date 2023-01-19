@@ -1,0 +1,243 @@
+{
+    "schemaVersion": "1.0.0",
+    "imports": [
+        "js/aw-panel.directive",
+        "js/aw-panel-body.directive",
+        "js/aw-repeat.directive",
+        "js/aw-include.directive",
+        "js/aw-button.directive",
+        "js/aw-command-bar.directive",
+        "js/aw-break.directive",
+        "js/visible-when.directive"
+    ],
+    "data":{
+        "showUtility":{
+            "dbValue":false
+        }
+    },
+    "actions": {
+        "loadRemarks":{
+            "actionType":"JSFunctionAsync",
+            "deps": "js/siswruRemarkerService",
+            "method": "loadRemarks",
+            "inputData": {
+                "ctx":"{{ctx}}",
+                "showUtility":"{{data.showUtility}}"
+            },
+            "outputData": {
+                "remarksData":"remarksData",
+                "targetsContainer":"targetsContainer",
+                "emptyCard":"emptyCard"
+            },
+            "events": {
+                "success":[
+                    {
+                        "name": "siswruGetFiltrationForRemarks",
+                        "condition": "data.remarksData.length"
+                    },
+                    {
+                        "name": "siswruRemarkerAddCard",
+                        "condition": "!data.remarksData.length"
+                    }
+                ]
+            }
+        },
+        "updateProperiesHandler":{
+            "actionType":"JSFunctionAsync",
+            "deps": "js/siswruRemarkerParamsEditService",
+            "method": "updateProperiesHandler",
+            "inputData": {
+                "remarksData":"{{data.remarksData}}",
+                "targetsContainer":"{{data.targetsContainer}}"
+            },
+            "events": {
+                "success":[
+                    {
+                        "name": "siswruRemarkerReload"
+                    }
+                ]
+            }
+        },
+        "addCard":{
+            "actionType":"JSFunction",
+            "deps": "js/siswruRemarkerSideCmdService",
+            "method": "addCard",
+            "inputData": {
+                "data":"{{data}}",
+                "remarksData":"{{data.remarksData}}",
+                "emptyCard":"{{data.emptyCard}}"
+            },
+            "events": {
+                "success":[
+                    {
+                        "name": "siswruDisableFilter"
+                    }
+                ]
+            } 
+        },
+        "copyCard":{
+            "actionType":"JSFunction",
+            "deps": "js/siswruRemarkerSideCmdService",
+            "method": "copyCard",
+            "inputData": {
+                "data":"{{data}}",
+                "card":"{{data.eventData.cardToCopy}}",
+                "remarksData":"{{data.remarksData}}"                
+            },
+            "events": {
+                "success":[
+                    {
+                        "name": "siswruDisableFilter"
+                    }
+                ]
+            }
+        },
+        "removeCard":{
+            "actionType":"JSFunction",
+            "deps": "js/siswruRemarkerSideCmdService",
+            "method": "removeCard",
+            "inputData": {
+                "data":"{{data}}",
+                "card":"{{data.eventData.cardToRemove}}",
+                "remarksData":"{{data.remarksData}}",
+                "filterIndex":"{{data.eventData.removeIndex}}"             
+            } 
+        },
+        "KDNameChangedHandler":{
+            "actionType":"JSFunctionAsync",
+            "deps": "js/siswruRemarkerParamsEditService",
+            "method": "KDNameChangedHandler",
+            "inputData": {
+                "remarksData":"{{data.remarksData}}",
+                "targetsContainer":"{{data.targetsContainer}}",
+                "cardData":"{{data.eventData.updateKDcardData}}",
+                "propValue":"{{data.eventData.updateKDpropValue}}"
+            } 
+        },
+        "openFilter":{
+            "actionType": "JSFunction",
+            "method": "activateCommandPanel",
+            "deps": "js/commandPanel.service",
+            "inputData": {
+                "commandId": "siswruRemarkFilterPanel",
+                "location":"aw_toolsAndInfo",
+                "context":{
+                    "rowsArray":"{{data.remarksData}}"
+                }
+            }
+        },
+        "initFiltration":{
+            "actionType": "JSFunction",
+            "method": "initFiltrationInfo",
+            "deps": "js/siswruRemarkerFilterService",
+            "inputData": {
+                "remarksData":"{{data.remarksData}}",
+                "ctx":"{{ctx}}"
+            },
+            "events": {
+                "success":[
+                    {
+                        "name": "siswruApplyFilter"
+                    }
+                ]
+            }
+        },
+        "applyFilter":{
+            "actionType": "JSFunction",
+            "method": "applyFilter",
+            "deps": "js/siswruRemarkerFilterService",
+            "inputData": {
+                "remarksData":"{{data.remarksData}}",
+                "ctx":"{{ctx}}"
+            },
+            "outputData": {
+                "filteredRows":"filteredRows"
+            }
+        },
+        "disableFilter":{
+            "actionType":"JSFunction",
+            "deps": "js/siswruRemarkerFilterService",
+            "method": "disableFilter",
+            "inputData": {
+                "ctx":"{{ctx}}"
+            }
+        },
+        "cleanData":{
+            "actionType":"batchJob",
+            "steps": [
+                {
+                    "action": "cleanData1"
+                },
+                {
+                    "action": "cleanData2"
+                }
+            ]
+        },
+        "cleanData1":{
+            "actionType":"JSFunction",
+            "deps": "js/siswruRemarkerService",
+            "method": "cleanData",
+            "inputData": {
+                "targetsContainer":"{{data.targetsContainer}}"
+            }
+        },
+        "cleanData2":{
+            "actionType":"JSFunction",
+            "deps": "js/siswruRemarkerFilterService",
+            "method": "cleanData",
+            "inputData": {
+                "ctx":"{{ctx}}"
+            }
+        }
+    },
+    "onEvent": [
+        {
+            "eventId": "siswruRemarkerSave",
+            "action": "updateProperiesHandler"
+
+        },
+        {
+            "eventId": "siswruRemarkerReload",
+            "action": "loadRemarks"
+        },
+        {
+            "eventId": "siswruRemarkerCancel",
+            "action": "loadRemarks"
+        },
+        {
+            "eventId": "siswruRemarkerAddCard",
+            "action":"addCard"
+        },
+        {
+            "eventId": "siswruKDNameChanged",
+            "action": "KDNameChangedHandler",
+            "cacheEventData": true
+        },
+        {
+            "eventId": "siswruRemarkerCopyCard",
+            "action": "copyCard",
+            "cacheEventData": true
+        },
+        {
+            "eventId": "siswruRemarkerRemoveCard",
+            "action": "removeCard",
+            "cacheEventData": true
+        },
+        {
+            "eventId": "siswruGetFiltrationForRemarks",
+            "action": "initFiltration"
+        },
+        {
+            "eventId": "siswruApplyFilter",
+            "action": "applyFilter"
+        },
+        {
+            "eventId": "siswruDisableFilter",
+            "action": "disableFilter"
+        }     
+    ],
+    "lifecycleHooks": {
+        "onMount":"loadRemarks",
+        "onUnmount":"cleanData"
+    }
+}

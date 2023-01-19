@@ -1,0 +1,9 @@
+{
+  "name": "siswruArchiveLocation",
+  "description": "siswruArchiveLocation",
+  "modules": [
+    "siswruArchiveLocation"
+  ],
+  "version": "5.0.0",
+  "OOTB": true
+}

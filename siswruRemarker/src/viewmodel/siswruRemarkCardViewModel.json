@@ -1,0 +1,224 @@
+{
+    "schemaVersion": "1.0.0",
+    "imports": [
+        "js/aw-widget.directive",
+        "js/aw-icon-button.directive",
+        "js/enable-when.directive"
+    ],
+    "data":{
+        "addCardCommand":{
+            "action":"addCard",
+            "iconName":"Add",
+            "tooltip":"Добавить блок"
+        },
+        "removeCardCommand":{
+            "action":"removeCard",
+            "iconName":"Remove",
+            "tooltip":"Удалить блок"
+        },
+        "copyCardCommand":{
+            "action":"copyCard",
+            "iconName":"Copy",
+            "tooltip":"Копировать"
+        },
+        "openCardCommand":{
+            "action":"openCard",
+            "iconName":"Open",
+            "tooltip":"Открыть документ"
+        },
+        "KDName":{
+            "displayName": "Обозначение",
+            "type": "STRING",
+            "isEditable": "true",
+            "dbValue": "",
+            "dataProvider": "targetsDP"
+        },
+        "Approve":{
+            "displayName": "Замечание снято",
+            "type": "STRING",
+            "isEditable": "true",
+            "dbValue": "",
+            "dataProvider": "ApproveDP"
+        },
+        "Code":null,
+        "Notes":null,
+        "User":null,
+        "UserRole":null,
+        "Create_Date":null,
+        "Decision":null,
+        "Answering_User":null,
+        "Answering_Role":null,
+        "Last_Change_Date":null
+    },
+    "actions": {
+        "createCardDataProperties":{
+            "actionType":"JSFunction",
+            "deps": "js/siswruRemarkerService",
+            "method": "createCardDataProperties",
+            "inputData": {
+                "data":"{{data}}",
+                "subCtx":"{{subPanelContext}}"
+            }
+        },
+        "addCard":{
+            "actionType":"Event",
+            "method": "Event",
+            "inputData": {
+                "events":[
+                    {
+                        "name": "siswruRemarkerAddCard",
+                        "excludeLocalDataCtx": true
+                    }
+                ] 
+            }
+        },
+        "removeCard":{
+            "actionType":"Event",
+            "method": "Event",
+            "inputData": {
+                "events":[
+                    {
+                        "name": "siswruRemarkerRemoveCard",
+                        "excludeLocalDataCtx": true,
+                        "eventData":{
+                            "cardToRemove": "{{subPanelContext}}",
+                            "removeIndex":"{{$index}}"
+                        }
+                    }
+                ] 
+            }
+        },
+        "copyCard":{
+            "actionType":"Event",
+            "method": "Event",
+            "inputData": {
+                "events":[
+                    {
+                        "name": "siswruRemarkerCopyCard",
+                        "excludeLocalDataCtx": true,
+                        "eventData":{
+                            "cardToCopy": "{{subPanelContext}}"
+                        }
+                    }
+                ] 
+            }
+        },
+        "openCard":{
+            "actionType": "Navigate",
+            "navigateTo": "com_siemens_splm_clientfx_tcui_xrt_showObject",
+            "navigationParams": {
+                "uid":{
+                    "$adapt": "{{subPanelContext.target}}",
+                    "path":"uid"
+                }
+            },
+            "navigateIn": "newTab"
+
+        },
+        "updateKDName":{
+            "actionType":"JSFunction",
+            "deps": "js/siswruRemarkerParamsEditService",
+            "method": "updateKDName",
+            "inputData": {
+                "prop":"{{data.KDName}}",
+                "cardData":"{{subPanelContext}}"
+            }
+        },
+        "updateApprove":{
+            "actionType":"JSFunction",
+            "deps": "js/siswruRemarkerParamsEditService",
+            "method": "updateApprove",
+            "inputData": {
+                "prop":"{{data.Approve}}",
+                "cardData":"{{subPanelContext}}"
+            }
+        }
+    },
+    "dataProviders": {
+        "targetsDP":{
+            "response": "{{subPanelContext.config.targets.targetsDP}}"
+        },
+        "ApproveDP":{
+            "response":[
+                {
+                    "propInternalValue": "1",
+                    "propDisplayValue": "Да"
+                },
+                {
+                    "propInternalValue": "0",
+                    "propDisplayValue": "Нет"
+                }
+            ]
+        }
+    },
+    "lifecycleHooks": {
+        "onMount":"createCardDataProperties"
+    },
+    "onEvent":[
+        {
+            "eventId": "condition.expressionValueChanged",
+            "action": "updateKDName",
+            "criteria": {
+                "condition": "conditions.updateKDName"
+            },
+            "cacheEventData": true
+        },
+        {
+            "eventId": "condition.expressionValueChanged",
+            "action": "updateApprove",
+            "criteria": {
+                "condition": "conditions.updateApprove"
+            },
+            "cacheEventData": true
+        }
+    ],
+    "conditions": {
+        "updateKDName":{
+            "expression":"data.KDName.dbValue",
+            "trackValues": true
+        },
+        "updateApprove":{
+            "expression":"data.Approve.dbValue",
+            "trackValues": true
+        },
+        "User123":{
+            "expression":"subPanelContext.access.User1.status || subPanelContext.access.User2.value.indexOf(subPanelContext.access.User1.compareValue) > -1 || subPanelContext.access.User3.value.indexOf(subPanelContext.access.User1.compareValue) > -1"
+        },
+        "User2":{
+            "expression":"subPanelContext.access.User2.value.indexOf(subPanelContext.access.User1.compareValue) > -1"
+        },
+        "remarkOwner":{
+            "expression":"subPanelContext.access.User1.currentUserName == subPanelContext.access.remarkOwnerName && subPanelContext.access.User1.currentUserRole == subPanelContext.access.remarkOwnerRole"
+        },
+        "answeringUser":{
+            "expression":"subPanelContext.access.User1.status || subPanelContext.access.User3.value.indexOf(subPanelContext.access.User1.compareValue) > -1"
+        },
+        "hasNkRemark":{
+            "expression":"subPanelContext.NkRemark"
+        },
+        "hasDecision":{
+            "expression":"data.Decision.dbValue"
+        },
+        "hasTarget":{
+            "expression":"data.KDName.dbValue"
+        },
+        "hasCode":{
+            "expression":"data.Code.dbValue"
+        },
+        "hasNote":{
+            "expression":"data.Notes.dbValue"
+        },
+        "hasApprove":{
+            "expression":"data.Approve.dbValue === '1'"
+        },
+        "canDelete":{
+            "expression":"(subPanelContext.access.delete === '2' &&((conditions.remarkOwner && !conditions.hasDecision) ||(conditions.dbaRole))) || (subPanelContext.access.delete === '0' && conditions.remarkOwner && !conditions.hasDecision) || (subPanelContext.access.delete === '1' && conditions.dbaGroup)"
+        },
+        "dbaGroup":{
+            "expression":"subPanelContext.access.User1.currentUserGroup === 'dba'"
+        },
+        "isNotApproved":{
+            "expression":"subPanelContext.access.IsNotApproved"
+        }
+    }
+}

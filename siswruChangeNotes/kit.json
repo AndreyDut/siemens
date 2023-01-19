@@ -1,0 +1,12 @@
+{
+  "name": "siswruChangeNotes",
+  "description": "siswruChangeNotes",
+  "modules": [
+    "siswruChangeNotes"
+  ],
+  "version": "5.0.0",
+  "OOTB": true,
+  "soaDeps": [
+    "SPD5.Soa.Helper"
+	]
+}

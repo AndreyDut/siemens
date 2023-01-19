@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<svg width="48" height="48" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <g class="layer">
+  <title>Layer 1</title>
+  <g id="svg_1">
+   <linearGradient gradientTransform="translate(0 -0.193237) translate(0 -0.676329) translate(5.60386 -0.483092) translate(-5.7971 1.25604) translate(1.15942 0.0966184) translate(0 -1.0628)" id="SVGID_1_" x1="0.000009" x2="0.999982" y1="0.500018" y2="0.500018">
+    <stop offset="0" stop-color="#73B4C8"/>
+    <stop offset="0.1747" stop-color="#6AAEC3"/>
+    <stop offset="0.4567" stop-color="#529EB5"/>
+    <stop offset="0.8089" stop-color="#2C839F"/>
+    <stop offset="1" stop-color="#147391"/>
+   </linearGradient>
+   <rect fill="url(#SVGID_1_)" height="11.046" id="svg_2" width="11.026" x="2.453184" y="34.414198"/>
+   <path d="m13.966184,45.937198l-12,0l0,-12l12,0l0,12zm-11.026,-0.953l10.052,0l0,-10.094l-10.052,0l0,10.094z" fill="#464646" id="svg_3"/>
+  </g>
+  <g id="svg_4" transform="matrix(1 0 0 1 0 0)">
+   <linearGradient gradientTransform="translate(0.289855 0) translate(-1.25604 -0.0966184) translate(0.0966184 -0.966184)" id="SVGID_2_" x1="0.000018" x2="1.000009" y1="0.500018" y2="0.500018">
+    <stop offset="0" stop-color="#73B4C8"/>
+    <stop offset="0.1747" stop-color="#6AAEC3"/>
+    <stop offset="0.4567" stop-color="#529EB5"/>
+    <stop offset="0.8089" stop-color="#2C839F"/>
+    <stop offset="1" stop-color="#147391"/>
+   </linearGradient>
+   <rect fill="url(#SVGID_2_)" height="11.046" id="svg_5" width="11.026" x="34.617435" y="34.414198"/>
+   <path d="m46.130435,45.937198l-12,0l0,-12l12,0l0,12zm-11.026,-0.953l10.051,0l0,-10.094l-10.051,0l0,10.094z" fill="#464646" id="svg_6"/>
+  </g>
+  <rect fill="#969696" height="3" id="svg_13" transform="matrix(1 0 0 1 0 0)" width="3.119" x="10.140913" y="22.034985"/>
+  <rect fill="#969696" height="3" id="svg_14" transform="matrix(1 0 0 1 0 0)" width="3.119" x="30.066083" y="16.10014"/>
+  <rect fill="#969696" height="3" id="svg_15" transform="matrix(1 0 0 1 0 0)" width="3.119" x="34.928086" y="22.132167"/>
+  <rect fill="#969696" height="3" id="svg_16" transform="matrix(1 0 0 1 0 0)" width="3.119" x="15.869565" y="38.067633"/>
+  <rect fill="#969696" height="3" id="svg_17" width="3.119" x="22.58309" y="38.164251"/>
+  <rect fill="#969696" height="3" id="svg_18" transform="matrix(1 0 0 1 0 0)" width="3.119" x="29.005634" y="38.164251"/>
+  <rect fill="#969696" height="3.119" id="svg_20" transform="matrix(1 0 0 1 0 0)" width="3" x="15.009718" y="16.070956"/>
+  <rect fill="#969696" height="3.119" id="svg_21" transform="matrix(1 0 0 1 0 0)" width="3" x="6.062802" y="29.011435"/>
+  <rect fill="#969696" height="3.119" id="svg_24" width="3" x="39.130435" y="28.914816"/>
+  <g id="svg_25">
+   <linearGradient gradientTransform="translate(0 0.869565) translate(-1.069 0) translate(1.26336 -0.194363) translate(-17.1179 -33.5416)" id="svg_26" x1="0.000018" x2="1.000009" y1="0.500018" y2="0.500018">
+    <stop offset="0" stop-color="#73B4C8"/>
+    <stop offset="0.1747" stop-color="#6AAEC3"/>
+    <stop offset="0.4567" stop-color="#529EB5"/>
+    <stop offset="0.8089" stop-color="#2C839F"/>
+    <stop offset="1" stop-color="#147391"/>
+   </linearGradient>
+   <rect fill="url(#SVGID_2_)" height="11.046" id="svg_27" width="11.026" x="18.563447" y="2.610576"/>
+   <path d="m30.076447,14.133576l-12,0l0,-12l12,0l0,12zm-11.026,-0.953l10.051,0l0,-10.094l-10.051,0l0,10.094z" fill="#464646" id="svg_28"/>
+  </g>
+ </g>
+</svg>

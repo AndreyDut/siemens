@@ -1,0 +1,110 @@
+{
+    "schemaVersion": "1.0.0",
+    "imports": [
+        "js/aw-panel.directive",
+        "js/aw-panel-body.directive",
+        "js/aw-repeat.directive",
+        "js/aw-include.directive"
+    ], 
+    "data": {
+       
+    },
+    "actions": {
+        "addCard":{
+            "actionType":"JSFunction",
+            "deps": "js/siswruChangesService",
+            "method": "addCard",
+            "inputData": {
+                "cards":"{{data.pomContainers}}",
+                "ctx":"{{ctx}}"
+            }
+        },
+        "updateCNBlocks":{
+            "actionType":"JSFunction",
+            "deps": "js/siswruChangesService",
+            "method": "fakeData",
+            "outputData": {
+                "pomContainers":"pomContainers"
+            }
+        },
+        "updateAllDescs":{
+            "actionType":"JSFunction",
+            "deps": "js/siswruChangesService",
+            "method": "updateAllDescs",
+            "inputData": {
+                "pomContainers":"{{data.pomContainers}}"
+            }
+        },
+        "log":{
+            "actionType":"JSFunction",
+            "deps": "js/siswruChangesService",
+            "method": "log",
+            "inputData": {
+                "data":"{{data}}"
+            }
+        },
+        "initialGetCNData":{
+            "actionType":"JSFunctionAsync",
+            "deps": "js/siswruChangesService",
+            "method": "initialGetCNData",
+            "inputData": {
+                "uid":"{{ctx.xrtSummaryContextObject.uid}}",
+                "ctx":"{{ctx}}"
+            },
+            "outputData": {
+                "pomContainers":"pomContainers",
+                "ctx.generalActionTypeDP":"generalActionTypeDP"
+            }
+        },
+        "removeEmptyCard":{
+            "actionType":"JSFunction",
+            "deps": "js/siswruChangesService",
+            "method": "removeEmptyCard",
+            "inputData": {
+                "pomContainers":"{{data.pomContainers}}"
+            }
+        },
+        "cleanData":{
+            "actionType":"JSFunction",
+            "deps": "js/siswruChangesService",
+            "method": "cleanData",
+            "inputData": {
+                "ctx":"{{ctx}}"
+            }
+        },
+        "globalGridUpdate":{
+            "actionType":"JSFunction",
+            "deps": "js/siswruChangesService",
+            "method": "globalGridUpdate",
+            "inputData": {
+                "quantity":"{{data.pomContainers.length}}"
+            }
+        }
+    },
+    "onEvent": [
+        {
+            "eventId": "siswru.addCard",
+            "action": "addCard"
+        },
+        {
+            "eventId": "siswru.updateAllDescs",
+            "action": "updateAllDescs"
+        },
+        {
+            "eventId": "siswru.updateCNBlocks",
+            "action": "initialGetCNData"
+        },
+        {
+            "eventId": "siswru.removeEmptyCard",
+            "action": "removeEmptyCard"
+        },
+        {
+            "eventId": "siswruCN.gridUpdate",
+            "action": "globalGridUpdate"
+        }
+    ],
+    "lifecycleHooks": {
+        "onMount":"initialGetCNData",
+        "onUnmount":"cleanData"
+    }
+}

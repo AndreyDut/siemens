@@ -1,0 +1,60 @@
+<!--for process-->
+<div class="siswru-rem-card">
+    <div class="siswru-rem-add-remove">
+        <div>
+            <aw-icon-button
+                enable-when="conditions.hasTarget"
+                command="data.openCardCommand"></aw-icon-button>
+        </div>
+        <div>
+            <aw-icon-button
+                enable-when="conditions.isNotApproved && conditions.User2"
+                command="data.addCardCommand"></aw-icon-button>
+        </div>
+        <div>
+            <aw-icon-button
+                enable-when="conditions.isNotApproved && conditions.canDelete"
+                command="data.removeCardCommand"></aw-icon-button>
+        </div>
+        <div>
+            <aw-icon-button
+                enable-when="conditions.isNotApproved && conditions.User2 && conditions.hasNkRemark"
+                command="data.copyCardCommand"></aw-icon-button>
+        </div>
+    </div>
+    <div class="siswru-rem-options">
+        <aw-widget
+        enable-when="conditions.isNotApproved && !conditions.hasDecision && conditions.remarkOwner"
+        prop="data.KDName"></aw-widget>
+        <aw-widget
+        enable-when="conditions.isNotApproved && !conditions.hasDecision && conditions.hasNote && conditions.remarkOwner"
+        prop="data.Code"></aw-widget>
+        <aw-widget 
+        enable-when="conditions.isNotApproved && conditions.remarkOwner && conditions.hasDecision"
+        prop="data.Approve"></aw-widget>
+    </div>
+    <div class="siswru-rem-text">
+        <div>
+            <aw-widget
+            enable-when="conditions.isNotApproved && conditions.hasTarget && !conditions.hasDecision && conditions.remarkOwner"
+            prop="data.Notes"></aw-widget>
+        </div>
+        <div class="siswru-rem-text-footer">
+           <aw-label prop="data.User"></aw-label>
+           <aw-label prop="data.UserRole"></aw-label>
+           <aw-label prop="data.Create_Date"></aw-label>
+        </div>
+    </div>
+    <div class="siswru-rem-text">
+        <div>
+            <aw-widget 
+            enable-when="conditions.isNotApproved && conditions.answeringUser && !conditions.hasApprove"
+            prop="data.Decision"></aw-widget>
+        </div>
+        <div  class="siswru-rem-text-footer">
+           <aw-label prop="data.Answering_User"></aw-label>
+           <aw-label prop="data.Answering_Role"></aw-label>
+           <aw-label prop="data.Last_Change_Date"></aw-label>
+        </div>
+    </div>
+</div>

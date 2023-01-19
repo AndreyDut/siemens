@@ -1,0 +1,42 @@
+<style>
+  .sync-array-item div{
+    height: 30px
+  }
+ 
+</style>
+<div class="aw-jswidgets-arrayWidgetContainer"
+     ng-class="{'changed': prop.dirty }" >
+    <div class="aw-jswidgets-arrayValueCellListContainer aw-base-normal">
+        <ul>
+          <div style="padding: 5px; font-weight: bold">{{prop.propertyDisplayName}}</div>
+          <div class="aw-layout-flexColumnContainer" ng-repeat="displayNode in prop.displayValsModel track by $index">
+            <li class="aw-jswidgets-arrayValueCellListItem" ng-class="{'aw-state-selected': displayNode.selected}">
+                <div id= "{{prop.propertyName +'___'+ $index}}" class="aw-jswidgets-arrayValueContainer">
+                  <div class="aw-jswidgets-arrayValue sync-array-item" >
+                      <div ng-click="selectAndEdit($event, $index)">{{displayNode.displayValue}}</div>
+                  </div>
+                  <div class="aw-layout-flexColumnContainer" ng-show="prop.syncArrayButtonAnchor">
+                    <div class="aw-jswidgets-arrayIcons">
+                        <button type="button" class="aw-commands-commandIconButton aw-widgets-defaultPropertyValueButton"
+                               ng-click="moveUp($index)" ng-disabled="prop.editArrayInlineMode" ng-show="prop.isEnabled !== false" title="{{prop.moveUpButtonTitle}}" >
+                               <aw-property-image name="cmdMoveUp"></aw-property-image>
+                        </button>
+                        <button type="button" class="aw-commands-commandIconButton aw-widgets-defaultPropertyValueButton"
+                               ng-click="moveDown($index)" ng-disabled="prop.editArrayInlineMode" ng-show="prop.isEnabled !== false" title="{{prop.moveDownButtonTitle}}" >
+                               <aw-property-image name="cmdMoveDown"></aw-property-image>
+                        </button>
+                        <button type="button" class="aw-commands-commandIconButton aw-widgets-defaultPropertyValueButton"
+                               ng-click="remove($index)" ng-disabled="prop.editArrayInlineMode" ng-show="prop.isEnabled !== false" title="{{prop.removeButtonTitle}}" >
+                               <aw-property-image name="cmdRemove"></aw-property-image>
+                         </button>
+                    </div>
+                  </div>
+                </div>
+            </li>
+          </div>
+        </ul>
+    </div>
+    <div class="aw-jswidgets-arrayEditableWidget" ng-show="prop.syncArrayFirst">
+        <aw-property-array-edit-val prop="dummyProp" ></aw-property-array-edit-val>
+    </div>
+</div>

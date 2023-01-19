@@ -1,0 +1,46 @@
+{
+    "commands": {
+        "siswru_NavToArchive": {
+            "iconId": "cmdZxPlanar",
+            "title": "{{i18n.siswru_NavToArchiveTitle}}",
+            "description": "{{i18n.siswru_NavToArchiveDescription}}"
+        }
+    },
+    "commandHandlers": {
+        "siswru_NavToArchiveHandler": {
+            "id": "siswru_NavToArchive",
+            "action": "activatesiswru_NavToArchive",
+            "activeWhen": true,
+            "visibleWhen": {
+                "condition": "conditions.siswruArchiveVisiable"
+            }
+        }
+    },
+    "commandPlacements": {
+        "siswru_NavToArchiveaw_globalNavigationbar": {
+            "id": "siswru_NavToArchive",
+            "uiAnchor": "aw_globalNavigationbar",
+            "priority": 100
+        }
+    },
+    "actions": {
+        "activatesiswru_NavToArchive": {
+            "actionType": "Navigate",
+            "navigateTo": "siswruArchive1",
+            "navigationParams": {}
+        }
+    },
+    "conditions": {
+        "siswruArchiveVisiable":{
+            "expression": "ctx.workspace.workspaceId == 'TcAuthorWorkspace'"
+        }
+    },
+    "i18n": {
+        "siswru_NavToArchiveTitle": [
+            "siswruArchiveLocationMessages"
+        ],
+        "siswru_NavToArchiveDescription": [
+            "siswruArchiveLocationMessages"
+        ]
+    }
+}

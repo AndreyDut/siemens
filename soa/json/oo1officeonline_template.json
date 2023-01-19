@@ -1,0 +1,244 @@
+{
+  "Date": "Fri Jun 05 04:02:52 PM 2020",
+  "Library": [
+    {
+      "createRelease": "tc11000.4.0",
+      "description": "The Office Online SOA service library",
+      "isThirdParty": "false",
+      "name": "Oo1SoaOfficeOnline",
+      "namespace": "Oo1::Soa::OfficeOnline",
+      "serviceLibrary": "true"
+    }
+  ],
+  "Operation": [
+    {
+      "ParameterInfo": [
+        {
+          "description": "A list of<b> LaunchInfoInput</b> structure.",
+          "parameterName": "inputs"
+        }
+      ],
+      "canOverride": "false",
+      "component": "Oo1officeonline",
+      "createRelease": "tc11000.4.0",
+      "dependencies": "",
+      "description": "This operation retrieves the launch information for a Teamcenter<b> Dataset</b> that a client can use to access Office Online to view or edit a Microsoft document. The launch URL is the address to use to connect to the Office Online Server (OOS) to open a Microsoft Office file in Office Online.<br /><br />Integration with Office Online requires implementation of the Web Application Open Platform Interface (WOPI) protocol.  For this protocol, the OOS is called the WOPI client and the Teamcenter component that OOS communications with is called the WOPI host.  The Teamcenter WOPI host implements REST based APIs specific to the WOPI protocol for the Office Online WOPI client to use to work with files stored in Teamcenter.",
+      "exceptionCondition": "",
+      "id": "getLaunchInfo#const,std::vector<Oo1::Soa::OfficeOnline::_2017_11::OfficeOnline::LaunchInfoInput>,&",
+      "interface": "Oo1::Soa::OfficeOnline::OfficeOnline",
+      "isPostActionAllowed": "false",
+      "isPreActionAllowed": "false",
+      "isPreConditionAllowed": "false",
+      "isPublished": "true",
+      "name": "getLaunchInfo",
+      "opTemplate": "Oo1::Soa::OfficeOnline::_2017_11::OfficeOnline::LaunchInfoOutputResponse#Oo1::Soa::OfficeOnline::OfficeOnline::getLaunchInfo#const,std::vector<Oo1::Soa::OfficeOnline::_2017_11::OfficeOnline::LaunchInfoInput>,&",
+      "returnDescription": "A LaunchInfoOutputResponse structure which contains a list of LaunchInfoOutput and ServiceData. Any partial errors will be stored in the service data.<br /><br />The following errors may be returned in the ServiceData:<br /><ul><ul><li type=\"disc\">347001 The input action is empty.</li><li type=\"disc\">347002 The input object is empty.</li><li type=\"disc\">347003 The input action is not supported for the business object.</li><li type=\"disc\">347004 The input object type is not supported by Teamcenter Office Online.</li><li type=\"disc\">347005 No valid file for the input object.</li><li type=\"disc\">347006 Problem accessing Office Online Server.</li><li type=\"disc\">347007 Problem retrieving action processing discovery XML.</li><li type=\"disc\">347008 Some Preferences(OfficeOnlineTimeToLive, OfficeOnlineServerURL or OfficeOnlineWopiHostURL) need to be configured properly.</li></ul></ul>",
+      "useCase": "A Teamcenter client finds and selects a <b>Dataset</b> for a Microsoft Office document and chooses to view or edit the document.  The client calls this operation to retrieve the launch URL to access Office Online to view or edit the Microsoft Office document."
+    }
+  ],
+  "OperationTemplate": [
+    {
+      "OperationParameter": [
+        {
+          "OperationParameterDataTypeRef": [
+            {
+              "DataTypeRefParam": [
+                {
+                  "dataType": "Oo1::Soa::OfficeOnline::_2017_11::OfficeOnline::LaunchInfoInput",
+                  "qualifier": ""
+                }
+              ],
+              "dataType": "std::vector",
+              "qualifier": "&"
+            }
+          ],
+          "const": "true",
+          "defaultValue": "",
+          "description": "A list of<b> LaunchInfoInput</b> structure.",
+          "freeOutputMemory": "false",
+          "inputOutput": "Input",
+          "name": "inputs"
+        }
+      ],
+      "OperationReturnDataTypeRef": [
+        {
+          "dataType": "Oo1::Soa::OfficeOnline::_2017_11::OfficeOnline::LaunchInfoOutputResponse",
+          "qualifier": ""
+        }
+      ],
+      "accessControl": "false",
+      "const": "false",
+      "createRelease": "tc11000.4.0",
+      "description": "This operation retrieves the launch information for a Teamcenter<b> Dataset</b> that a client can use to access Office Online to view or edit a Microsoft document. The launch URL is the address to use to connect to the Office Online Server (OOS) to open a Microsoft Office file in Office Online.<br /><br />Integration with Office Online requires implementation of the Web Application Open Platform Interface (WOPI) protocol.  For this protocol, the OOS is called the WOPI client and the Teamcenter component that OOS communications with is called the WOPI host.  The Teamcenter WOPI host implements REST based APIs specific to the WOPI protocol for the Office Online WOPI client to use to work with files stored in Teamcenter.",
+      "id": "Oo1::Soa::OfficeOnline::_2017_11::OfficeOnline::LaunchInfoOutputResponse#Oo1::Soa::OfficeOnline::OfficeOnline::getLaunchInfo#const,std::vector<Oo1::Soa::OfficeOnline::_2017_11::OfficeOnline::LaunchInfoInput>,&",
+      "name": "Oo1::Soa::OfficeOnline::OfficeOnline::getLaunchInfo",
+      "returnConst": "false",
+      "returnDescription": "A LaunchInfoOutputResponse structure which contains a list of LaunchInfoOutput and ServiceData. Any partial errors will be stored in the service data.<br /><br />The following errors may be returned in the ServiceData:<br /><ul><ul><li type=\"disc\">347001 The input action is empty.</li><li type=\"disc\">347002 The input object is empty.</li><li type=\"disc\">347003 The input action is not supported for the business object.</li><li type=\"disc\">347004 The input object type is not supported by Teamcenter Office Online.</li><li type=\"disc\">347005 No valid file for the input object.</li><li type=\"disc\">347006 Problem accessing Office Online Server.</li><li type=\"disc\">347007 Problem retrieving action processing discovery XML.</li><li type=\"disc\">347008 Some Preferences(OfficeOnlineTimeToLive, OfficeOnlineServerURL or OfficeOnlineWopiHostURL) need to be configured properly.</li></ul></ul>",
+      "returnFreeMemory": "false",
+      "static": "false"
+    }
+  ],
+  "ServiceInterface": [
+    {
+      "createRelease": "tc11000.4.0",
+      "dependencies": "",
+      "description": "The OfficeOnline service allows clients to get or save Office Online related data. Specifically, there are operations to save Office Online server discovery XML information to Teamcenter and to get the launch url information for a microsoft document in order to access the Office Online server. <br /><br />This service supports the following use cases:<br /><br />Save the Office Online discovery XML information to Teamcenter<br />Get the launch url information for a microsoft document in order to access the Office Online server",
+      "libraryName": "Oo1SoaOfficeOnline",
+      "name": "OfficeOnline",
+      "namespace": "Oo1::Soa::OfficeOnline",
+      "serviceLibraryRef": ""
+    }
+  ],
+  "Struct": [
+    {
+      "StructElement": [
+        {
+          "DataTypeRefParam": [
+            {
+              "dataType": "std::string"
+            }
+          ],
+          "description": "This unique ID is used to identify return data elements and partial errors associated with this input structure.",
+          "name": "clientId"
+        },
+        {
+          "DataTypeRefParam": [
+            {
+              "dataType": "Teamcenter::BusinessObject"
+            }
+          ],
+          "description": "The Teamcenter <b>BusinessObject</b>. The <b>BusinessObject</b> need to resolve to an Office dataset type such as MSWordX.",
+          "name": "obj"
+        },
+        {
+          "DataTypeRefParam": [
+            {
+              "dataType": "std::string"
+            }
+          ],
+          "description": "The WOPI action name. The action name is defined by WOPI protocol.",
+          "name": "action"
+        },
+        {
+          "DataTypeRefParam": [
+            {
+              "dataType": "Oo1::Soa::OfficeOnline::_2017_11::OfficeOnline::KeyValueMap"
+            }
+          ],
+          "description": "A map (string, string) for extra name value pair information. This is intended for future use.",
+          "name": "extraInfo"
+        }
+      ],
+      "createRelease": "tc11000.4.0",
+      "description": "The structure contains the needed information to retrieve the launch URL for a Teamcenter <b>Dataset</b> for access Office Online Server.",
+      "isPublished": "true",
+      "name": "LaunchInfoInput",
+      "namespace": "Oo1::Soa::OfficeOnline::_2017_11::OfficeOnline",
+      "scope": "Oo1::Soa::OfficeOnline::OfficeOnline"
+    },
+    {
+      "StructElement": [
+        {
+          "DataTypeRefParam": [
+            {
+              "dataType": "std::string"
+            }
+          ],
+          "description": "The unmodified value from the <b>LaunchInfoInput</b>.clientId. This can be used by the caller to indentify this data structure with the source input data.",
+          "name": "clientId"
+        },
+        {
+          "DataTypeRefParam": [
+            {
+              "dataType": "std::string"
+            }
+          ],
+          "description": "The launch URL to access the <b>Dataset</b> from the Office Online Server.",
+          "name": "oosUrlString"
+        },
+        {
+          "DataTypeRefParam": [
+            {
+              "dataType": "std::string"
+            }
+          ],
+          "description": "Teamcenter access token.",
+          "name": "accessToken"
+        },
+        {
+          "DataTypeRefParam": [
+            {
+              "dataType": "std::string"
+            }
+          ],
+          "description": "Teamcenter access token time to live.",
+          "name": "accessTtl"
+        }
+      ],
+      "createRelease": "tc11000.4.0",
+      "description": "The structure contains the information needed to access the <b>Dataset</b> from the Office Online Server.",
+      "isPublished": "true",
+      "name": "LaunchInfoOutput",
+      "namespace": "Oo1::Soa::OfficeOnline::_2017_11::OfficeOnline",
+      "scope": "Oo1::Soa::OfficeOnline::OfficeOnline"
+    },
+    {
+      "StructElement": [
+        {
+          "DataTypeRefParam": [
+            {
+              "DataTypeRefParam": [
+                {
+                  "dataType": "Oo1::Soa::OfficeOnline::_2017_11::OfficeOnline::LaunchInfoOutput"
+                }
+              ],
+              "dataType": "std::vector"
+            }
+          ],
+          "description": "A list of <b>LaunchInfoOutput</b>.",
+          "name": "outputs"
+        },
+        {
+          "DataTypeRefParam": [
+            {
+              "dataType": "Teamcenter::Soa::Server::ServiceData"
+            }
+          ],
+          "description": "The Service Data.",
+          "name": "serviceData"
+        }
+      ],
+      "createRelease": "tc11000.4.0",
+      "description": "The structure contains a list of <b>LaunchInfoOutput</b> and the Service Data.",
+      "isPublished": "true",
+      "name": "LaunchInfoOutputResponse",
+      "namespace": "Oo1::Soa::OfficeOnline::_2017_11::OfficeOnline",
+      "scope": "Oo1::Soa::OfficeOnline::OfficeOnline"
+    }
+  ],
+  "TcVersion": "tc13000.0.0",
+  "Typedef": [
+    {
+      "DataTypeRefParam": [
+        {
+          "DataTypeRefParam": [
+            {
+              "dataType": "std::string"
+            },
+            {
+              "dataType": "std::string"
+            }
+          ],
+          "dataType": "std::map"
+        }
+      ],
+      "createRelease": "tc11000.4.0",
+      "description": "String to String Map. It is extra information for the request.",
+      "isPublished": "true",
+      "name": "KeyValueMap",
+      "namespace": "Oo1::Soa::OfficeOnline::_2017_11::OfficeOnline",
+      "scope": "Oo1::Soa::OfficeOnline::OfficeOnline"
+    }
+  ],
+  "xmlns": "http://teamcenter.com/BusinessModel/TcBusinessData"
+}

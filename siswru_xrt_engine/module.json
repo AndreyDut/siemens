@@ -1,0 +1,5 @@
+{
+    "name": "siswru_xrt_engine",
+    "description": "This is the siswru_xrt_engine module",
+    "skipTest": true
+}

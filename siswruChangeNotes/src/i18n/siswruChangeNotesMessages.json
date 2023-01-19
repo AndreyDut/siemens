@@ -1,0 +1,12 @@
+{
+    "header": "Header",
+    "body": "Body",
+    "footer": "Footer",
+    "checkBoxName": "Enable the OK button in footer",
+    "save": "Ok",
+    "textValue": "Contents here",
+    "siswruAddDocForCNTitle": "Выбрать",
+    "siswruAddDocForCNDescription": "Добавить объект в массив прикрепления",
+    "siswruChangeNotesNavigateToDocTitle": "Открыть",
+    "siswruChangeNotesNavigateToDocDescription": "Откройте выбранный объект в новой вкладке"
+}

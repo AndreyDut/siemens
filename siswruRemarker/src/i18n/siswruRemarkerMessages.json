@@ -1,0 +1,16 @@
+{
+    "header": "Header",
+    "body": "Body",
+    "footer": "Footer",
+    "checkBoxName": "Enable the OK button in footer",
+    "save": "Ok",
+    "textValue": "Contents here",
+    "siswruRemarkerEditTitle": "Реактировать",
+    "siswruRemarkerEditDescription": "Редактировать замечания",
+    "siswruRemarkerSaveTitle": "Сохранить",
+    "siswruRemarkerSaveDescription": "Сохранить изменения в замечаниях",
+    "siswruRemarkerCancelTitle": "Отменить",
+    "siswruRemarkerCancelDescription": "Отменить изменения в замечаниях",
+    "siswruRemarkerFilterTitle":"Фильтры поиска",
+    "siswruRemarkerFilterDescription":"Открыть панель фильтрации замечаний"
+}

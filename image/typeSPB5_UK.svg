@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<svg width="48" height="48" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:se="http://svg-edit.googlecode.com" data-name="Layer 1">
+ <linearGradient data-name="New Gradient Swatch 1" id="New_Gradient_Swatch_1" x1="0.07447" x2="0.92553" y1="-0.10606" y2="1.10606">
+  <stop offset="0" stop-color="#ebebeb"/>
+  <stop offset="0.221" stop-color="#e8e8e8"/>
+  <stop offset="0.542" stop-color="#e1e1e1"/>
+  <stop offset="0.921" stop-color="#d5d5d5"/>
+  <stop offset="1" stop-color="#d2d2d2"/>
+ </linearGradient>
+ <linearGradient id="linear-gradient" x1="-0.05" x2="1.05" y1="0.04167" y2="0.95833">
+  <stop offset="0" stop-color="#fff"/>
+  <stop offset="0.305" stop-color="#fbfbfb"/>
+  <stop offset="0.584" stop-color="#f0f0f0"/>
+  <stop offset="0.852" stop-color="#dedede"/>
+  <stop offset="1" stop-color="#d0d0d0"/>
+ </linearGradient>
+ <linearGradient data-name="Dark Blue Grad" id="Dark_Blue_Grad" x1="-0.04412" x2="0.80882" y1="0.04688" y2="0.95313">
+  <stop offset="0" stop-color="#73b4c8"/>
+  <stop offset="0.175" stop-color="#6aaec3"/>
+  <stop offset="0.457" stop-color="#529eb5"/>
+  <stop offset="0.809" stop-color="#2c839f"/>
+  <stop offset="1" stop-color="#147391"/>
+ </linearGradient>
+ <g class="layer">
+  <title>Layer 1</title>
+  <rect fill="url(#New_Gradient_Swatch_1)" height="37.6" id="svg_1" stroke="#464646" stroke-miterlimit="10" transform="matrix(1 0 0 1 0 0)" width="29.574899" x="3.12219" y="8.50337"/>
+  <g id="svg_6" transform="matrix(1 0 0 1 0 0)">
+   <rect fill="none" height="33.227502" id="svg_4" stroke="#919191" stroke-miterlimit="10" width="24.845369" x="5.35172" y="10.612091"/>
+   <polyline fill="none" id="svg_2" points="30.156061851846857,35.155540726718755 5.466701586754823,35.155540726718755 5.466701586754823,44.321730557103365 " stroke="#919191" stroke-miterlimit="10"/>
+   <line fill="none" id="svg_3" stroke="#919191" stroke-miterlimit="10" x1="15.168806" x2="15.168806" y1="35.243203" y2="44.40941"/>
+  </g>
+  <g id="svg_18">
+   <rect fill="url(#linear-gradient)" height="23.04575" id="svg_1" stroke="#464646" stroke-miterlimit="10" width="30.91503" x="13.332681" y="3.19455"/>
+   <line fill="none" id="svg_5" stroke="#919191" stroke-miterlimit="10" x1="27.020041" x2="41.020041" y1="9.6695" y2="9.6695"/>
+   <g id="svg_12">
+    <rect fill="none" height="6.86057" id="svg_2" stroke="#6e6e6e" width="6.75163" x="17.332681" y="6.19455"/>
+    <polyline fill="none" id="svg_7" points="18.867143988609314,9.624831393361092 20.40160596370697,11.18405456840992 22.54985272884369,7.753771975636482 " stroke="#919191" stroke-miterlimit="10"/>
+    <rect fill="none" height="6.86057" id="svg_14" stroke="#6e6e6e" width="6.75163" x="17.284751" y="15.86122"/>
+    <polyline fill="none" id="svg_15" points="18.819212317466736,19.29151077568531 20.353674292564392,20.850730136036873 22.50192105770111,17.42044372856617 " stroke="#919191" stroke-miterlimit="10"/>
+   </g>
+   <line fill="none" id="svg_16" stroke="#919191" stroke-miterlimit="10" x1="26.895861" x2="40.895861" y1="18.91024" y2="18.91024"/>
+  </g>
+ </g>
+</svg>

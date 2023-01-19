@@ -1,0 +1,126 @@
+{
+    "commands": {
+        "siswruAddDocForCN": {
+            "iconId": "cmdAdd",
+            "title": "{{i18n.siswruAddDocForCNTitle}}",
+            "description": "{{i18n.siswruAddDocForCNDescription}}"
+        },
+        "siswruRemoveDocForCN": {
+            "iconId": "cmdRemove",
+            "title": "{{i18n.siswruAddDocForCNTitle}}",
+            "description": "{{i18n.siswruAddDocForCNDescription}}"
+        },
+        "siswruChangeNotesNavigateToDoc": {
+            "iconId": "cmdOpen",
+            "title": "{{i18n.siswruChangeNotesNavigateToDocTitle}}",
+            "description": "{{i18n.siswruChangeNotesNavigateToDocDescription}}"
+        }
+    },
+    "commandHandlers": {
+        "siswruAddDocForCNHandler": {
+            "id": "siswruAddDocForCN",
+            "action": "activatesiswruAddDocForCN",
+            "activeWhen": true,
+            "visibleWhen": {
+                "condition": "conditions.true"
+            }
+        },
+        "siswruRemoveDocForCNHandler": {
+            "id": "siswruRemoveDocForCN",
+            "action": "activatesiswruRemoveDocForCN",
+            "activeWhen": true,
+            "visibleWhen": {
+                "condition": "conditions.true"
+            }
+        },
+        "siswruChangeNotesNavigateToDocHandler": {
+            "id": "siswruChangeNotesNavigateToDoc",
+            "action": "activatesiswruChangeNotesNavigateToDoc",
+            "activeWhen": true,
+            "visibleWhen": {
+                "condition": "conditions.true"
+            }
+        }
+    },
+    "commandPlacements": {
+        "siswruAddDocForCNsiswuCNDocSearchList": {
+            "id": "siswruAddDocForCN",
+            "uiAnchor": "siswuCNDocSearchList",
+            "priority": 1,
+            "cellDisplay": {
+                "hover": false,
+                "position": "TOP_RIGHT",
+                "selected": true
+            }
+        },
+        "siswruRemoveDocForCNsiswuCNDocSearchList": {
+            "id": "siswruRemoveDocForCN",
+            "uiAnchor": "siswuCNDocOutputList",
+            "priority": 1,
+            "cellDisplay": {
+                "hover": false,
+                "position": "TOP_RIGHT",
+                "selected": true
+            }
+        },
+        "siswruChangeNotesNavigateToDocaw_rightWall": {
+            "id": "siswruChangeNotesNavigateToDoc",
+            "uiAnchor": "siswru-notes-table",
+            "priority": 100
+        }
+    },
+    "actions": {
+        "activatesiswruAddDocForCN": {
+            "actionType": "Event",
+            "method": "Event",
+            "inputData": {
+                "events": [
+                    {
+                        "name": "siswruAddItem"
+                    }
+                ]
+            }
+        },
+        "activatesiswruRemoveDocForCN": {
+            "actionType": "Event",
+            "method": "Event",
+            "inputData": {
+                "events": [
+                    {
+                        "name": "siswruRemoveItem"
+                    }
+                ]
+            }
+        },
+        "activatesiswruChangeNotesNavigateToDoc": {
+            "actionType": "Navigate",
+            "navigateTo": "com_siemens_splm_clientfx_tcui_xrt_showObject",
+            "navigationParams": {
+                "uid":{
+                    "$adapt": "{{commandContext.vmo}}",
+                    "path":"uid"
+                }
+            },
+            "navigateIn": "newTab"
+        }
+    },
+    "conditions": {
+        "objectIsSelected": {
+            "expression": "ctx.selected"
+        }
+    },
+    "i18n": {
+        "siswruAddDocForCNTitle": [
+            "siswruChangeNotesMessages"
+        ],
+        "siswruAddDocForCNDescription": [
+            "siswruChangeNotesMessages"
+        ],
+        "siswruChangeNotesNavigateToDocTitle": [
+            "siswruChangeNotesMessages"
+        ],
+        "siswruChangeNotesNavigateToDocDescription": [
+            "siswruChangeNotesMessages"
+        ]
+    }
+}

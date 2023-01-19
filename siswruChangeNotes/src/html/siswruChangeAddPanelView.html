@@ -1,0 +1,16 @@
+<aw-command-panel caption="Добавить документ">
+    <aw-panel-body>
+        <aw-command-panel-section caption="Выбранные" collapsed="false">
+            <aw-list dataprovider="data.dataProviders.outputDP">
+                <aw-default-cell vmo="item"></aw-default-cell>
+            </aw-list>
+            <aw-button action="add" enable-when="data.outputResult.length">Добавить</aw-button>
+        </aw-command-panel-section>
+        <aw-command-panel-section caption="Поиск" collapsed="false">
+            <aw-search-box prop="data.searchBox" action="doSearchCall" ></aw-search-box>
+            <aw-list dataprovider="data.dataProviders.searchResultDP">
+                <aw-default-cell vmo="item"></aw-default-cell>
+            </aw-list>
+        </aw-command-panel-section>
+    </aw-panel-body>
+</aw-command-panel>

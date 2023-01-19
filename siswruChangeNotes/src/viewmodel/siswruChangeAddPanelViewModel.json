@@ -1,0 +1,185 @@
+{
+    "schemaVersion": "1.0.0",
+    "imports": [
+        "js/aw-command-panel.directive",
+        "js/aw-panel-body.directive",
+        "js/aw-button.directive",
+        "js/aw-list.directive",
+        "js/aw-default-cell.directive",
+        "js/aw-search-box.directive",
+        "js/aw-command-panel-section.directive",
+        "js/enable-when.directive"
+    ],
+    "data":{
+        "searchBox": {
+            "displayName": "Enter String value in Textbox",
+            "type": "STRING"
+        },
+        "outputResult":[],
+        "outputTotalFound":0
+    },
+    "actions": {
+        "add":{
+            "actionType":"JSFunctionAsync",
+            "deps": "js/siswruChangesService",
+            "method": "addRelation",
+            "inputData": {
+                "cardData":"{{ctx.panelContext.cardData}}",
+                "docs":"{{data.outputResult}}",
+                "parentUid":"{{ctx.xrtSummaryContextObject.uid}}",
+                "objectTypes":"{{ctx.panelContext.objectTypes}}"
+            },
+            "events": {
+                "success":[
+                    {
+                        "name": "siswru.updateCNBlocks",
+                        "excludeLocalDataCtx": true
+                    },
+                    {
+                        "name": "complete",
+                        "eventData": {
+                            "source": "toolAndInfoPanel"
+                        },
+                        "excludeLocalDataCtx": true
+                    }
+                ]
+            }
+        },
+        "doSearchCall": {
+            "actionType": "Event",
+            "method": "Event",
+            "inputData": {
+                "events": [
+                    {
+                        "name": "searchInitiated"
+                    }
+                ]
+            }
+        },
+        "doSearch":{
+            "actionType":"dataProvider",
+            "method": "searchResultDP"
+        },
+        "search":
+        {
+            "actionType": "TcSoaService",
+            "serviceName": "Internal-AWS2-2019-06-Finder",
+            "method": "performSearchViewModel4",
+            "inputData":
+            {
+                "columnConfigInput":
+                {
+                    "clientName": "AWClient",
+                    "clientScopeURI":"Awp0SearchResults",
+                    "columnsToExclude": [],
+                    "hostingClientName": "",
+                    "operationType": "intersection"
+                },
+                "saveColumnConfigData":
+                {
+                    "columnConfigId": "",
+                    "clientScopeURI": "",
+                    "columns": [],
+                    "scope": "",
+                    "scopeName": ""
+                },
+                "searchInput":
+                {
+                    "attributesToInflate": [ "object_name", "object_desc" ],
+                    "maxToLoad": 50,
+                    "maxToReturn": 50,
+                    "providerName": "Awp0FullTextSearchProvider",
+                    "searchCriteria":
+                    {
+                       "searchString": "{{data.searchBox.dbValue}}"
+                    },
+                    "searchFilterFieldSortType": "Priority",
+                    "searchFilterMap6": {               
+                        "WorkspaceObject.object_type":"{{function:getObjectTypes}}"
+                    }
+                }
+            },
+            "outputData": {
+                "totalFound": "totalFound",
+                "searchResults": "{{json:searchResultsJSON}}"
+            },
+            "deps": "js/siswruChangesService"
+        },
+        "addToOutput":{
+            "actionType":"JSFunction",
+            "deps": "js/siswruChangesService",
+            "method": "addToOutput",
+            "inputData": {
+                "container":"{{data.outputResult}}",
+                "item":"{{data.dataProviders.searchResultDP.selectedObjects[0]}}"
+            },
+            "events": {
+                "success":[
+                    {
+                        "name": "siswruUpdateOutputDP"
+                    }
+                ]
+            }
+        },
+        "updateOutputDP":{
+            "actionType":"dataProvider",
+            "method": "outputDP"
+        },
+        "removeFromOutput":{
+            "actionType":"JSFunction",
+            "deps": "js/siswruChangesService",
+            "method": "removeFromOutput",
+            "inputData": {
+                "container":"{{data.outputResult}}",
+                "item":"{{data.dataProviders.outputDP.selectedObjects[0]}}"
+            },
+            "outputData": {
+                "outputResult":"container"
+            },
+            "events": {
+                "success":[
+                    {
+                        "name": "siswruUpdateOutputDP"
+                    }
+                ]
+            }
+        }
+    },
+    "functions":{
+        "getObjectTypes":{
+            "functionName": "getObjectTypes",
+            "parameters": ["{{ctx.panelContext.objectTypes}}"]
+        }
+    },
+    "dataProviders": {
+        "searchResultDP":{
+            "action":"search",
+            "response": "{{data.searchResults}}",
+            "totalFound": "{{data.totalFound}}",
+            "commandsAnchor": "siswuCNDocSearchList"
+        },
+        "outputDP":{
+            "response": "{{data.outputResult}}",
+            "commandsAnchor": "siswuCNDocOutputList"
+        }
+    },
+    "onEvent": [
+        {
+            "eventId": "searchInitiated",
+            "action": "doSearch",
+            "condition": "data.searchBox.dbValue && data.searchBox.dbValue.length>0"
+        },
+        {
+            "eventId": "siswruAddItem",
+            "action": "addToOutput"
+        },
+        {
+            "eventId": "siswruUpdateOutputDP",
+            "action": "updateOutputDP"
+        },
+        {
+            "eventId": "siswruRemoveItem",
+            "action": "removeFromOutput"
+        }
+    ]
+}

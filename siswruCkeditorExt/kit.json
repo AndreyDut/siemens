@@ -1,0 +1,18 @@
+{
+    "name": "siswruCkeditorExt",
+    "level": 7,
+    "kitDeps": [
+        "siswruAddMaterialToPart",
+        "siswruArchiveLocation",
+        "siswruAssemblyWeightModule",
+        "siswruChangeNotes",
+        "siswruCreateDocByAssembly",
+        "siswruMaterialAssemblyWeightModule",
+        "siswruRemarker",
+        "siswru_xrt_engine",
+        "tc-aw-solution"
+    ],
+    "modules": [
+        "siswruCkeditorExt"
+    ]
+}

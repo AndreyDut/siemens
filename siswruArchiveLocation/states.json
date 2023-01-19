@@ -1,0 +1,171 @@
+{
+    "siswruArchiveLocation": {
+        "data": {
+            "browserTitle": {
+                "source": "/i18n/siswruArchiveLocationMessages",
+                "key": "siswruArchiveLocationBrowserTitle"
+            },
+            "headerTitle": {
+                "source": "/i18n/siswruArchiveLocationMessages",
+                "key": "siswruArchiveLocationHeaderTitle"
+            },
+            "viewBase":"siswruToolBook"
+        },
+        "type": "location"
+    },
+    "siswruArchive1": {
+        "controller": "NativeSubLocationCtrl",
+        "data": {
+            "selectionMode": "single",
+            "viewModes": {
+                "SummaryView": {
+                    "primaryWorkArea": "list",
+                    "secondaryWorkArea": true
+                }
+            },
+            "breadcrumbConfig": {
+                "type": "search",
+                "vm": "siswruArchiveFilterBreadCrumb",
+                "noUpdate": true,
+                "popuplist": "/html/defaultbreadcrumblist.html",
+                "overflowIndex": 0
+            },
+            "priority": 0,
+            "label": {
+                "source": "/i18n/siswruArchiveLocationMessages",
+                "key": "siswruArchive1"
+            },
+            "clientScopeURI": "Awp0ObjectNavigation",
+            "nameToken": "siswruArchive1"
+        },
+        "dependencies": [
+            "js/aw.native.sublocation.controller"
+        ],
+        "params": {
+            "searchCriteria": null,
+            "itemType": "SPB5_IKRevision"
+          },
+        "parent": "siswruArchiveLocation",
+        "reloadOnSearch": false,
+        "templateUrl": "/html/aw.native.sublocation.html",
+        "type": "subLocation",
+        "url": "/siswruArchive1"
+    },
+    "siswruArchive2": {
+        "controller": "NativeSubLocationCtrl",
+        "data": {
+            "selectionMode": "single",
+            "viewModes": {
+                "SummaryView": {
+                    "primaryWorkArea": "list",
+                    "secondaryWorkArea": true
+                }
+            },
+            "breadcrumbConfig": {
+                "type": "search",
+                "vm": "siswruArchiveFilterBreadCrumb",
+                "noUpdate": true,
+                "popuplist": "/html/defaultbreadcrumblist.html",
+                "overflowIndex": 0
+            },
+            "priority": 0,
+            "label": {
+                "source": "/i18n/siswruArchiveLocationMessages",
+                "key": "siswruArchive2"
+            },
+            "clientScopeURI": "Awp0ObjectNavigation",
+            "nameToken": "siswruArchive2"
+        },
+        "dependencies": [
+            "js/aw.native.sublocation.controller"
+        ],
+        "params": {
+            "itemType": "SPB5_KRRevision",
+            "searchCriteria": null
+            
+          },
+        "parent": "siswruArchiveLocation",
+        "reloadOnSearch": false,
+        "templateUrl": "/html/aw.native.sublocation.html",
+        "type": "subLocation",
+        "url": "/siswruArchive2"
+    },
+    "siswruArchive3": {
+        "controller": "NativeSubLocationCtrl",
+        "data": {
+            "selectionMode": "single",
+            "viewModes": {
+                "SummaryView": {
+                    "primaryWorkArea": "list",
+                    "secondaryWorkArea": true
+                }
+            },
+            "breadcrumbConfig": {
+                "type": "search",
+                "vm": "siswruArchiveFilterBreadCrumb",
+                "noUpdate": true,
+                "popuplist": "/html/defaultbreadcrumblist.html",
+                "overflowIndex": 0
+            },
+            "priority": 0,
+            "label": {
+                "source": "/i18n/siswruArchiveLocationMessages",
+                "key": "siswruArchive3"
+            },
+            "clientScopeURI": "Awp0ObjectNavigation",
+            "nameToken": "siswruArchive3"
+        },
+        "dependencies": [
+            "js/aw.native.sublocation.controller"
+        ],
+        "params": {
+            "itemType": "SPB5_UKRevision",
+            "searchCriteria": null
+            
+          },
+        "parent": "siswruArchiveLocation",
+        "reloadOnSearch": false,
+        "templateUrl": "/html/aw.native.sublocation.html",
+        "type": "subLocation",
+        "url": "/siswruArchive3"
+    },
+    "siswruArchive4": {
+        "controller": "NativeSubLocationCtrl",
+        "data": {
+            "selectionMode": "single",
+            "viewModes": {
+                "SummaryView": {
+                    "primaryWorkArea": "list",
+                    "secondaryWorkArea": true
+                }
+            },
+            "breadcrumbConfig": {
+                "type": "search",
+                "vm": "siswruArchiveFilterBreadCrumb",
+                "noUpdate": true,
+                "popuplist": "/html/defaultbreadcrumblist.html",
+                "overflowIndex": 0
+            },
+            "priority": 0,
+            "label": {
+                "source": "/i18n/siswruArchiveLocationMessages",
+                "key": "siswruArchive4"
+            },
+            "clientScopeURI": "Awp0ObjectNavigation",
+            "nameToken": "siswruArchive4"
+        },
+        "dependencies": [
+            "js/aw.native.sublocation.controller"
+        ],
+        "params": {
+            "itemType": "SPB5_AbonentRevision",
+            "searchCriteria": null
+            
+          },
+        "parent": "siswruArchiveLocation",
+        "reloadOnSearch": false,
+        "templateUrl": "/html/aw.native.sublocation.html",
+        "type": "subLocation",
+        "url": "/siswruArchive4"
+    }
+}

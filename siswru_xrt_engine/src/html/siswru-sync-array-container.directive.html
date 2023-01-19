@@ -1,0 +1,24 @@
+<div ng-if="props[0]">
+    <div ng-if="!modifiable || !syncArrayIsEditable()"  style="padding: 5px;">
+            <div style="display:table; table-layout:fixed; max-width:98%; border-collapse: collapse;">
+            <div style="display: table-row;">
+                <div style="display:table-cell; word-break: break-all; border: 2px solid; padding: 5px; font-weight: bold;" ng-repeat="item in props" >
+                    <b>{{item.propertyDisplayName}}</b>
+                </div>
+            </div>
+            <div ng-show="props[0].displayValues.length > 0"
+                    style="display:table-row"
+                    ng-repeat="displayNode in props[0].displayValues track by $index">
+                <div style="display:table-cell; word-break: break-all; border: 1px solid; padding: 5px;" ng-repeat="item in props" >
+                    {{item.displayValues[$parent.$index]}}
+                </div>
+            </div>
+        </div>      
+    </div>
+    <div ng-if="modifiable && syncArrayIsEditable()"  style="padding: 5px;">
+        <div style="display: flex; flex-wrap: nowrap;">
+            <siswru-sync-array ng-repeat="prop in props" prop="prop" style="max-width:50%; min-width: 25%;"></siswru-sync-array>
+        </div>  
+    </div>
+</div>
+
