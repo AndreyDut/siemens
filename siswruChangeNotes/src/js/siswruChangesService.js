@@ -14,12 +14,12 @@ let updateCounter = 0
 let autosaveStatus = true
 
 //
-function getEmptyCard(generalActionTypeDP) {
+function getEmptyCard(generalSelectDocDP) {
     return  {
         relationInfo: {
-            relationTypeName: generalActionTypeDP[0].relationTypeName,
-            actionTypeName: generalActionTypeDP[0].propInternalValue,
-            actionTypeDisplayName: generalActionTypeDP[0].propDisplayValue
+            relationTypeName: generalSelectDocDP[0].relationTypeName,
+            actionTypeName: generalSelectDocDP[0].propInternalValue,
+            actionTypeDisplayName: generalSelectDocDP[0].propDisplayValue
         },
         dataObject: null,
         attachmentData: [],
@@ -106,7 +106,7 @@ async function updatePropertyBySoa(mo, propName, propValue, unsavedStatus, timeo
 }
 
 export function addCard(cards, ctx) {
-    cards.push(getEmptyCard(ctx.generalActionTypeDP))
+    cards.push(getEmptyCard(ctx.generalSelectDocDP))
     setTimeout(()=> {eventBus.publish("generalGrid.plTable.clientRefresh")}, 2000)
 }
 
@@ -193,7 +193,7 @@ export async function updateOneDesc(cardData, unsavedStatus){
 
 export async function updateActionTypeRequst(cardData, actionType, ctx) {
     if(actionType && cardData.relationInfo.actionTypeName != actionType) {
-        const selectedType = ctx.generalActionTypeDP.find(item => item.propInternalValue === actionType)
+        const selectedType = ctx.generalSelectDocDP.find(item => item.propInternalValue === actionType)
         cardData.relationInfo.actionTypeName = selectedType.propInternalValue
         cardData.relationInfo.actionTypeDisplayName = selectedType.propDisplayValue
         cardData.relationInfo.relationTypeName = selectedType.relationTypeName
@@ -235,19 +235,29 @@ export async function initialGetCNData(uid, ctx) {
     ctx.autoSave.dbValue = false
     updateCounter = 0
     const resp = await siswSoaCallWrapper("Helper-2018-11-ChangeManagement", "getCNData", {changeNoticeRevisions: [{uid}]})
-    const generalActionTypeDP = resp.relationInfo.map(item => ({
+    const generalSelectDocDP = resp.relationInfo.map(item => ({
         propDisplayValue: item.actionTypeDisplayName,
         propInternalValue: item.actionTypeName,
         relationTypeName: item.relationTypeName
     }))
+    const generalSelectCodeDP =  [
+        {
+            "propDisplayValue": "Superior",
+            "propInternalValue": "sup"
+        },]
+
     const pomContainers = resp.relationDataMap[1][0]
     await processCardsData(pomContainers);
     if (!pomContainers.length) {
-        pomContainers.push(getEmptyCard(generalActionTypeDP))
+        pomContainers.push(getEmptyCard(generalSelectDocDP))
     }
+    console.log(generalSelectDocDP)
+    console.log(ctx)
+    console.log(pomContainers)
     return {
-        generalActionTypeDP,
-        pomContainers
+        generalSelectDocDP,
+        pomContainers,
+        generalSelectCodeDP
     }
 }
 

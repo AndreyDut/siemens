@@ -4,7 +4,6 @@
         "js/aw-property-rich-text-area-val.directive",
         "js/aw-widget.directive",
         "js/aw-icon-button.directive",
-        "js/enable-when.directive",
         "js/aw-image.directive",
         "js/visible-when.directive",
         "js/siswru-property-rich-text-area-val.directive",
@@ -30,14 +29,23 @@
             "dispValue": "Устранено",
             "labelPosition": "PROPERTY_LABEL_AT_SIDE"
         },
-        "actionType": {
-            "displayName": "Действие",
+        "selectDoc": {
+            "displayName": "Документ",
             "type": "STRING",
             "isRequired": "true",
             "isEditable": "true",
-            "dataProvider": "actionTypeDP",
+            "dataProvider": "selectDocDP",
             "dbValue": "{{subPanelContext.relationInfo.actionTypeName}}",
             "uiValue":"{{subPanelContext.relationInfo.actionTypeDisplayName}}"
+        },
+        "selectCode": {
+            "displayName": "Код",
+            "type": "STRING",
+            "isRequired": "true",
+            "isEditable": "true",
+            "dataProvider": "selectCodeDP",
+            "dbValue": "",
+            "uiValue":""
         },
         "description": { 
             "displayName": "Описание",
@@ -304,8 +312,11 @@
             "commandsAnchor":"siswru-notes-table",
             "editContext": "TABLE_CONTEXT"
         },
-        "actionTypeDP":{
-            "response":"{{ctx.generalActionTypeDP}}"
+        "selectDocDP":{
+            "response":"{{ctx.generalSelectDocDP}}"
+        },
+        "selectCodeDP":{
+            "response":"{{ctx.generalSelectCodeDP}}"
         }
     },
     "grids": {
