@@ -81,7 +81,7 @@
             "actionType":"dataProvider",
             "method": "docsDataProvider"
         },
-        "handlerCheckbox": {
+        "handlerHaveMarkUp": {
             "actionType": "JSFunction",
             "method": "handlerCheckbox",
             "inputData": {
