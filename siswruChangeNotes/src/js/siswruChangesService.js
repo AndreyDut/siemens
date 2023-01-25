@@ -87,7 +87,7 @@ export  function openCard(data){
 
 export async  function handlerCheckbox(data){
     console.log(data)
-    let test = await siswSoaCallWrapper("AWC - 2021-12", "curdRemarksForm", {})
+    let test = await siswSoaCallWrapper("Funs-2021-12-AWC", "curdRemarksForm", {})
     console.log(test)
 }
 

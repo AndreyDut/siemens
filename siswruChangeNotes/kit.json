@@ -8,6 +8,6 @@
   "OOTB": true,
   "soaDeps": [
     "SPD5.Soa.Helper",
-    "CNI5.Soa.Funs"
+    "CNI5.Soa.Funs._2021_12.AWC"
 	]
 }
