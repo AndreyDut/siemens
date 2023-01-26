@@ -317,7 +317,7 @@ export async function initialGetCNData(uid, ctx) {
         remarks: [],
       },
     };
-    
+
     console.log("ctx.selected", inputDataRemarks);
 
     curdRemarksForm = await siswSoaCallWrapper(
@@ -331,8 +331,6 @@ export async function initialGetCNData(uid, ctx) {
     console.log(error)
   }
 
-  console.log("ctx", ctx);
-
   const generalSelectCodeDP = [
     {
       propDisplayValue: "Superior",
@@ -345,9 +343,11 @@ export async function initialGetCNData(uid, ctx) {
   if (!pomContainers.length) {
     pomContainers.push(getEmptyCard(generalSelectDocDP));
   }
+  
+  console.log("ctx", ctx);
   console.log("generalSelectDocDP", generalSelectDocDP);
-  console.log(ctx);
   console.log(pomContainers);
+
   return {
     generalSelectDocDP,
     pomContainers,
