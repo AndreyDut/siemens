@@ -307,6 +307,7 @@ export async function initialGetCNData(uid, ctx) {
     relationTypeName: item.relationTypeName,
   }));
   let curdRemarksForm;
+  let firstForm;
 
   try {
     console.log("ctx.selected", ctx.selected);
@@ -318,23 +319,63 @@ export async function initialGetCNData(uid, ctx) {
       },
     };
 
-    console.log("ctx.selected", inputDataRemarks);
+    console.log("inputDataRemarks", inputDataRemarks);
 
     curdRemarksForm = await siswSoaCallWrapper(
         "Funs-2021-12-AWC",
         "curdRemarksForm",
         inputDataRemarks
       );
-
+      
+    firstForm = curdRemarksForm[0]
     console.log("curdRemarksForm", curdRemarksForm);
   } catch (error) {
     console.log(error)
   }
 
+  let descRemark = {
+    remarkLong: {
+        propDisplayValue: firstForm.spb5RemarkNotesLong,
+        propInternalValue: firstForm.spb5RemarkNotesLong,
+      },
+    remakUser:     {
+        propDisplayValue: firstForm.spb5RemarkUser,
+        propInternalValue: firstForm.spb5RemarkUser,
+      },
+    remarkRole: {
+        propDisplayValue: firstForm.spb5RemarkRemarkerRole,
+        propInternalValue: firstForm.spb5RemarkRemarkerRole,
+      },
+    remarkDate: {
+        propDisplayValue: firstForm.spb5RemarkCreateDate,
+        propInternalValue: firstForm.spb5RemarkCreateDate,
+      },
+  }
+
+  let descAnswerRemark = {
+    answerRemarkLong: {
+        propDisplayValue: firstForm.spb5RemarkDesicionLong,
+        propInternalValue: firstForm.spb5RemarkDesicionLong,
+      },
+    answerRemakUser:     {
+        propDisplayValue: firstForm.spb5RemarkAnsweringUser,
+        propInternalValue: firstForm.spb5RemarkAnsweringUser,
+      },
+    answerRemarkRole: {
+        propDisplayValue: firstForm.spb5RemarkAnsweringRole,
+        propInternalValue: firstForm.spb5RemarkAnsweringRole,
+      },
+    answerRemarkDate: {
+        propDisplayValue: firstForm.spb5RemarkLastChangeDate,
+        propInternalValue: firstForm.spb5RemarkLastChangeDate,
+      },
+  }
+
+
   const generalSelectCodeDP = [
     {
-      propDisplayValue: "Superior",
-      propInternalValue: "sup",
+      propDisplayValue: firstForm?.spb5RemarkCode,
+      propInternalValue: firstForm?.spb5RemarkCode,
     },
   ];
 
@@ -352,6 +393,8 @@ export async function initialGetCNData(uid, ctx) {
     generalSelectDocDP,
     pomContainers,
     generalSelectCodeDP,
+    descRemark,
+    descAnswerRemark,
   };
 }
 

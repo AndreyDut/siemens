@@ -51,7 +51,8 @@
             "type": "STRING",
             "isRequired": "false",
             "isEditable": "true",
-            "dbValue": "user1",
+            "dataProvider": "user1DP",
+            "dbValue": "",
             "dispValue": ""
         },
         "textAreaUser2": {
@@ -59,7 +60,8 @@
             "type": "STRING",
             "isRequired": "false",
             "isEditable": "true",
-            "dbValue": "user2",
+            "dataProvider": "user2DP",
+            "dbValue": "",
             "dispValue": ""
         },
         "textAreaGroup1": {
@@ -67,7 +69,8 @@
             "type": "STRING",
             "isRequired": "false",
             "isEditable": "true",
-            "dbValue": "group1",
+            "dataProvider": "group1DP",
+            "dbValue": "",
             "dispValue": ""
         },
         "textAreaGroup2": {
@@ -75,7 +78,8 @@
             "type": "STRING",
             "isRequired": "false",
             "isEditable": "true",
-            "dbValue": "group2",
+            "dataProvider": "group2DP",
+            "dbValue": "",
             "dispValue": ""
         },
         "textAreaDate1": {
@@ -83,7 +87,8 @@
             "type": "STRING",
             "isRequired": "false",
             "isEditable": "true",
-            "dbValue": "date1",
+            "dataProvider": "date1DP",
+            "dbValue": "",
             "dispValue": ""
         },
         "textAreaDate2": {
@@ -91,7 +96,8 @@
             "type": "STRING",
             "isRequired": "false",
             "isEditable": "true",
-            "dbValue": "date2",
+            "dataProvider": "date2DP",
+            "dbValue": "",
             "dispValue": ""
         },
         "selectDoc": {
@@ -382,6 +388,24 @@
         },
         "selectCodeDP":{
             "response":"{{ctx.generalSelectCodeDP}}"
+        },
+        "user1DP":{
+            "response":"{{ctx.descRemark.remakUser}}"
+        },
+        "user2DP":{
+            "response":"{{ctx.descAnswerRemark.answerRemakUser}}"
+        },
+        "group1DP":{
+            "response":"{{ctx.descRemark.remarkRole}}"
+        },
+        "group2DP":{
+            "response":"{{ctx.descAnswerRemark.answerRemarkRole}}"
+        },
+        "date1DP":{
+            "response":"{{ctx.descRemark.remarkDate}}"
+        },
+        "date2DP":{
+            "response":"{{ctx.descAnswerRemark.answerRemarkDate}}"
         }
     },
     "grids": {
