@@ -7,7 +7,8 @@
         "js/aw-image.directive",
         "js/visible-when.directive",
         "js/siswru-property-rich-text-area-val.directive",
-        "js/aw-checkbox.directive"
+        "js/aw-checkbox.directive",
+        "js/aw-label.directive"
     ],
     "data": {
         "emptyUid": "AAAAAAAAAAAAAA",
@@ -28,6 +29,70 @@
             "dbValue": "",
             "dispValue": "Устранено",
             "labelPosition": "PROPERTY_LABEL_AT_SIDE"
+        },
+        "labelTextArea1": {
+            "displayName": "Замечание",
+            "type": "STRING",
+            "isRequired": "false",
+            "isEditable": "true",
+            "dbValue": "",
+            "dispValue": ""
+        },
+        "labelTextArea2": {
+            "displayName": "Ответ на замечание",
+            "type": "STRING",
+            "isRequired": "false",
+            "isEditable": "true",
+            "dbValue": "",
+            "dispValue": ""
+        },
+        "textAreaUser1": {
+            "displayName": "ФИО выдавшего замечание",
+            "type": "STRING",
+            "isRequired": "false",
+            "isEditable": "true",
+            "dbValue": "",
+            "dispValue": ""
+        },
+        "textAreaUser2": {
+            "displayName": "ФИО отвечающего",
+            "type": "STRING",
+            "isRequired": "false",
+            "isEditable": "true",
+            "dbValue": "",
+            "dispValue": ""
+        },
+        "textAreaGroup1": {
+            "displayName": "Группа",
+            "type": "STRING",
+            "isRequired": "false",
+            "isEditable": "true",
+            "dbValue": "",
+            "dispValue": ""
+        },
+        "textAreaGroup2": {
+            "displayName": "Группа",
+            "type": "STRING",
+            "isRequired": "false",
+            "isEditable": "true",
+            "dbValue": "",
+            "dispValue": ""
+        },
+        "textAreaDate1": {
+            "displayName": "Дата",
+            "type": "STRING",
+            "isRequired": "false",
+            "isEditable": "true",
+            "dbValue": "",
+            "dispValue": ""
+        },
+        "textAreaDate2": {
+            "displayName": "Дата",
+            "type": "STRING",
+            "isRequired": "false",
+            "isEditable": "true",
+            "dbValue": "",
+            "dispValue": ""
         },
         "selectDoc": {
             "displayName": "Документ",

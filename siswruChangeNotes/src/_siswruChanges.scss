@@ -42,9 +42,16 @@
     position: relative;
     flex: 1;
     height: 160px;
+    .text-area-head {
+      padding-bottom: 50px;
+    }
     .aw-widgets-propertyRichTextEditValue {
       min-height: 160px;
       max-height: 160px;
+    }
+    .text-area-desc {
+      padding-top: 16px;
+      display: flex;
     }
   }
 }

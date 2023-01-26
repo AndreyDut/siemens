@@ -1,28 +1,63 @@
-<div ng-class="subPanelContext.dataObject.uid === data.emptyUid? 'siswru-ii-change-card-old': 'siswru-ii-change-card'">
-    <div class="siswru-ii-add-remove">
-            <aw-icon-button command="data.openCardCommand"></aw-icon-button>
-            <aw-icon-button command="data.addCardCommand"></aw-icon-button>
-            <aw-icon-button command="data.removeCardCommand"></aw-icon-button>
-            <aw-icon-button command="data.copyCardCommand"></aw-icon-button>
-    </div>     
-<div class="siswru-ii-main">
+<div
+  ng-class="subPanelContext.dataObject.uid === data.emptyUid? 'siswru-ii-change-card-old': 'siswru-ii-change-card'"
+>
+  <div class="siswru-ii-add-remove">
+    <aw-icon-button command="data.openCardCommand"></aw-icon-button>
+    <aw-icon-button command="data.addCardCommand"></aw-icon-button>
+    <aw-icon-button command="data.removeCardCommand"></aw-icon-button>
+    <aw-icon-button command="data.copyCardCommand"></aw-icon-button>
+  </div>
+  <div class="siswru-ii-main">
     <div class="sisru-ii-main-head">
-        <div class="siswru-ii-main-selects">
-            <aw-widget prop="data.selectDoc"></aw-widget>
-            <aw-widget prop="data.selectCode"></aw-widget>
-            <aw-checkbox prop="data.haveMarkUp" action="handlerHaveMarkUp"></aw-checkbox>
-            <aw-checkbox prop="data.eliminated" action="handlerEliminated"></aw-checkbox>
-        </div>
-        <div class="siswru-ii-main-text-area">
-        <siswru-property-rich-text-area-val 
-         prop="data.description"></siswru-property-rich-text-area-val>
+      <div class="siswru-ii-main-selects">
+        <aw-widget prop="data.selectDoc"></aw-widget>
+        <aw-widget prop="data.selectCode"></aw-widget>
+        <aw-checkbox
+          prop="data.haveMarkUp"
+          action="handlerHaveMarkUp"
+        ></aw-checkbox>
+        <aw-checkbox
+          prop="data.eliminated"
+          action="handlerEliminated"
+        ></aw-checkbox>
+      </div>
+      <div class="siswru-ii-main-text-area">
+        <aw-label class="text-area-head" prop="data.labelTextArea1"></aw-label>
+        <siswru-property-rich-text-area-val
+          prop="data.description"
+        ></siswru-property-rich-text-area-val>
         <div class="siswru-ii-save-icon">
-            <aw-image visible-when="data.unsavedStatus.dbValue" source="'assets/image/indicatorUnsaved16.svg'"></aw-image>
+          <aw-image
+            visible-when="data.unsavedStatus.dbValue"
+            source="'assets/image/indicatorUnsaved16.svg'"
+          ></aw-image>
         </div>
+        <div class="text-area-desc">
+            <aw-label prop="data.textAreaUser1"></aw-label>
+            <aw-label prop="data.textAreaGroup1"></aw-label>
+            <aw-label prop="data.textAreaDate1"></aw-label>
         </div>
+      </div>
+      <div class="siswru-ii-main-text-area">
+        <aw-label class="text-area-head" prop="data.labelTextArea2"></aw-label>
+        <siswru-property-rich-text-area-val
+          prop="data.description"
+        ></siswru-property-rich-text-area-val>
+        <div class="siswru-ii-save-icon">
+          <aw-image
+            visible-when="data.unsavedStatus.dbValue"
+            source="'assets/image/indicatorUnsaved16.svg'"
+          ></aw-image>
+        </div>
+        <div class="text-area-desc">
+            <aw-label prop="data.textAreaUser2"></aw-label>
+            <aw-label prop="data.textAreaGroup2"></aw-label>
+            <aw-label prop="data.textAreaDate2"></aw-label>
+        </div>
+      </div>
     </div>
-</div>
-        <!-- <div>
+  </div>
+  <!-- <div>
             <div siswru-icon-wrap ng-class="{'siswru-ii-button-title': subPanelContext.dataObject.uid !== data.emptyUid}">
                 <aw-icon-button enable-when="subPanelContext.dataObject.uid !== data.emptyUid" command="data.addCommand"></aw-icon-button>
                 <span style="vertical-align: super;">Добавить</span>
