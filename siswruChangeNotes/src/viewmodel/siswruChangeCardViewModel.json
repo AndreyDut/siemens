@@ -35,7 +35,7 @@
             "type": "STRING",
             "isRequired": "false",
             "isEditable": "true",
-            "dbValue": "",
+            "dbValue": "remark",
             "dispValue": ""
         },
         "labelTextArea2": {
@@ -43,7 +43,7 @@
             "type": "STRING",
             "isRequired": "false",
             "isEditable": "true",
-            "dbValue": "",
+            "dbValue": "answer",
             "dispValue": ""
         },
         "textAreaUser1": {
@@ -51,7 +51,7 @@
             "type": "STRING",
             "isRequired": "false",
             "isEditable": "true",
-            "dbValue": "",
+            "dbValue": "user1",
             "dispValue": ""
         },
         "textAreaUser2": {
@@ -59,7 +59,7 @@
             "type": "STRING",
             "isRequired": "false",
             "isEditable": "true",
-            "dbValue": "",
+            "dbValue": "user2",
             "dispValue": ""
         },
         "textAreaGroup1": {
@@ -67,7 +67,7 @@
             "type": "STRING",
             "isRequired": "false",
             "isEditable": "true",
-            "dbValue": "",
+            "dbValue": "group1",
             "dispValue": ""
         },
         "textAreaGroup2": {
@@ -75,7 +75,7 @@
             "type": "STRING",
             "isRequired": "false",
             "isEditable": "true",
-            "dbValue": "",
+            "dbValue": "group2",
             "dispValue": ""
         },
         "textAreaDate1": {
@@ -83,7 +83,7 @@
             "type": "STRING",
             "isRequired": "false",
             "isEditable": "true",
-            "dbValue": "",
+            "dbValue": "date1",
             "dispValue": ""
         },
         "textAreaDate2": {
@@ -91,7 +91,7 @@
             "type": "STRING",
             "isRequired": "false",
             "isEditable": "true",
-            "dbValue": "",
+            "dbValue": "date2",
             "dispValue": ""
         },
         "selectDoc": {

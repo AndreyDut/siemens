@@ -41,17 +41,24 @@
   .siswru-ii-main-text-area {
     position: relative;
     flex: 1;
-    height: 160px;
+    display: flex;
+    flex-direction: column;
     .text-area-head {
-      padding-bottom: 50px;
+      padding-bottom: 32px;
     }
     .aw-widgets-propertyRichTextEditValue {
-      min-height: 160px;
+      min-height: 110px;
       max-height: 160px;
     }
     .text-area-desc {
-      padding-top: 16px;
       display: flex;
+      padding-top: 16px;
+      aw-label:first-child {
+        flex: 3;
+      }
+      aw-label {
+        flex: 1;
+      }
     }
   }
 }
