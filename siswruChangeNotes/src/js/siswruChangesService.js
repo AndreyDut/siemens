@@ -327,7 +327,7 @@ export async function initialGetCNData(uid, ctx) {
         inputDataRemarks
       );
       
-    firstForm = curdRemarksForm[0]
+    firstForm = curdRemarksForm.remarks ? curdRemarksForm.remarks[0] : {};
     console.log("curdRemarksForm", curdRemarksForm);
   } catch (error) {
     console.log(error)
@@ -374,8 +374,8 @@ export async function initialGetCNData(uid, ctx) {
 
   const generalSelectCodeDP = [
     {
-      propDisplayValue: firstForm?.spb5RemarkCode,
-      propInternalValue: firstForm?.spb5RemarkCode,
+      propDisplayValue: firstForm.spb5RemarkCode,
+      propInternalValue: firstForm.spb5RemarkCode,
     },
   ];
 
