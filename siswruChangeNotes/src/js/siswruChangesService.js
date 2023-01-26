@@ -23,7 +23,8 @@ function getEmptyCard(generalSelectDocDP) {
     },
     dataObject: null,
     attachmentData: [],
-    description: "",
+    remarkText: "remarkText",
+    answerRemarkText: "answerRemarkText",
   };
 }
 
@@ -211,9 +212,9 @@ export async function cutDocContinue(cardData, docs) {
 
 let timeoutContainer = [];
 export function updateDescriptionRequst2(cardData, desc, unsavedStatus) {
-  if (cardData.description !== desc) {
+  if (cardData.remarkText !== desc) {
     unsavedStatus.dbValue = true;
-    cardData.description = desc;
+    cardData.remarkText = desc;
     let timeout = timeoutContainer.find(
       (item) => item.uid === cardData.dataObject.uid
     );
@@ -235,7 +236,7 @@ export function updateDescriptionRequst2(cardData, desc, unsavedStatus) {
 export async function updateOneDesc(cardData, unsavedStatus) {
   if (cardData.dataObject) {
     const moArray = [{ uid: cardData.dataObject.uid }];
-    const valueArray = [cardData.description];
+    const valueArray = [cardData.remarkText];
     timeoutContainer = timeoutContainer.filter(
       (item) => item.uid !== cardData.dataObject.uid
     );
@@ -419,7 +420,7 @@ async function processCardsData(pomContainers) {
   pomContainers.forEach(async (item) => {
     if (item.dataObject && item.dataObject.uid !== emptyUid) {
       const value = item.dataObject.props.spd5_CNDescription.dbValues[0];
-      item.description = value ? value : "";
+      item.remarkText = value ? value : "";
     } else {
       let value;
       if (item.attachmentData[0].relation.type == "CMHasImpactedItem") {
@@ -429,7 +430,7 @@ async function processCardsData(pomContainers) {
         value =
           item.attachmentData[0].relation.props.spd5_CN_Definition.dbValues[0];
       }
-      item.description = value ? value : "";
+      item.remarkText = value ? value : "";
     }
   });
   console.log(pomContainers);
