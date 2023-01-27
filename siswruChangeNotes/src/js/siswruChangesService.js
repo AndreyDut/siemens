@@ -235,16 +235,17 @@ export async function cutDocContinue(cardData, docs) {
 
 let timeoutContainer = [];
 export function updateDescriptionRequst(cardData, desc, unsavedStatus) {
+    let uid = cardData.dataObject ? cardData.dataObject.uid : '';
   if (cardData.descRemark.remarkLong !== desc) {
     unsavedStatus.dbValue = true;
     cardData.descRemark.remarkLong = desc;
     let timeout = timeoutContainer.find(
-      (item) => item.uid === cardData.dataObject.uid
+      (item) => item.uid === uid
     );
     if (timeout) {
       clearTimeout(timeout.timeoutId);
       timeoutContainer = timeoutContainer.filter(
-        (item) => item.uid !== cardData.dataObject.uid
+        (item) => item.uid !== uid
       );
     }
     let timeoutId = setTimeout(async function () {
@@ -252,23 +253,24 @@ export function updateDescriptionRequst(cardData, desc, unsavedStatus) {
     }, 3000);
     timeoutContainer.push({
       timeoutId,
-      uid: cardData.dataObject.uid,
+      uid: uid,
     });
   }
 }
 export function updateDescriptionRequst2(cardData, desc, unsavedStatus) {
-    try {
+    let uid = cardData.dataObject ? cardData.dataObject.uid : '';
+
         console.log("CALL_UPDATE", cardData, desc, unsavedStatus)
         if (cardData.descAnswerRemark.answerRemarkLong !== desc) {
           unsavedStatus.dbValue = true;
           cardData.descAnswerRemark.answerRemarkLong = desc;
           let timeout = timeoutContainer.find(
-            (item) => item.uid === cardData.dataObject.uid
+            (item) => item.uid === uid
           );
           if (timeout) {
             clearTimeout(timeout.timeoutId);
             timeoutContainer = timeoutContainer.filter(
-              (item) => item.uid !== cardData.dataObject.uid
+              (item) => item.uid !== uid
             );
           }
           let timeoutId = setTimeout(async function () {
@@ -276,13 +278,9 @@ export function updateDescriptionRequst2(cardData, desc, unsavedStatus) {
           }, 3000);
           timeoutContainer.push({
             timeoutId,
-            uid: cardData.dataObject.uid,
+            uid: uid,
           });
         }
-    } catch (error) {
-        console.log(error)
-    }
-
 }
 export async function updateOneDesc(cardData, unsavedStatus) {
   if (cardData.dataObject) {
@@ -457,6 +455,7 @@ export async function initialGetCNData(uid, ctx) {
 }
 
 async function processCardsData(pomContainers) {
+    
   const uids = pomContainers.map((item) => item.dataObject.uid);
   await dms.getProperties(uids, ["spd5_CNDescription", "spd5_CN_Definition"]);
   await dms.loadObjects(uids);
