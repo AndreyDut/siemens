@@ -121,7 +121,7 @@
             "type": "STRING",
             "isRequired": "true",
             "isEditable": "true",
-            "dbValue": "{{subPanelContext.remarkText}}",
+            "dbValue": "{{subPanelContext.descRemark.remarkLong}}",
             "isRichText": true
         },
         "answerRemarkText": { 
@@ -129,7 +129,7 @@
             "type": "STRING",
             "isRequired": "true",
             "isEditable": "true",
-            "dbValue": "{{subPanelContext.answerRemarkText}}",
+            "dbValue": "{{subPanelContext.descAnswerRemark.answerRemarkLong}}",
             "isRichText": true
         },
         "addCardCommand":{

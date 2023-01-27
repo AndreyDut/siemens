@@ -24,8 +24,6 @@ function getEmptyCard(generalSelectDocDP, descRemark, descAnswerRemark) {
     dataObject: null,
     attachmentData: [],
     descRemark, descAnswerRemark,
-    remarkText: descRemark.remarkLong,
-    answerRemarkText: descAnswerRemark.answerRemarkLong,
   };
 }
 
