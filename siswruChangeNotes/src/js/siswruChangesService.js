@@ -229,10 +229,32 @@ export async function cutDocContinue(cardData, docs) {
 }
 
 let timeoutContainer = [];
-export function updateDescriptionRequst2(cardData, desc, unsavedStatus) {
+export function updateDescriptionRequst(cardData, desc, unsavedStatus) {
   if (cardData.remarkText !== desc) {
     unsavedStatus.dbValue = true;
     cardData.remarkText = desc;
+    let timeout = timeoutContainer.find(
+      (item) => item.uid === cardData.dataObject.uid
+    );
+    if (timeout) {
+      clearTimeout(timeout.timeoutId);
+      timeoutContainer = timeoutContainer.filter(
+        (item) => item.uid !== cardData.dataObject.uid
+      );
+    }
+    let timeoutId = setTimeout(async function () {
+      await updateOneDesc(cardData, unsavedStatus);
+    }, 3000);
+    timeoutContainer.push({
+      timeoutId,
+      uid: cardData.dataObject.uid,
+    });
+  }
+}
+export function updateDescriptionRequst2(cardData, desc, unsavedStatus) {
+  if (cardData.answerRemarkUpdate !== desc) {
+    unsavedStatus.dbValue = true;
+    cardData.answerRemarkUpdate = desc;
     let timeout = timeoutContainer.find(
       (item) => item.uid === cardData.dataObject.uid
     );

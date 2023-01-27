@@ -337,13 +337,23 @@
                 ]
             }
         },
+        "updateDescriptionRequst":{
+            "actionType":"JSFunction",
+            "deps": "js/siswruChangesService",
+            "method": "updateDescriptionRequst",
+            "inputData": {
+                "cardData":"{{subPanelContext}}",
+                "desc":"{{data.remarkText.dbValue}}",
+                "unsavedStatus":"{{data.unsavedStatus}}"
+            }
+        },
         "updateDescriptionRequst2":{
             "actionType":"JSFunction",
             "deps": "js/siswruChangesService",
             "method": "updateDescriptionRequst2",
             "inputData": {
                 "cardData":"{{subPanelContext}}",
-                "desc":"{{data.remarkText.dbValue}}",
+                "desc":"{{data.answerRemarkUpdate.dbValue}}",
                 "unsavedStatus":"{{data.unsavedStatus}}"
             }
         },
@@ -431,9 +441,18 @@
         },
         {
             "eventId": "condition.expressionValueChanged",
+            "action": "updateDescriptionRequst",
+            "criteria": {
+                "condition": "conditions.remarkUpdate"
+            },
+            "cacheEventData": true,
+            "eventSource": "current"
+        },
+        {
+            "eventId": "condition.expressionValueChanged",
             "action": "updateDescriptionRequst2",
             "criteria": {
-                "condition": "conditions.descUpdate"
+                "condition": "conditions.answerRemarkUpdate"
             },
             "cacheEventData": true,
             "eventSource": "current"
@@ -456,8 +475,12 @@
         }
     ],
     "conditions": {
-        "descUpdate":{
+        "remarkUpdate":{
             "expression":"data.remarkText.dbValue",
+            "trackValues": true
+        },
+        "answerRemarkUpdate":{
+            "expression":"data.answerRemarkText.dbValue",
             "trackValues": true
         },
         "actionTypeUpdate":{
