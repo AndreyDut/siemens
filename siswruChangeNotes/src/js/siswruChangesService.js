@@ -135,13 +135,12 @@ export function addCard(cards, ctx) {
 }
 
 
-export function copyCard(cards, ctx) {
+export function copyCard(cards, cardData) {
     console.log("cards", cards)
-    console.log("ctx", ctx)
-    // cards.push(getEmptyCard(ctx.generalDataRemark));
-    // setTimeout(() => {
-    //   eventBus.publish("generalGrid.plTable.clientRefresh");
-    // }, 2000);
+    cards.push(cardData);
+    setTimeout(() => {
+      eventBus.publish("generalGrid.plTable.clientRefresh");
+    }, 2000);
 }
 
 

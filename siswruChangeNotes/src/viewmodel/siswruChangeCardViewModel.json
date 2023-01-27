@@ -232,6 +232,15 @@
                 ]
             }
         },
+        "copyCard":{
+            "actionType":"JSFunctionAsync",
+            "deps": "js/siswruChangesService",
+            "method": "copyCard",
+            "inputData": {
+                "cards":"{{data.pomContainers}}",
+                "cardData":"{{subPanelContext}}"
+            }
+        },
         "updateValues":{
             "actionType":"JSFunction",
             "deps": "js/siswruChangesService",
@@ -267,15 +276,7 @@
                 "cardData":"{{subPanelContext}}"
             }
         },
-        "copyCard":{
-            "actionType":"JSFunctionAsync",
-            "deps": "js/siswruChangesService",
-            "method": "copyCard",
-            "inputData": {
-                "cardData":"{{subPanelContext}}",
-                "ctx": "{{ctx}}"
-            }
-        },
+
         "openCard":{
             "actionType":"JSFunctionAsync",
             "deps": "js/siswruChangesService",
