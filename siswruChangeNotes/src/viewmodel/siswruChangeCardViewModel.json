@@ -52,8 +52,8 @@
             "isRequired": "false",
             "isEditable": "true",
             "dataProvider": "user1DP",
-            "dbValue": "",
-            "dispValue": ""
+            "dbValue": "{{subPanelContext.descRemark.remakUser.dbValue}}",
+            "dispValue": "{{subPanelContext.descRemark.remakUser.dispValue}}"
         },
         "textAreaUser2": {
             "displayName": "ФИО отвечающего",
@@ -61,8 +61,8 @@
             "isRequired": "false",
             "isEditable": "true",
             "dataProvider": "user2DP",
-            "dbValue": "",
-            "dispValue": ""
+            "dbValue": "{{subPanelContext.descAnswerRemark.answerRemakUser.dbValue}}",
+            "dispValue": "{{subPanelContext.descAnswerRemark.answerRemakUser.dispValue}}"
         },
         "textAreaGroup1": {
             "displayName": "Группа",
@@ -70,8 +70,8 @@
             "isRequired": "false",
             "isEditable": "true",
             "dataProvider": "group1DP",
-            "dbValue": "",
-            "dispValue": ""
+            "dbValue": "{{subPanelContext.descRemark.remarkRole.dbValue}}",
+            "dispValue": "{{subPanelContext.descRemark.remarkRole.dispValue}}"
         },
         "textAreaGroup2": {
             "displayName": "Группа",
@@ -79,26 +79,24 @@
             "isRequired": "false",
             "isEditable": "true",
             "dataProvider": "group2DP",
-            "dbValue": "",
-            "dispValue": ""
+            "dbValue": "{{subPanelContext.descAnswerRemark.answerRemarkRole.dbValue}}",
+            "dispValue": "{{subPanelContext.descAnswerRemark.answerRemarkRole.dispValue}}"
         },
         "textAreaDate1": {
             "displayName": "Дата",
             "type": "STRING",
             "isRequired": "false",
             "isEditable": "true",
-            "dataProvider": "date1DP",
-            "dbValue": "",
-            "dispValue": ""
+            "dbValue": "{{subPanelContext.descRemark.remarkDate.dbValue}}",
+            "dispValue": "{{subPanelContext.descRemark.remarkDate.dispValue}}"
         },
         "textAreaDate2": {
             "displayName": "Дата",
             "type": "STRING",
             "isRequired": "false",
             "isEditable": "true",
-            "dataProvider": "date2DP",
-            "dbValue": "",
-            "dispValue": ""
+            "dbValue": "{{subPanelContext.descAnswerRemark.answerRemarkDate.dbValue}}",
+            "dispValue": "{{subPanelContext.descAnswerRemark.answerRemarkDate.dispValue}}"
         },
         "selectDoc": {
             "displayName": "Документ",

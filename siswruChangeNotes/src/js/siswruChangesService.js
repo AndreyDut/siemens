@@ -14,7 +14,7 @@ let updateCounter = 0;
 let autosaveStatus = true;
 
 //
-function getEmptyCard(generalSelectDocDP) {
+function getEmptyCard(generalSelectDocDP, descRemark, descAnswerRemark) {
   return {
     relationInfo: {
       relationTypeName: generalSelectDocDP[0].relationTypeName,
@@ -24,6 +24,7 @@ function getEmptyCard(generalSelectDocDP) {
     dataObject: null,
     attachmentData: [],
     description: "",
+    descRemark, descAnswerRemark
   };
 }
 
@@ -130,7 +131,7 @@ async function updatePropertyBySoa(
 }
 
 export function addCard(cards, ctx) {
-  cards.push(getEmptyCard(ctx.generalSelectDocDP));
+  cards.push(getEmptyCard(ctx.generalSelectDocDP, ctx.descRemark, ctx.descAnswerRemark));
   setTimeout(() => {
     eventBus.publish("generalGrid.plTable.clientRefresh");
   }, 2000);
@@ -339,16 +340,16 @@ export async function initialGetCNData(uid, ctx) {
         propInternalValue: firstForm.spb5RemarkNotesLong,
       },
     remakUser:     {
-        propDisplayValue: firstForm.spb5RemarkUser,
-        propInternalValue: firstForm.spb5RemarkUser,
+      dbValue: firstForm.spb5RemarkUser,
+      dispValue: firstForm.spb5RemarkUser,
       },
     remarkRole: {
-        propDisplayValue: firstForm.spb5RemarkRemarkerRole,
-        propInternalValue: firstForm.spb5RemarkRemarkerRole,
+      dbValue: firstForm.spb5RemarkRemarkerRole,
+      dispValue: firstForm.spb5RemarkRemarkerRole,
       },
     remarkDate: {
-        propDisplayValue: firstForm.spb5RemarkCreateDate,
-        propInternalValue: firstForm.spb5RemarkCreateDate,
+      dbValue: new Date(firstForm.spb5RemarkCreateDate).toLocaleString(),
+      dispValue: new Date(firstForm.spb5RemarkCreateDate).toLocaleString(),
       },
   }
 
@@ -358,16 +359,16 @@ export async function initialGetCNData(uid, ctx) {
         propInternalValue: firstForm.spb5RemarkDesicionLong,
       },
     answerRemakUser:     {
-        propDisplayValue: firstForm.spb5RemarkAnsweringUser,
-        propInternalValue: firstForm.spb5RemarkAnsweringUser,
+      dbValue: firstForm.spb5RemarkAnsweringUser,
+      dispValue: firstForm.spb5RemarkAnsweringUser,
       },
     answerRemarkRole: {
-        propDisplayValue: firstForm.spb5RemarkAnsweringRole,
-        propInternalValue: firstForm.spb5RemarkAnsweringRole,
+      dbValue: firstForm.spb5RemarkAnsweringRole,
+      dispValue: firstForm.spb5RemarkAnsweringRole,
       },
     answerRemarkDate: {
-        propDisplayValue: firstForm.spb5RemarkLastChangeDate,
-        propInternalValue: firstForm.spb5RemarkLastChangeDate,
+      dbValue: new Date(firstForm.spb5RemarkLastChangeDate).toLocaleString() ,
+      dispValue: new Date(firstForm.spb5RemarkLastChangeDate).toLocaleString() ,
       },
   }
 
@@ -382,7 +383,7 @@ export async function initialGetCNData(uid, ctx) {
   const pomContainers = resp.relationDataMap[1][0];
   await processCardsData(pomContainers);
   if (!pomContainers.length) {
-    pomContainers.push(getEmptyCard(generalSelectDocDP));
+    pomContainers.push(getEmptyCard(generalSelectDocDP, descRemark, descAnswerRemark));
   }
   
   console.log("ctx", ctx);
