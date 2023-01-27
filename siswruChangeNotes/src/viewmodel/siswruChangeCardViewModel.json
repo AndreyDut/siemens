@@ -116,12 +116,20 @@
             "dbValue": "",
             "uiValue":""
         },
-        "description": { 
-            "displayName": "Описание",
+        "remarkText": { 
+            "displayName": "",
             "type": "STRING",
             "isRequired": "true",
             "isEditable": "true",
-            "dbValue": "{{subPanelContext.description}}",
+            "dbValue": "{{subPanelContext.remarkText}}",
+            "isRichText": true
+        },
+        "answerRemarkText": { 
+            "displayName": "",
+            "type": "STRING",
+            "isRequired": "true",
+            "isEditable": "true",
+            "dbValue": "{{subPanelContext.answerRemarkText}}",
             "isRichText": true
         },
         "addCardCommand":{
@@ -236,7 +244,7 @@
             "inputData": {
                 "cardData":"{{subPanelContext}}",
                 "actionType":"{{data.actionType.dbValue}}",
-                "description":"{{data.description.dbValue}}"
+                "remarkText":"{{data.remarkText.dbValue}}"
             }
         },
         "updateDocsDP":{
@@ -338,7 +346,7 @@
             "method": "updateDescriptionRequst2",
             "inputData": {
                 "cardData":"{{subPanelContext}}",
-                "desc":"{{data.description.dbValue}}",
+                "desc":"{{data.remarkText.dbValue}}",
                 "unsavedStatus":"{{data.unsavedStatus}}"
             }
         },
@@ -470,7 +478,7 @@
     ],
     "conditions": {
         "descUpdate":{
-            "expression":"data.description.dbValue",
+            "expression":"data.remarkText.dbValue",
             "trackValues": true
         },
         "actionTypeUpdate":{
