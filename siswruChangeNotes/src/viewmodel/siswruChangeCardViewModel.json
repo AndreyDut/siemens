@@ -50,48 +50,48 @@
             "type": "STRING",
             "isRequired": "false",
             "isEditable": "true",
-            "dbValue": "{{subPanelContext.descRemark.remakUser.dbValue}}",
-            "dispValue": "{{subPanelContext.descRemark.remakUser.dispValue}}"
+            "dbValue": "{{subPanelContext.spb5RemarkUser}}",
+            "dispValue": "{{subPanelContext.spb5RemarkUser}}"
         },
         "textAreaUser2": {
             "displayName": "ФИО отвечающего",
             "type": "STRING",
             "isRequired": "false",
             "isEditable": "true",
-            "dbValue": "{{subPanelContext.descAnswerRemark.answerRemakUser.dbValue}}",
-            "dispValue": "{{subPanelContext.descAnswerRemark.answerRemakUser.dispValue}}"
+            "dbValue": "{{subPanelContext.spb5RemarkAnsweringUser}}",
+            "dispValue": "{{subPanelContext.spb5RemarkAnsweringUser}}"
         },
         "textAreaGroup1": {
             "displayName": "Группа",
             "type": "STRING",
             "isRequired": "false",
             "isEditable": "true",
-            "dbValue": "{{subPanelContext.descRemark.remarkRole.dbValue}}",
-            "dispValue": "{{subPanelContext.descRemark.remarkRole.dispValue}}"
+            "dbValue": "{{subPanelContext.spb5RemarkRemarkerRole}}",
+            "dispValue": "{{subPanelContext.spb5RemarkRemarkerRole}}"
         },
         "textAreaGroup2": {
             "displayName": "Группа",
             "type": "STRING",
             "isRequired": "false",
             "isEditable": "true",
-            "dbValue": "{{subPanelContext.descAnswerRemark.answerRemarkRole.dbValue}}",
-            "dispValue": "{{subPanelContext.descAnswerRemark.answerRemarkRole.dispValue}}"
+            "dbValue": "{{subPanelContext.spb5RemarkAnsweringRole}}",
+            "dispValue": "{{subPanelContext.spb5RemarkAnsweringRole}}"
         },
         "textAreaDate1": {
             "displayName": "Дата",
             "type": "STRING",
             "isRequired": "false",
             "isEditable": "true",
-            "dbValue": "{{subPanelContext.descRemark.remarkDate.dbValue}}",
-            "dispValue": "{{subPanelContext.descRemark.remarkDate.dispValue}}"
+            "dbValue": "{{subPanelContext.spb5RemarkCreateDate}}",
+            "dispValue": "{{subPanelContext.spb5RemarkCreateDate}}"
         },
         "textAreaDate2": {
             "displayName": "Дата",
             "type": "STRING",
             "isRequired": "false",
             "isEditable": "true",
-            "dbValue": "{{subPanelContext.descAnswerRemark.answerRemarkDate.dbValue}}",
-            "dispValue": "{{subPanelContext.descAnswerRemark.answerRemarkDate.dispValue}}"
+            "dbValue": "{{subPanelContext.spb5RemarkLastChangeDate}}",
+            "dispValue": "{{subPanelContext.spb5RemarkLastChangeDate}}"
         },
         "selectDoc": {
             "displayName": "Документ",
@@ -116,7 +116,7 @@
             "type": "STRING",
             "isRequired": "true",
             "isEditable": "true",
-            "dbValue": "{{subPanelContext.descRemark.remarkLong}}",
+            "dbValue": "{{subPanelContext.spb5RemarkNotesLong}}",
             "isRichText": true
         },
         "answerRemarkText": { 
@@ -124,7 +124,7 @@
             "type": "STRING",
             "isRequired": "true",
             "isEditable": "true",
-            "dbValue": "{{subPanelContext.descAnswerRemark.answerRemarkLong}}",
+            "dbValue": "{{subPanelContext.spb5RemarkDesicionLong}}",
             "isRichText": true
         },
         "addCardCommand":{

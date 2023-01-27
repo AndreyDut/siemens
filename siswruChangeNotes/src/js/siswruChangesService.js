@@ -13,23 +13,57 @@ const emptyUid = "AAAAAAAAAAAAAA";
 let updateCounter = 0;
 let autosaveStatus = true;
 
-//
-function getEmptyCard(generalDataRemark) {
+function buildRemarkObj({
+  spb5KDName = "",
+  spb5RemarkRemarkerRole = "",
+  spb5RemarkAnsweringRole = "",
+  spb5RemarkAnsweringUser = "",
+  spb5RemarkUser = "",
+  spb5RemarkLastChangeDate = "",
+  spb5RemarkCreateDate = "",
+  spb5RemarkNotesLong = "",
+  spb5RemarkApprove = "",
+  spb5RemarkCode = "",
+  spb5RemarkDesicionLong = "",
+}) {
   return {
-    relationInfo: {
-      relationTypeName: '',
-      actionTypeName: generalDataRemark.generalSelectDocDP.propInternalValue,
-      actionTypeDisplayName: generalDataRemark.generalSelectDocDP.propDisplayValue,
-    },
-    dataObject: null,
-    attachmentData: [],
-    spb5RemarkApprove: generalDataRemark.spb5RemarkApprove,
-    generalSelectDocDP: generalDataRemark.generalSelectDocDP,
-    generalSelectCodeDP: generalDataRemark.generalSelectCodeDP,
-    descRemark: generalDataRemark.descRemark,
-    descAnswerRemark: generalDataRemark.descAnswerRemark,
-    // ...generalDataRemark,
+    spb5KDName,
+    spb5RemarkRemarkerRole,
+    spb5RemarkAnsweringRole,
+    spb5RemarkAnsweringUser,
+    spb5RemarkUser,
+    spb5RemarkLastChangeDate: spb5RemarkLastChangeDate ? new Date(
+      spb5RemarkLastChangeDate
+    ).toLocaleString() : spb5RemarkLastChangeDate,
+    spb5RemarkCreateDate: spb5RemarkCreateDate ? new Date(
+        spb5RemarkCreateDate
+    ).toLocaleString() : spb5RemarkCreateDate,
+    spb5RemarkNotesLong,
+    spb5RemarkApprove,
+    spb5RemarkCode,
+    spb5RemarkDesicionLong,
   };
+}
+//
+function getEmptyCard(generalDataRemark, type) {
+  if (type === "newCard") {
+    return buildRemarkObj({
+        generalSelectCodeDP: generalDataRemark.generalSelectCodeDP,
+        generalSelectDocDP: generalDataRemark.generalSelectDocDP
+    });
+  } else {
+    return {
+      relationInfo: {
+        relationTypeName: "",
+        actionTypeName: generalDataRemark.generalSelectDocDP.propInternalValue,
+        actionTypeDisplayName:
+          generalDataRemark.generalSelectDocDP.propDisplayValue,
+      },
+      dataObject: null,
+      attachmentData: [],
+      ...generalDataRemark,
+    };
+  }
 }
 
 export async function getDocsForCard(subCtx, data) {
@@ -131,34 +165,23 @@ async function updatePropertyBySoa(
 }
 
 export function addCard(cards, ctx) {
-    console.log("cards", cards)
-    console.log("ctx", ctx)
-  cards.push(getEmptyCard(ctx.generalDataRemark));
+  console.log("cards", cards);
+  console.log("ctx", ctx);
+  cards.push(getEmptyCard(ctx.generalDataRemark, "newCard"));
   setTimeout(() => {
     eventBus.publish("generalGrid.plTable.clientRefresh");
   }, 2000);
 }
 
-
 export function copyCard(cards, cardData) {
-    let copyElem = {
-        relationInfo: cardData.relationInfo,
-        dataObject: cardData.attachmentData,
-        attachmentData: cardData.attachmentData,
-        generalSelectDocDP: cardData.generalSelectDocDP,
-        generalSelectCodeDP: cardData.generalSelectCodeDP,
-        descRemark: cardData.descRemark,
-        descAnswerRemark: cardData.descAnswerRemark,
-        spb5RemarkApprove: cardData.spb5RemarkApprove,
-      };
-    console.log("cards", cards)
-    console.log("cardData", cardData)
-    cards.push(copyElem);
-    setTimeout(() => {
-      eventBus.publish("generalGrid.plTable.clientRefresh");
-    }, 2000);
+  let copyElem = buildRemarkObj(cardData);
+  console.log("cards", cards);
+  console.log("cardData", cardData);
+  cards.push(copyElem);
+  setTimeout(() => {
+    eventBus.publish("generalGrid.plTable.clientRefresh");
+  }, 2000);
 }
-
 
 export function log(data, ctx) {
   console.log(data);
@@ -188,7 +211,6 @@ export async function addRelation(cardData, docs, parentUid, objectTypes) {
       },
     ],
   };
-
 }
 
 export async function removeCard(cardData) {
@@ -216,18 +238,14 @@ export async function cutDocContinue(cardData, docs) {
 
 let timeoutContainer = [];
 export function updateDescriptionRequst(cardData, desc, unsavedStatus) {
-    let uid = cardData.dataObject ? cardData.dataObject.uid : '';
-  if (cardData.descRemark.remarkLong !== desc) {
+  let uid = cardData.dataObject ? cardData.dataObject.uid : "";
+  if (cardData.spb5RemarkNotesLong !== desc) {
     unsavedStatus.dbValue = true;
-    cardData.descRemark.remarkLong = desc;
-    let timeout = timeoutContainer.find(
-      (item) => item.uid === uid
-    );
+    cardData.spb5RemarkNotesLong = desc;
+    let timeout = timeoutContainer.find((item) => item.uid === uid);
     if (timeout) {
       clearTimeout(timeout.timeoutId);
-      timeoutContainer = timeoutContainer.filter(
-        (item) => item.uid !== uid
-      );
+      timeoutContainer = timeoutContainer.filter((item) => item.uid !== uid);
     }
     let timeoutId = setTimeout(async function () {
       await updateOneDesc(cardData, unsavedStatus);
@@ -239,29 +257,25 @@ export function updateDescriptionRequst(cardData, desc, unsavedStatus) {
   }
 }
 export function updateDescriptionRequst2(cardData, desc, unsavedStatus) {
-    let uid = cardData.dataObject ? cardData.dataObject.uid : '';
+  let uid = cardData.dataObject ? cardData.dataObject.uid : "";
 
-        console.log("CALL_UPDATE", cardData, desc, unsavedStatus)
-        if (cardData.descAnswerRemark.answerRemarkLong !== desc) {
-          unsavedStatus.dbValue = true;
-          cardData.descAnswerRemark.answerRemarkLong = desc;
-          let timeout = timeoutContainer.find(
-            (item) => item.uid === uid
-          );
-          if (timeout) {
-            clearTimeout(timeout.timeoutId);
-            timeoutContainer = timeoutContainer.filter(
-              (item) => item.uid !== uid
-            );
-          }
-          let timeoutId = setTimeout(async function () {
-            await updateOneDesc(cardData, unsavedStatus);
-          }, 3000);
-          timeoutContainer.push({
-            timeoutId,
-            uid: uid,
-          });
-        }
+  console.log("CALL_UPDATE", cardData, desc, unsavedStatus);
+  if (cardData.spb5RemarkDesicionLong !== desc) {
+    unsavedStatus.dbValue = true;
+    cardData.spb5RemarkDesicionLong = desc;
+    let timeout = timeoutContainer.find((item) => item.uid === uid);
+    if (timeout) {
+      clearTimeout(timeout.timeoutId);
+      timeoutContainer = timeoutContainer.filter((item) => item.uid !== uid);
+    }
+    let timeoutId = setTimeout(async function () {
+      await updateOneDesc(cardData, unsavedStatus);
+    }, 3000);
+    timeoutContainer.push({
+      timeoutId,
+      uid: uid,
+    });
+  }
 }
 export async function updateOneDesc(cardData, unsavedStatus) {
   if (cardData.dataObject) {
@@ -339,47 +353,19 @@ export async function initialGetCNData(uid, ctx) {
     console.log("inputDataRemarks", inputDataRemarks);
 
     curdRemarksForm = await siswSoaCallWrapper(
-        "Funs-2021-12-AWC",
-        "curdRemarksForm",
-        inputDataRemarks
-      );
-      
-    generalDataRemark = curdRemarksForm.remarks ? curdRemarksForm.remarks[0] : {};
+      "Funs-2021-12-AWC",
+      "curdRemarksForm",
+      inputDataRemarks
+    );
+
+    generalDataRemark = curdRemarksForm.remarks
+      ? curdRemarksForm.remarks[0]
+      : {};
+
+    generalDataRemark = buildRemarkObj(generalDataRemark)
     console.log("curdRemarksForm", curdRemarksForm);
   } catch (error) {
-    console.log(error)
-  }
-
-  let descRemark = {
-    remarkLong: generalDataRemark.spb5RemarkNotesLong,
-    remakUser:     {
-      dbValue: generalDataRemark.spb5RemarkUser,
-      dispValue: generalDataRemark.spb5RemarkUser,
-      },
-    remarkRole: {
-      dbValue: generalDataRemark.spb5RemarkRemarkerRole,
-      dispValue: generalDataRemark.spb5RemarkRemarkerRole,
-      },
-    remarkDate: {
-      dbValue: new Date(generalDataRemark.spb5RemarkCreateDate).toLocaleString(),
-      dispValue: new Date(generalDataRemark.spb5RemarkCreateDate).toLocaleString(),
-      },
-  }
-
-  let descAnswerRemark = {
-    answerRemarkLong: generalDataRemark.spb5RemarkDesicionLong,
-    answerRemakUser:     {
-      dbValue: generalDataRemark.spb5RemarkAnsweringUser,
-      dispValue: generalDataRemark.spb5RemarkAnsweringUser,
-      },
-    answerRemarkRole: {
-      dbValue: generalDataRemark.spb5RemarkAnsweringRole,
-      dispValue: generalDataRemark.spb5RemarkAnsweringRole,
-      },
-    answerRemarkDate: {
-      dbValue: new Date(generalDataRemark.spb5RemarkLastChangeDate).toLocaleString() ,
-      dispValue: new Date(generalDataRemark.spb5RemarkLastChangeDate).toLocaleString() ,
-      },
+    console.log(error);
   }
 
   generalSelectDocDP = [
@@ -396,33 +382,29 @@ export async function initialGetCNData(uid, ctx) {
     },
   ];
 
-
   generalDataRemark = {
     ...generalDataRemark,
     generalSelectDocDP,
     generalSelectCodeDP,
-    descRemark,
-    descAnswerRemark,
-  }
+  };
 
   let pomContainers = resp.relationDataMap[1][0];
   await processCardsData(pomContainers);
   if (!pomContainers.length) {
     pomContainers.push(getEmptyCard(generalDataRemark));
   }
-  
+
   console.log("ctx", ctx);
   console.log("generalSelectDocDP", generalSelectDocDP);
   console.log(pomContainers);
 
   return {
     pomContainers,
-    generalDataRemark
+    generalDataRemark,
   };
 }
 
 async function processCardsData(pomContainers) {
-    
   const uids = pomContainers.map((item) => item.dataObject.uid);
   await dms.getProperties(uids, ["spd5_CNDescription", "spd5_CN_Definition"]);
   await dms.loadObjects(uids);
