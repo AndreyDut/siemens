@@ -257,27 +257,32 @@ export function updateDescriptionRequst(cardData, desc, unsavedStatus) {
   }
 }
 export function updateDescriptionRequst2(cardData, desc, unsavedStatus) {
-    console.log("CALL_UPDATE", cardData, desc, unsavedStatus)
-  if (cardData.descAnswerRemark.answerRemarkLong !== desc) {
-    unsavedStatus.dbValue = true;
-    cardData.descAnswerRemark.answerRemarkLong = desc;
-    let timeout = timeoutContainer.find(
-      (item) => item.uid === cardData.dataObject.uid
-    );
-    if (timeout) {
-      clearTimeout(timeout.timeoutId);
-      timeoutContainer = timeoutContainer.filter(
-        (item) => item.uid !== cardData.dataObject.uid
-      );
+    try {
+        console.log("CALL_UPDATE", cardData, desc, unsavedStatus)
+        if (cardData.descAnswerRemark.answerRemarkLong !== desc) {
+          unsavedStatus.dbValue = true;
+          cardData.descAnswerRemark.answerRemarkLong = desc;
+          let timeout = timeoutContainer.find(
+            (item) => item.uid === cardData.dataObject.uid
+          );
+          if (timeout) {
+            clearTimeout(timeout.timeoutId);
+            timeoutContainer = timeoutContainer.filter(
+              (item) => item.uid !== cardData.dataObject.uid
+            );
+          }
+          let timeoutId = setTimeout(async function () {
+            await updateOneDesc(cardData, unsavedStatus);
+          }, 3000);
+          timeoutContainer.push({
+            timeoutId,
+            uid: cardData.dataObject.uid,
+          });
+        }
+    } catch (error) {
+        console.log(error)
     }
-    let timeoutId = setTimeout(async function () {
-      await updateOneDesc(cardData, unsavedStatus);
-    }, 3000);
-    timeoutContainer.push({
-      timeoutId,
-      uid: cardData.dataObject.uid,
-    });
-  }
+
 }
 export async function updateOneDesc(cardData, unsavedStatus) {
   if (cardData.dataObject) {
