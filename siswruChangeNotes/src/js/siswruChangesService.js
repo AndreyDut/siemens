@@ -252,9 +252,10 @@ export function updateDescriptionRequst(cardData, desc, unsavedStatus) {
   }
 }
 export function updateDescriptionRequst2(cardData, desc, unsavedStatus) {
-  if (cardData.answerRemarkUpdate !== desc) {
+    console.log("CALL_UPDATE", cardData, desc, unsavedStatus)
+  if (cardData.answerRemarkText !== desc) {
     unsavedStatus.dbValue = true;
-    cardData.answerRemarkUpdate = desc;
+    cardData.answerRemarkText = desc;
     let timeout = timeoutContainer.find(
       (item) => item.uid === cardData.dataObject.uid
     );

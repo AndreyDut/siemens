@@ -353,7 +353,7 @@
             "method": "updateDescriptionRequst2",
             "inputData": {
                 "cardData":"{{subPanelContext}}",
-                "desc":"{{data.answerRemarkUpdate.dbValue}}",
+                "desc":"{{data.answerRemarkText.dbValue}}",
                 "unsavedStatus":"{{data.unsavedStatus}}"
             }
         },
