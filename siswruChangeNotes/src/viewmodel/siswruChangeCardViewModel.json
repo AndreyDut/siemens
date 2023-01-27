@@ -17,7 +17,7 @@
             "type": "BOOLEAN",
             "isRequired": "false",
             "isEditable": "true",
-            "dbValue": "",
+            "dbValue": true,
             "dispValue": "Есть MarkUp",
             "labelPosition": "PROPERTY_LABEL_AT_SIDE"
         },

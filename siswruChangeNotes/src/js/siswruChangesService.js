@@ -367,8 +367,8 @@ export async function initialGetCNData(uid, ctx) {
 
   generalSelectDocDP = [
     {
-      propDisplayValue: generalDataRemark.KDName,
-      propInternalValue: generalDataRemark.KDName,
+      propDisplayValue: generalDataRemark.spb5KDName,
+      propInternalValue: generalDataRemark.spb5KDName,
     },
   ];
 
