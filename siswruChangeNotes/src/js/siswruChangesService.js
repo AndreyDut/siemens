@@ -24,8 +24,8 @@ function getEmptyCard(generalSelectDocDP, descRemark, descAnswerRemark) {
     dataObject: null,
     attachmentData: [],
     descRemark, descAnswerRemark,
-    remarkText: "remarkText",
-    answerRemarkText: "answerRemarkText",
+    remarkText: descRemark.remarkLong,
+    answerRemarkText: descAnswerRemark.answerRemarkLong,
   };
 }
 
@@ -336,10 +336,7 @@ export async function initialGetCNData(uid, ctx) {
   }
 
   let descRemark = {
-    remarkLong: {
-        propDisplayValue: firstForm.spb5RemarkNotesLong,
-        propInternalValue: firstForm.spb5RemarkNotesLong,
-      },
+    remarkLong: firstForm.spb5RemarkNotesLong,
     remakUser:     {
       dbValue: firstForm.spb5RemarkUser,
       dispValue: firstForm.spb5RemarkUser,
@@ -355,10 +352,7 @@ export async function initialGetCNData(uid, ctx) {
   }
 
   let descAnswerRemark = {
-    answerRemarkLong: {
-        propDisplayValue: firstForm.spb5RemarkDesicionLong,
-        propInternalValue: firstForm.spb5RemarkDesicionLong,
-      },
+    answerRemarkLong: firstForm.spb5RemarkDesicionLong,
     answerRemakUser:     {
       dbValue: firstForm.spb5RemarkAnsweringUser,
       dispValue: firstForm.spb5RemarkAnsweringUser,
