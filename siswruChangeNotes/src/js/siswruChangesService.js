@@ -140,9 +140,14 @@ export function copyCard(cards, cardData) {
         relationInfo: cardData.relationInfo,
         dataObject: cardData.attachmentData,
         attachmentData: cardData.attachmentData,
-        ...cardData.generalDataRemark,
+        generalSelectDocDP: cardData.generalSelectDocDP,
+        generalSelectCodeDP: cardData.generalSelectCodeDP,
+        descRemark: cardData.descRemark,
+        descAnswerRemark: cardData.descAnswerRemark,
+        spb5RemarkApprove: cardData.spb5RemarkApprove,
       };
     console.log("cards", cards)
+    console.log("cardData", cardData)
     cards.push(copyElem);
     setTimeout(() => {
       eventBus.publish("generalGrid.plTable.clientRefresh");
