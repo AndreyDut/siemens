@@ -23,7 +23,11 @@ function getEmptyCard(generalDataRemark) {
     },
     dataObject: null,
     attachmentData: [],
-    spb5RemarkApprove: generalDataRemark.spb5RemarkApprove
+    spb5RemarkApprove: generalDataRemark.spb5RemarkApprove,
+    generalSelectDocDP: generalDataRemark.generalSelectDocDP,
+    generalSelectCodeDP: generalDataRemark.generalSelectCodeDP,
+    descRemark: generalDataRemark.descRemark,
+    descAnswerRemark: generalDataRemark.descAnswerRemark,
     // ...generalDataRemark,
   };
 }
