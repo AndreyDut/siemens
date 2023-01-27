@@ -23,7 +23,8 @@ function getEmptyCard(generalDataRemark) {
     },
     dataObject: null,
     attachmentData: [],
-    ...generalDataRemark,
+    spb5RemarkApprove: spb5RemarkApprove.generalDataRemark
+    // ...generalDataRemark,
   };
 }
 
@@ -230,9 +231,9 @@ export async function cutDocContinue(cardData, docs) {
 
 let timeoutContainer = [];
 export function updateDescriptionRequst(cardData, desc, unsavedStatus) {
-  if (cardData.remarkText !== desc) {
+  if (cardData.descRemark.remarkLong !== desc) {
     unsavedStatus.dbValue = true;
-    cardData.remarkText = desc;
+    cardData.descRemark.remarkLong = desc;
     let timeout = timeoutContainer.find(
       (item) => item.uid === cardData.dataObject.uid
     );
@@ -253,9 +254,9 @@ export function updateDescriptionRequst(cardData, desc, unsavedStatus) {
 }
 export function updateDescriptionRequst2(cardData, desc, unsavedStatus) {
     console.log("CALL_UPDATE", cardData, desc, unsavedStatus)
-  if (cardData.answerRemarkText !== desc) {
+  if (cardData.descAnswerRemark.answerRemarkLong !== desc) {
     unsavedStatus.dbValue = true;
-    cardData.answerRemarkText = desc;
+    cardData.descAnswerRemark.answerRemarkLong = desc;
     let timeout = timeoutContainer.find(
       (item) => item.uid === cardData.dataObject.uid
     );
