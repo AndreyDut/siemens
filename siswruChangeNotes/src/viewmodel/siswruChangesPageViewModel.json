@@ -53,10 +53,7 @@
             },
             "outputData": {
                 "pomContainers":"pomContainers",
-                "ctx.generalSelectDocDP":"generalSelectDocDP",
-                "ctx.generalSelectCodeDP":"generalSelectCodeDP",
-                "ctx.descRemark":"descRemark",
-                "ctx.descAnswerRemark":"descAnswerRemark"
+                "ctx.generalDataRemark":"generalDataRemark"
             }
         },
         "removeEmptyCard":{

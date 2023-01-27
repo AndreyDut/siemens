@@ -14,16 +14,16 @@ let updateCounter = 0;
 let autosaveStatus = true;
 
 //
-function getEmptyCard(generalSelectDocDP, descRemark, descAnswerRemark) {
+function getEmptyCard(generalDataRemark) {
   return {
     relationInfo: {
-      relationTypeName: generalSelectDocDP[0].relationTypeName,
-      actionTypeName: generalSelectDocDP[0].propInternalValue,
-      actionTypeDisplayName: generalSelectDocDP[0].propDisplayValue,
+      relationTypeName: '',
+      actionTypeName: generalDataRemark.generalSelectDocDP.propInternalValue,
+      actionTypeDisplayName: generalDataRemark.generalSelectDocDP.propDisplayValue,
     },
     dataObject: null,
     attachmentData: [],
-    descRemark, descAnswerRemark,
+    ...generalDataRemark,
   };
 }
 
@@ -130,7 +130,7 @@ async function updatePropertyBySoa(
 }
 
 export function addCard(cards, ctx) {
-  cards.push(getEmptyCard(ctx.generalSelectDocDP, ctx.descRemark, ctx.descAnswerRemark));
+  cards.push(getEmptyCard(ctx.generalDataRemark));
   setTimeout(() => {
     eventBus.publish("generalGrid.plTable.clientRefresh");
   }, 2000);
@@ -307,7 +307,7 @@ export async function initialGetCNData(uid, ctx) {
     relationTypeName: item.relationTypeName,
   }));
   let curdRemarksForm;
-  let firstForm;
+  let generalDataRemark;
 
   try {
     console.log("ctx.selected", ctx.selected);
@@ -327,56 +327,71 @@ export async function initialGetCNData(uid, ctx) {
         inputDataRemarks
       );
       
-    firstForm = curdRemarksForm.remarks ? curdRemarksForm.remarks[0] : {};
+    generalDataRemark = curdRemarksForm.remarks ? curdRemarksForm.remarks[0] : {};
     console.log("curdRemarksForm", curdRemarksForm);
   } catch (error) {
     console.log(error)
   }
 
   let descRemark = {
-    remarkLong: firstForm.spb5RemarkNotesLong,
+    remarkLong: generalDataRemark.spb5RemarkNotesLong,
     remakUser:     {
-      dbValue: firstForm.spb5RemarkUser,
-      dispValue: firstForm.spb5RemarkUser,
+      dbValue: generalDataRemark.spb5RemarkUser,
+      dispValue: generalDataRemark.spb5RemarkUser,
       },
     remarkRole: {
-      dbValue: firstForm.spb5RemarkRemarkerRole,
-      dispValue: firstForm.spb5RemarkRemarkerRole,
+      dbValue: generalDataRemark.spb5RemarkRemarkerRole,
+      dispValue: generalDataRemark.spb5RemarkRemarkerRole,
       },
     remarkDate: {
-      dbValue: new Date(firstForm.spb5RemarkCreateDate).toLocaleString(),
-      dispValue: new Date(firstForm.spb5RemarkCreateDate).toLocaleString(),
+      dbValue: new Date(generalDataRemark.spb5RemarkCreateDate).toLocaleString(),
+      dispValue: new Date(generalDataRemark.spb5RemarkCreateDate).toLocaleString(),
       },
   }
 
   let descAnswerRemark = {
-    answerRemarkLong: firstForm.spb5RemarkDesicionLong,
+    answerRemarkLong: generalDataRemark.spb5RemarkDesicionLong,
     answerRemakUser:     {
-      dbValue: firstForm.spb5RemarkAnsweringUser,
-      dispValue: firstForm.spb5RemarkAnsweringUser,
+      dbValue: generalDataRemark.spb5RemarkAnsweringUser,
+      dispValue: generalDataRemark.spb5RemarkAnsweringUser,
       },
     answerRemarkRole: {
-      dbValue: firstForm.spb5RemarkAnsweringRole,
-      dispValue: firstForm.spb5RemarkAnsweringRole,
+      dbValue: generalDataRemark.spb5RemarkAnsweringRole,
+      dispValue: generalDataRemark.spb5RemarkAnsweringRole,
       },
     answerRemarkDate: {
-      dbValue: new Date(firstForm.spb5RemarkLastChangeDate).toLocaleString() ,
-      dispValue: new Date(firstForm.spb5RemarkLastChangeDate).toLocaleString() ,
+      dbValue: new Date(generalDataRemark.spb5RemarkLastChangeDate).toLocaleString() ,
+      dispValue: new Date(generalDataRemark.spb5RemarkLastChangeDate).toLocaleString() ,
       },
   }
 
+  generalSelectDocDP = [
+    {
+      propDisplayValue: generalDataRemark.KDName,
+      propInternalValue: generalDataRemark.KDName,
+    },
+  ];
 
   const generalSelectCodeDP = [
     {
-      propDisplayValue: firstForm.spb5RemarkCode,
-      propInternalValue: firstForm.spb5RemarkCode,
+      propDisplayValue: generalDataRemark.spb5RemarkCode,
+      propInternalValue: generalDataRemark.spb5RemarkCode,
     },
   ];
+
+
+  generalDataRemark = {
+    ...generalDataRemark,
+    generalSelectDocDP,
+    generalSelectCodeDP,
+    descRemark,
+    descAnswerRemark,
+  }
 
   const pomContainers = resp.relationDataMap[1][0];
   await processCardsData(pomContainers);
   if (!pomContainers.length) {
-    pomContainers.push(getEmptyCard(generalSelectDocDP, descRemark, descAnswerRemark));
+    pomContainers.push(getEmptyCard(generalDataRemark));
   }
   
   console.log("ctx", ctx);
@@ -384,11 +399,8 @@ export async function initialGetCNData(uid, ctx) {
   console.log(pomContainers);
 
   return {
-    generalSelectDocDP,
     pomContainers,
-    generalSelectCodeDP,
-    descRemark,
-    descAnswerRemark,
+    generalDataRemark
   };
 }
 
