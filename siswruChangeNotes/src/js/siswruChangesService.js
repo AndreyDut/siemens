@@ -301,7 +301,7 @@ export async function initialGetCNData(uid, ctx) {
     "getCNData",
     { changeNoticeRevisions: [{ uid }] }
   );
-  const generalSelectDocDP = resp.relationInfo.map((item) => ({
+  let generalSelectDocDP = resp.relationInfo.map((item) => ({
     propDisplayValue: item.actionTypeDisplayName,
     propInternalValue: item.actionTypeName,
     relationTypeName: item.relationTypeName,
@@ -372,7 +372,7 @@ export async function initialGetCNData(uid, ctx) {
     },
   ];
 
-  const generalSelectCodeDP = [
+  let generalSelectCodeDP = [
     {
       propDisplayValue: generalDataRemark.spb5RemarkCode,
       propInternalValue: generalDataRemark.spb5RemarkCode,
@@ -388,7 +388,7 @@ export async function initialGetCNData(uid, ctx) {
     descAnswerRemark,
   }
 
-  const pomContainers = resp.relationDataMap[1][0];
+  let pomContainers = resp.relationDataMap[1][0];
   await processCardsData(pomContainers);
   if (!pomContainers.length) {
     pomContainers.push(getEmptyCard(generalDataRemark));
