@@ -272,7 +272,8 @@
             "deps": "js/siswruChangesService",
             "method": "copyCard",
             "inputData": {
-                "cardData":"{{subPanelContext}}"
+                "cardData":"{{subPanelContext}}",
+                "ctx": "{{ctx}}"
             }
         },
         "openCard":{

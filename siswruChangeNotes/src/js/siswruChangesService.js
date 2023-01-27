@@ -94,10 +94,6 @@ export async function updateZadelRequest(subCtx, selection, unsavedStatus) {
   }
 }
 
-export function copyCard(data) {
-  console.log(data);
-}
-
 export function openCard(data) {
   console.log(data);
 }
@@ -130,11 +126,24 @@ async function updatePropertyBySoa(
 }
 
 export function addCard(cards, ctx) {
+    console.log("cards", cards)
+    console.log("ctx", ctx)
   cards.push(getEmptyCard(ctx.generalDataRemark));
   setTimeout(() => {
     eventBus.publish("generalGrid.plTable.clientRefresh");
   }, 2000);
 }
+
+
+export function copyCard(cards, ctx) {
+    console.log("cards", cards)
+    console.log("ctx", ctx)
+    // cards.push(getEmptyCard(ctx.generalDataRemark));
+    // setTimeout(() => {
+    //   eventBus.publish("generalGrid.plTable.clientRefresh");
+    // }, 2000);
+}
+
 
 export function log(data, ctx) {
   console.log(data);
