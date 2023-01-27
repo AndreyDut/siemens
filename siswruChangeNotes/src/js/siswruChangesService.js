@@ -188,11 +188,7 @@ export async function addRelation(cardData, docs, parentUid, objectTypes) {
       },
     ],
   };
-  await siswSoaCallWrapper(
-    "Helper-2018-11-ChangeManagement",
-    "createCNAttachments",
-    input
-  );
+
 }
 
 export async function removeCard(cardData) {
@@ -201,11 +197,6 @@ export async function removeCard(cardData) {
       attachment: { uid: a.attachment.uid },
       relation: { uid: a.relation.uid },
     }));
-    await siswSoaCallWrapper(
-      "Helper-2018-11-ChangeManagement",
-      "deleteCNAttachments",
-      { attachments: input }
-    );
     eventBus.publish("siswru.updateCNBlocks");
   } else {
     eventBus.publish("siswru.removeEmptyCard");
@@ -220,16 +211,6 @@ export async function cutDocContinue(cardData, docs) {
   const uidsToRemove = docs.map((item) => item.uid);
   const attachments = cardData.attachmentData.filter(
     (item) => uidsToRemove.indexOf(item.attachment.uid) !== -1
-  );
-  await siswSoaCallWrapper(
-    "Helper-2018-11-ChangeManagement",
-    "deleteCNAttachments",
-    {
-      attachments: attachments.map((a) => ({
-        attachment: { uid: a.attachment.uid },
-        relation: { uid: a.relation.uid },
-      })),
-    }
   );
 }
 
@@ -289,11 +270,6 @@ export async function updateOneDesc(cardData, unsavedStatus) {
     timeoutContainer = timeoutContainer.filter(
       (item) => item.uid !== cardData.dataObject.uid
     );
-    await siswSoaCallWrapper(
-      "Helper-2018-11-ChangeManagement",
-      "updateDescriptions",
-      { descriptionMap: [moArray, valueArray] }
-    );
     unsavedStatus.dbValue = false;
   }
 }
@@ -317,11 +293,6 @@ export async function updateActionTypeRequst(cardData, actionType, ctx) {
           })),
         },
       ];
-      await siswSoaCallWrapper(
-        "Helper-2018-11-ChangeManagement",
-        "updateCNAttachments",
-        { updateInput }
-      );
       eventBus.publish("siswru.updateCNBlocks");
     }
   }
@@ -351,11 +322,7 @@ export async function initialGetCNData(uid, ctx) {
     "getCNData",
     { changeNoticeRevisions: [{ uid }] }
   );
-  let generalSelectDocDP = resp.relationInfo.map((item) => ({
-    propDisplayValue: item.actionTypeDisplayName,
-    propInternalValue: item.actionTypeName,
-    relationTypeName: item.relationTypeName,
-  }));
+  let generalSelectDocDP;
   let curdRemarksForm;
   let generalDataRemark;
 
