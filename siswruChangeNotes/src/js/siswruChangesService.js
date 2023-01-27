@@ -136,8 +136,14 @@ export function addCard(cards, ctx) {
 
 
 export function copyCard(cards, cardData) {
+    let copyElem = {
+        relationInfo: cardData.relationInfo,
+        dataObject: cardData.attachmentData,
+        attachmentData: cardData.attachmentData,
+        ...cardData.generalDataRemark,
+      };
     console.log("cards", cards)
-    cards.push(cardData);
+    cards.push(copyElem);
     setTimeout(() => {
       eventBus.publish("generalGrid.plTable.clientRefresh");
     }, 2000);
