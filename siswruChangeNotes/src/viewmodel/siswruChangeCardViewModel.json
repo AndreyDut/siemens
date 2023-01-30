@@ -354,7 +354,8 @@
             "inputData": {
                 "cardData":"{{subPanelContext}}",
                 "desc":"{{data.answerRemarkText.dbValue}}",
-                "unsavedStatus":"{{data.unsavedStatus}}"
+                "unsavedStatus":"{{data.unsavedStatus}}",
+                "ctx":"{{ctx}}"
             }
         },
         "updateActionTypeRequst":{

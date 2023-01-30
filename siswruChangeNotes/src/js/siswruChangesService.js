@@ -256,7 +256,7 @@ export function updateDescriptionRequst(cardData, desc, unsavedStatus) {
     });
   }
 }
-export function updateDescriptionRequst2(cardData, desc, unsavedStatus) {
+export async function updateDescriptionRequst2(cardData, desc, unsavedStatus, ctx) {
   let uid = cardData.dataObject ? cardData.dataObject.uid : "";
 
   console.log("CALL_UPDATE", cardData, desc, unsavedStatus);
@@ -268,6 +268,24 @@ export function updateDescriptionRequst2(cardData, desc, unsavedStatus) {
       clearTimeout(timeout.timeoutId);
       timeoutContainer = timeoutContainer.filter((item) => item.uid !== uid);
     }
+    console.log("ctx.selected", ctx.selected);
+
+    let inputDataRemarks = {
+      inputData: {
+        selectObject: ctx.selected,
+        remarks: [cardData],
+      },
+    };
+
+    console.log("inputDataRemarks", inputDataRemarks);
+
+    let curdRemarksForm = await siswSoaCallWrapper(
+      "Funs-2021-12-AWC",
+      "curdRemarksForm",
+      inputDataRemarks
+    );
+
+    console.log("write curdRemarksForm", curdRemarksForm)
     let timeoutId = setTimeout(async function () {
       await updateOneDesc(cardData, unsavedStatus);
     }, 3000);
