@@ -36,7 +36,7 @@ function buildRemarkObj({
       spb5RemarkLastChangeDate
     ).toLocaleString() : spb5RemarkLastChangeDate,
     spb5RemarkCreateDate: spb5RemarkCreateDate ? new Date(
-        spb5RemarkCreateDate
+      spb5RemarkCreateDate
     ).toLocaleString() : spb5RemarkCreateDate,
     spb5RemarkNotesLong,
     spb5RemarkApprove,
@@ -48,8 +48,8 @@ function buildRemarkObj({
 function getEmptyCard(generalDataRemark, type) {
   if (type === "newCard") {
     return buildRemarkObj({
-        generalSelectCodeDP: generalDataRemark.generalSelectCodeDP,
-        generalSelectDocDP: generalDataRemark.generalSelectDocDP
+      generalSelectCodeDP: generalDataRemark.generalSelectCodeDP,
+      generalSelectDocDP: generalDataRemark.generalSelectDocDP
     });
   } else {
     return {
@@ -268,7 +268,7 @@ export async function updateDescriptionRequst2(cardData, desc, unsavedStatus, ct
       clearTimeout(timeout.timeoutId);
       timeoutContainer = timeoutContainer.filter((item) => item.uid !== uid);
     }
-    console.log("ctx.selected", ctx.selected);
+    console.log("ctx.selected2", ctx.selected);
 
     let inputDataRemarks = {
       inputData: {
@@ -277,7 +277,7 @@ export async function updateDescriptionRequst2(cardData, desc, unsavedStatus, ct
       },
     };
 
-    console.log("inputDataRemarks", inputDataRemarks);
+    console.log("inputDataRemarks2", inputDataRemarks);
 
     let curdRemarksForm = await siswSoaCallWrapper(
       "Funs-2021-12-AWC",
@@ -357,6 +357,8 @@ export async function initialGetCNData(uid, ctx) {
   let generalSelectDocDP;
   let curdRemarksForm;
   let generalDataRemark;
+  let listObjs = {};
+
 
   try {
     console.log("ctx.selected", ctx.selected);
@@ -376,22 +378,41 @@ export async function initialGetCNData(uid, ctx) {
       inputDataRemarks
     );
 
-    generalDataRemark = curdRemarksForm.remarks
-      ? curdRemarksForm.remarks[0]
-      : {};
+    let inputDataForListsText = {
+      wso: ctx.selected,
+    };
 
+    listObjs = await siswSoaCallWrapper(
+      "Funs-2021-12-AWC",
+      "listTextObjectsNot",
+      inputDataForListsText
+    );
+
+    console.log("init_curdRemarksForm", curdRemarksForm)
+
+    generalDataRemark = (curdRemarksForm.remarks
+      ? curdRemarksForm.remarks[0]
+      : {}) || {};
+    console.log("generalDataRemark1", generalDataRemark)
     generalDataRemark = buildRemarkObj(generalDataRemark)
+    console.log("generalDataRemark2", generalDataRemark)
     console.log("curdRemarksForm", curdRemarksForm);
+    console.log("listTextObjectsNot", listObjs.textObjects)
+
+    if (listObjs.textObjects) {  
+        generalSelectDocDP = listObjs.textObjects.map((doc) => ({
+          propDisplayValue: doc.name,
+          propInternalValue: doc.uid,
+        }));
+    }
+
+
   } catch (error) {
     console.log(error);
   }
 
-  generalSelectDocDP = [
-    {
-      propDisplayValue: generalDataRemark.spb5KDName,
-      propInternalValue: generalDataRemark.spb5KDName,
-    },
-  ];
+
+
 
   let generalSelectCodeDP = [
     {
