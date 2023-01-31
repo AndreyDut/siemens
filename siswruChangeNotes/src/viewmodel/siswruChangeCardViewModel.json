@@ -358,13 +358,13 @@
                 "ctx":"{{ctx}}"
             }
         },
-        "updateActionTypeRequst":{
+        "selectDocUpdate":{
             "actionType":"JSFunctionAsync",
             "deps": "js/siswruChangesService",
-            "method": "updateActionTypeRequst",
+            "method": "selectDocUpdate",
             "inputData": {
                 "cardData":"{{subPanelContext}}",
-                "actionType":"{{data.actionType.dbValue}}",
+                "selectDoc":"{{data.selectDoc.dbValue}}",
                 "ctx":"{{ctx}}"
             }
         },
@@ -460,9 +460,9 @@
         },
         {
             "eventId": "condition.expressionValueChanged",
-            "action": "updateActionTypeRequst",
+            "action": "updateSelectDoc",
             "criteria": {
-                "condition": "conditions.actionTypeUpdate"
+                "condition": "conditions.selectDocUpdate"
             },
             "cacheEventData": true
         },
@@ -484,8 +484,8 @@
             "expression":"data.answerRemarkText.dbValue",
             "trackValues": true
         },
-        "actionTypeUpdate":{
-            "expression":"data.actionType.dbValue",
+        "selectDocUpdate":{
+            "expression":"data.selectDoc.dbValue",
             "trackValues": true
         },
         "updateZadelRequest":{

@@ -306,28 +306,30 @@ export async function updateOneDesc(cardData, unsavedStatus) {
   }
 }
 
-export async function updateActionTypeRequst(cardData, actionType, ctx) {
-  if (actionType && cardData.relationInfo.actionTypeName != actionType) {
-    const selectedType = ctx.generalSelectDocDP.find(
-      (item) => item.propInternalValue === actionType
-    );
-    cardData.relationInfo.actionTypeName = selectedType.propInternalValue;
-    cardData.relationInfo.actionTypeDisplayName = selectedType.propDisplayValue;
-    cardData.relationInfo.relationTypeName = selectedType.relationTypeName;
-    if (cardData.dataObject) {
-      const updateInput = [
-        {
-          relationInfo: cardData.relationInfo,
-          dataObject: { uid: cardData.dataObject.uid },
-          attachmentData: cardData.attachmentData.map((a) => ({
-            attachment: { uid: a.attachment.uid },
-            relation: { uid: a.relation.uid },
-          })),
-        },
-      ];
-      eventBus.publish("siswru.updateCNBlocks");
-    }
-  }
+export async function selectDocUpdate(cardData, selectDoc, ctx) {
+
+  console.log("selectDocUpdate", cardData, selectDoc, ctx)
+  // if (actionType && cardData.relationInfo.actionTypeName != actionType) {
+  //   const selectedType = ctx.generalSelectDocDP.find(
+  //     (item) => item.propInternalValue === actionType
+  //   );
+  //   cardData.relationInfo.actionTypeName = selectedType.propInternalValue;
+  //   cardData.relationInfo.actionTypeDisplayName = selectedType.propDisplayValue;
+  //   cardData.relationInfo.relationTypeName = selectedType.relationTypeName;
+  //   if (cardData.dataObject) {
+  //     const updateInput = [
+  //       {
+  //         relationInfo: cardData.relationInfo,
+  //         dataObject: { uid: cardData.dataObject.uid },
+  //         attachmentData: cardData.attachmentData.map((a) => ({
+  //           attachment: { uid: a.attachment.uid },
+  //           relation: { uid: a.relation.uid },
+  //         })),
+  //       },
+  //     ];
+  //     eventBus.publish("siswru.updateCNBlocks");
+  //   }
+  // }
 }
 export function getObjectTypes(objectTypes) {
   return objectTypes.map((item) => ({
@@ -355,9 +357,11 @@ export async function initialGetCNData(uid, ctx) {
     { changeNoticeRevisions: [{ uid }] }
   );
   let generalSelectDocDP;
+  let generalSelectCodeDP;
   let curdRemarksForm;
   let generalDataRemark;
   let listObjs = {};
+  let listCodes = {};
 
 
   try {
@@ -388,6 +392,12 @@ export async function initialGetCNData(uid, ctx) {
       inputDataForListsText
     );
 
+    listCodes = await siswSoaCallWrapper(
+      "Funs-2021-12-AWC",
+      "listCodeNot",
+      {}
+    );
+
     console.log("init_curdRemarksForm", curdRemarksForm)
 
     generalDataRemark = (curdRemarksForm.remarks
@@ -406,20 +416,17 @@ export async function initialGetCNData(uid, ctx) {
         }));
     }
 
+    if (listCodes.listStrings) {  
+        generalSelectCodeDP = listCodes.listStrings.map((code) => ({
+          propDisplayValue: code,
+          propInternalValue: code,
+        }));
+    }
+
 
   } catch (error) {
     console.log(error);
   }
-
-
-
-
-  let generalSelectCodeDP = [
-    {
-      propDisplayValue: generalDataRemark.spb5RemarkCode,
-      propInternalValue: generalDataRemark.spb5RemarkCode,
-    },
-  ];
 
   generalDataRemark = {
     ...generalDataRemark,
