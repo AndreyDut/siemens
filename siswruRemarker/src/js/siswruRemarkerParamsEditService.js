@@ -118,7 +118,60 @@ export function updateKDName(prop, cardData){
     }
 }
 
+export function updateCodeTest(prop, cardData){
+    if(prop.dbValue && prop.dbValue !=cardData.rowProps[getParamNameFromPref("KDName")].dbValue){
+        cardData.rowProps[getParamNameFromPref("KDName")].dbValue = prop.dbValue
+        cardData.rowProps[getParamNameFromPref("Decision")].dbValue = "Test Decision"
+        eventBus.publish( 'siswruCodeTestChanged', {updateCodepropValue: prop.dbValue,updateCodecardData: cardData} );            
+    }
+}
+
 export async function KDNameChangedHandler(remarksData, targetsContainer, cardData, propValue){
+
+    //get new target
+    const newTarget = cardData.config.targets.targetsList.find(item => item.id ==propValue).object
+       
+    //check if nkremark exists
+    let sameTargetRow = remarksData.find(item => item.target !== null && item.target.uid === newTarget.uid)
+    let newPropArrayIndex
+    let newNkRemark = {}
+    if(sameTargetRow){
+        //exists       
+        newNkRemark = sameTargetRow.NkRemark
+        newPropArrayIndex = newNkRemark.props[getParamNameFromPref("Answering_Role")].dbValues.length
+    } else {
+        newNkRemark = (await loadObjectWithProps([newTarget.props[cardData.config.internal.NkRemarkRelationType.RelationType.value].dbValues[0]]))[0]
+        newPropArrayIndex = 0
+    }           
+        for(const propName of cardData.config.arrays.NkRemarkParams){
+            //put props to new nkremark
+            newNkRemark.props[propName].dbValues.push(cardData.rowProps[propName].dbValue)
+            //delete from old
+            if(cardData.NkRemark){
+                cardData.NkRemark.props[propName].dbValues = cardData.NkRemark.props[propName].dbValues.filter((_, index) => index !== cardData.propArrayIndex)
+            }                
+        }
+        //update propArrayIndex for other rows
+        if(cardData.NkRemark){
+            for(const card of remarksData){
+                if(card.NkRemark.uid === cardData.NkRemark.uid && card.propArrayIndex > cardData.propArrayIndex){
+                    card.propArrayIndex--
+                }
+            }
+        }
+        if(cardData.NkRemark) updateTargetStatus(targetsContainer, cardData.NkRemark.uid, "changed")
+        updateTargetStatus(targetsContainer, newNkRemark.uid, "changed")
+        
+        cardData.NkRemark = newNkRemark
+        cardData.propArrayIndex = newPropArrayIndex
+        cardData.target = newTarget
+        
+        cardData.access = _.cloneDeep(cardData.access)
+        cardData.access.User1.status = (cardData.target.props.owning_user.dbValues[0] === cardData.access.User1.currentUserUid) ? true : false
+        console.log(remarksData)
+}
+
+export async function CodeTestChangedHandler(remarksData, targetsContainer, cardData, propValue){
 
     //get new target
     const newTarget = cardData.config.targets.targetsList.find(item => item.id ==propValue).object

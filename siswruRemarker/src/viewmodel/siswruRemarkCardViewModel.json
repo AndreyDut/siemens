@@ -124,6 +124,15 @@
                 "cardData":"{{subPanelContext}}"
             }
         },
+        "updateCodeTest":{
+            "actionType":"JSFunction",
+            "deps": "js/siswruRemarkerParamsEditService",
+            "method": "updateCodeTest",
+            "inputData": {
+                "prop":"{{data.Code}}",
+                "cardData":"{{subPanelContext}}"
+            }
+        },
         "updateApprove":{
             "actionType":"JSFunction",
             "deps": "js/siswruRemarkerParamsEditService",
@@ -165,6 +174,14 @@
         },
         {
             "eventId": "condition.expressionValueChanged",
+            "action": "updateCodeTest",
+            "criteria": {
+                "condition": "conditions.updateCodeTest"
+            },
+            "cacheEventData": true
+        },
+        {
+            "eventId": "condition.expressionValueChanged",
             "action": "updateApprove",
             "criteria": {
                 "condition": "conditions.updateApprove"
@@ -173,6 +190,10 @@
         }
     ],
     "conditions": {
+        "updateCodeTest":{
+            "expression":"data.KDName.dbValue",
+            "trackValues": true
+        },
         "updateKDName":{
             "expression":"data.KDName.dbValue",
             "trackValues": true

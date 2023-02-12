@@ -114,6 +114,17 @@
                 "propValue":"{{data.eventData.updateKDpropValue}}"
             } 
         },
+        "CodeTestChangedHandler":{
+            "actionType":"JSFunctionAsync",
+            "deps": "js/siswruRemarkerParamsEditService",
+            "method": "CodeTestChangedHandler",
+            "inputData": {
+                "remarksData":"{{data.remarksData}}",
+                "targetsContainer":"{{data.targetsContainer}}",
+                "cardData":"{{data.eventData.updateCodecardData}}",
+                "propValue":"{{data.eventData.updateCodepropValue}}"
+            } 
+        },
         "openFilter":{
             "actionType": "JSFunction",
             "method": "activateCommandPanel",
@@ -211,6 +222,11 @@
         {
             "eventId": "siswruKDNameChanged",
             "action": "KDNameChangedHandler",
+            "cacheEventData": true
+        },
+        {
+            "eventId": "siswruCodeTestChanged",
+            "action": "CodeTestChangedHandler",
             "cacheEventData": true
         },
         {
